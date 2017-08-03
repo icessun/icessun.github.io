@@ -129,7 +129,7 @@
 <meta property="og:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。1var preson=new Object();">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1811036-7311264906caafc1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-03T02:50:44.321Z">
+<meta property="og:updated_time" content="2017-08-03T07:53:55.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计读书笔记（五）">
 <meta name="twitter:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。1var preson=new Object();">
@@ -405,7 +405,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-08-03T10:50:44+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-08-03T15:53:55+08:00">
                 2017-08-03
               </time>
             
@@ -574,16 +574,13 @@
 <ul>
 <li><p>默认是按照升序排列数组；其默认会调用每一个数组项的<code>toString()</code>转为<code>字符串进行比较</code></p>
    <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var num1=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>]</div><div class="line">num1.sort() ; <span class="comment">//     [0, 1, 10, 15, 5]</span></div></pre></td></tr></table></figure>
+<p>   这个方法不是我们需要的排序方法，所以一般在里面传递一个比较函数</p>
+   <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=[<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">6</span>];</div><div class="line">num.sort(<span class="function"><span class="keyword">function</span><span class="params">(a,b)</span></span>&#123;</div><div class="line">         <span class="keyword">return</span> a-b;  <span class="comment">// 从小到大</span></div><div class="line">         <span class="keyword">return</span> b-a; <span class="comment">// 从大到小</span></div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<pre><code>这个方法不是我们需要的排序方法，所以一般在里面传递一个比较函数
-
- <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num=[<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">6</span>];</div><div class="line">num.sort(<span class="function"><span class="keyword">function</span><span class="params">(a,b)</span></span>&#123;</div><div class="line">         <span class="keyword">return</span> a-b;  <span class="comment">// 从小到大</span></div><div class="line">         <span class="keyword">return</span> b-a; <span class="comment">// 从大到小</span></div><div class="line">   &#125;)</div></pre></td></tr></table></figure>
-</code></pre><ul>
 <li><p>操作数组的方法</p>
 <ul>
 <li><p><code>concat()</code>：连接多个数组的方法</p>
@@ -746,20 +743,30 @@
 </li>
 </ul>
 <ul>
-<li>函数内部属性<ul>
-<li><code>arguments</code><ul>
+<li><p>函数内部属性</p>
+<ul>
+<li><p><code>arguments</code></p>
+<ul>
 <li>类数组对象，包含传入函数中的所有参数，主要是用来保存函数参数的</li>
 <li>还有一个<code>callee属性</code>，是一个指针，指向拥有<code>arguments</code>对象的函数</li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-   <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">  阶乘函数：</div><div class="line">   </div><div class="line">   function factoriai(num)&#123;</div><div class="line">         if(num&lt;=1)&#123;</div><div class="line">              return 1;</div><div class="line">          &#125;else&#123;</div><div class="line">              return num*arguments.callee(num-1);  // num*facoriai(num-1)</div><div class="line">           &#125;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">```   </div><div class="line"></div><div class="line">好处是在于：不需要知道函数的名字就可以完成递归调用，降低函数体内的代码与函数名的耦合度</div><div class="line"></div><div class="line"></div><div class="line">-<span class="ruby"> <span class="string">`this`</span></span></div><div class="line">  -<span class="ruby"> 函数执行的环境对象</span></div><div class="line">  -<span class="ruby"> 全局函数，指向<span class="string">`window`</span>；谁调用函数就指向谁</span></div><div class="line"></div><div class="line">-<span class="ruby"> 函数中的非继承的方法：<span class="string">`apply(),call()`</span></span></div><div class="line">   -<span class="ruby"> 设置函数体内的<span class="string">`this`</span>对象的值</span></div><div class="line">   -<span class="ruby"> <span class="string">`apply()`</span></span></div><div class="line">      -<span class="ruby"> 参数：运行函数的作用域（必须传入），参数数组（arguments对象或者Array实例）</span></div><div class="line">   -<span class="ruby"> <span class="string">`call()`</span></span></div><div class="line">       -<span class="ruby">  参数：运行函数的作用域（必须传入），参数必须逐个列举出来</span></div><div class="line"> </div><div class="line">-<span class="ruby"> 这两种方法没有什么不同，就是取决你给函数传递的参数的方式，真正的作用是扩充函数运行的作用域，对象不需要与方法有任何的耦合关系。</span></div></pre></td></tr></table></figure>
-<p>   window.color=’red’;<br>   var o={color:’blue’}<br>   function sayColor(){<br>         alert(this.color)<br>    }<br>    sayColor();  // red<br>    sayColor.call(this);  // red<br>    sayColor.call(o);  // blue<br> <figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">- `bind()`</div><div class="line">  - 创建一个函数的实例，其`this`值会绑定到传给`bind()`函数的值。</div><div class="line">  - 即使在全局作用域调用这个函数，函数里面的`this`也是指向绑定的函数的`this`</div></pre></td></tr></table></figure></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">     // 阶乘函数</span></div><div class="line">     function factoriai(num)&#123;</div><div class="line">      if(num&lt;=1)&#123;</div><div class="line">      return 1;</div><div class="line">       &#125;else&#123;</div><div class="line">         return num*arguments.callee(num-1);  // num*facoriai(num-1)</div><div class="line">       &#125;</div><div class="line">     &#125;   </div><div class="line">   ```   </div><div class="line"></div><div class="line">好处是在于：不需要知道函数的名字就可以完成递归调用，降低函数体内的代码与函数名的耦合度</div><div class="line"></div><div class="line">   -<span class="ruby"> <span class="string">`this`</span></span></div><div class="line">     -<span class="ruby"> 函数执行的环境对象</span></div><div class="line">     -<span class="ruby"> 全局函数，指向<span class="string">`window`</span>；谁调用函数就指向谁</span></div><div class="line">     </div><div class="line">   -<span class="ruby"> 函数中的非继承的方法：<span class="string">`apply(),call()`</span></span></div><div class="line">     -<span class="ruby"> 设置函数体内的<span class="string">`this`</span>对象的值</span></div><div class="line">     -<span class="ruby"> <span class="string">`apply()`</span></span></div><div class="line">         -<span class="ruby"> 参数：运行函数的作用域（必须传入），参数数组（arguments对象或者Array实例）</span></div><div class="line">     -<span class="ruby"> <span class="string">`call()`</span></span></div><div class="line">         -<span class="ruby">  参数：运行函数的作用域（必须传入），参数必须逐个列举出来</span></div><div class="line"> </div><div class="line">   -<span class="ruby"> 这两种方法没有什么不同，就是取决你给函数传递的参数的方式，真正的作用是扩充函数运行的作用域，对象不需要与方法有任何的耦合关系。</span></div></pre></td></tr></table></figure>
+<p>   window.color=’red’;<br>   var o={color:’blue’}<br>   function sayColor(){</p>
+<pre><code>alert(this.color)
+</code></pre><p>   }<br>   sayColor();  // red<br>   sayColor.call(this);  // red<br>   sayColor.call(o);  // blue    </p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- `bind()`</div><div class="line">  - 创建一个函数的实例，其`this`值会绑定到传给`bind()`函数的值。</div><div class="line">  - 即使在全局作用域调用这个函数，函数里面的`this`也是指向绑定的函数的`this`</div></pre></td></tr></table></figure>
 <pre><code>window.color=&apos;red&apos;;
-</code></pre><p>   var o={color:’blue’}<br>   function sayColor(){<br>         alert(this.color)<br>    }<br> var objectS=sayColor.bind(o);<br> objectS();  // blue  全局调用也是执行o对象中的this</p>
-<p>   ```</p>
+var o={color:&apos;blue&apos;}
+function sayColor(){
+     alert(this.color)
+}
+  var objectS=sayColor.bind(o);
+objectS();  // blue  全局调用也是执行o对象中的this
+</code></pre><p>```</p>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="基本包装类"><a href="#基本包装类" class="headerlink" title="基本包装类"></a>基本包装类</h3><ul>
 <li><code>Boolean</code></li>
 <li><code>Number</code></li>
@@ -809,7 +816,7 @@
   <p><span>本文标题:</span><a href="/javascript高级程序设计读书笔记（五）.html">javascript高级程序设计读书笔记（五）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 icessun 的个人博客">icessun</a></p>
   <p><span>发布时间:</span>2017年08月03日 - 10:08</p>
-  <p><span>最后更新:</span>2017年08月03日 - 10:08</p>
+  <p><span>最后更新:</span>2017年08月03日 - 15:08</p>
   <p><span>原始链接:</span><a href="/javascript高级程序设计读书笔记（五）.html" title="javascript高级程序设计读书笔记（五）">http://icessun.github.io/javascript高级程序设计读书笔记（五）.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://icessun.github.io/javascript高级程序设计读书笔记（五）.html"  aria-label="复制成功！"></i></span>
   </p>
