@@ -1,5 +1,6 @@
 ---
 title: javascript高级程序设计读书笔记（四）
+<<<<<<< HEAD
 date: 2017-08-03 10:20:38
 tags: javascript
 keywords: javascript高级程序设计
@@ -13,6 +14,19 @@ categories: 读书笔记
 >   变量，作用域，和内存的问题
 
 <!-- more -->
+=======
+date: 2017-07-31 08:45:11
+tags: 读书笔记
+keywords: javascript高级程序设计
+description: javascript高级程序设计读书笔记  变量，作用域，和内存的问题
+top: 5
+copyright: true
+password: icessun
+categories: javascript
+---
+>   变量，作用域，和内存的问题
+
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 
 ### 变量
 > 不存在定义一个变量就保存这种数据类型的值的规则，一个变量的值和数据类型可以在脚本的生命周期内改变。
@@ -67,7 +81,12 @@ categories: 读书笔记
     var obj1=new Person();
     var obj2=obj1;
    ```
+<<<<<<< HEAD
 - 此时的obj2和obj1是指向同一个地址空间，之间的复制是把引用，也就是指向这个对象的内存空间的**指针复制**了一份，当操作obj1的属性的时候，obj2也受到影响
+=======
+   
+  - 此时的obj2和obj1是指向同一个地址空间，之间的复制是把引用，也就是指向这个对象的内存空间的**指针复制**了一份，当操作obj1的属性的时候，obj2也受到影响
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 
 #### 传递参数
   > `ECMAScript`中所有函数的参数都是`按值传递`的。就是把值，从外部的变量，复制一份给函数中参数变量。传递基本类型的值给函数中的参数的时候，被传递的值被复制给函数参数`aguments`对象的一个元素，局部变量；给参数传递引用类型的时候，就是把这个值在内存中的地址复制给`arguments`中的一个局部变量，所以这个局部变量变化会反映在函数的外部。
@@ -174,6 +193,13 @@ function changeColor(){
   
 一般来说：一旦数据不再使用，最好手动将其设置为`null`，来释放其引用，适合大多数的全局变量和全局对象的属性。局部变量会在离开执行环境的时候自动解除引用。解除引用，是让值脱离执行环境，等待垃圾回收运行将其回收。
 
+<<<<<<< HEAD
 <div id="music163player">
    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
+=======
+
+<div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=38358214&auto=0&height=66">
+    </iframe>
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 </div>

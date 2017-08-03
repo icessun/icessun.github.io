@@ -1,5 +1,6 @@
 ---
 title: javascript高级程序设计读书笔记（五）
+<<<<<<< HEAD
 date: 2017-08-03 10:20:13
 tags: javascript
 keywords: javascript高级程序设计
@@ -8,15 +9,34 @@ top: 5
 copyright: true
 password:
 categories: 读书笔记
+=======
+date: 2017-07-31 17:14:52
+tags: 读书笔记
+keywords: javascript高级程序设计
+description:
+top: 5
+copyright: true
+password:
+categories: javascript
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 ---
 
 >   引用类型
 
 对象是某个特定的引用类型的实例。新对象是使用`new`操作符后跟一个构造函数来创建的。
+<<<<<<< HEAD
 ```
   var preson=new Object();
 ```
 <!-- more -->
+=======
+
+<!-- more -->
+
+```
+  var preson=new Object();
+```
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 ### `Object`类型
 
 - 创建对象的方法
@@ -78,6 +98,7 @@ var colors=['red','blue','green']  //不会调用Array的构造函数
 		       var num1=[0,1,5,10,15]
 		       num1.sort() ; //     [0, 1, 10, 15, 5]
 		   ```
+<<<<<<< HEAD
            这个方法不是我们需要的排序方法，所以一般在里面传递一个比较函数
            ```
               var num=[2,1,4,3,6];
@@ -90,6 +111,20 @@ var colors=['red','blue','green']  //不会调用Array的构造函数
 
    - `concat()`：连接多个数组的方法
    
+=======
+   
+          这个方法不是我们需要的排序方法，所以一般在里面传递一个比较函数
+   
+         ```
+          var num=[2,1,4,3,6];
+          num.sort(function(a,b){
+                   return a-b;  // 从小到大
+                   return b-a; // 从大到小
+            })
+         ```
+- 操作数组的方法
+   - `concat()`：连接多个数组的方法
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
       - 先会创建当前数组的一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新创建的数组；
       - 没有传递参数，就是`复制当前的数组`，返回当前数组的副本
       - 传递参数，就是把参数插入在当前的数组的副本的末尾,连接多个数组，返回修改的数组
@@ -100,16 +135,24 @@ var colors=['red','blue','green']  //不会调用Array的构造函数
       - 不影响原数组，可以传入负数，加上数组长度来计算
       - 不传参数的时候，就是`复制原数组`
 
+<<<<<<< HEAD
 
  - `splice()`
  
+=======
+ - `splice()`
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 > 主要用途就是向数组中部插入项，返回一个数组，该数组包含从原始数组删除的项，没有就返回一个空数组
 
  - `删除`：可以删除任意数量的项
       - `splice(删除的第一项，要删除的项数)`
  - `插入`：在指定位置插入任意项
       - `splice(插入起始位置，0，要插入的项（可以多个）)`
+<<<<<<< HEAD
  - `替换`：在指定位置插入任意项
+=======
+  - `替换`：在指定位置插入任意项
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
       - `splice(起始位置，删除的项，要插入的项)`
 
 - 位置方法
@@ -146,7 +189,10 @@ var mapR=numbers.map(function(item,index,array){
       return (item*2);
  })
  console.log(mapR);  // [2,4,6,8,10,8,6,4,2]
+<<<<<<< HEAD
  
+=======
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 ```
 
 
@@ -217,7 +263,11 @@ var mapR=numbers.map(function(item,index,array){
 
 #### 没有重载**重点**
 
+<<<<<<< HEAD
 > 重载：让类以统一的方式处理不同类型数据的一种手段。重载Overloading是一个类中多态性的一种表现。方法名要一样，但是参数类型和个数不一样，返回值类型可以相同也可以不相同。
+=======
+> 重载：当一个函数传递的参数的
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 
 - 函数声明和函数表达式 
 > 解析器在向执行环境中加载数据的时候，会先读取函数声明（函数变量提升），并使其在执行任何代码之前都可以访问，等到解析器真正要执行函数所在的代码行的时候，才会执行函数表达式
@@ -233,6 +283,7 @@ var mapR=numbers.map(function(item,index,array){
    - `arguments`
      - 类数组对象，包含传入函数中的所有参数，主要是用来保存函数参数的
      - 还有一个`callee属性`，是一个指针，指向拥有`arguments`对象的函数
+<<<<<<< HEAD
      
    ```
      // 阶乘函数
@@ -270,10 +321,54 @@ var mapR=numbers.map(function(item,index,array){
         sayColor.call(this);  // red
         sayColor.call(o);  // blue    
      ```
+=======
+
+ ```
+     阶乘函数：
+      
+      function factoriai(num){
+            if(num<=1){
+                 return 1;
+             }else{
+                 return num*arguments.callee(num-1);  // num*facoriai(num-1)
+              }
+       } 
+       
+ ```   
+   
+  好处是在于：不需要知道函数的名字就可以完成递归调用，降低函数体内的代码与函数名的耦合度
+
+
+  - `this`
+    - 函数执行的环境对象
+    - 全局函数，指向`window`；谁调用函数就指向谁
+
+ - 函数中的非继承的方法：`apply(),call()`
+  - 设置函数体内的`this`对象的值
+   - `apply()`
+     - 参数：运行函数的作用域（必须传入），参数数组（arguments对象或者Array实例）
+   - `call()`
+     -  参数：运行函数的作用域（必须传入），参数必须逐个列举出来
+ 
+ - 这两种方法没有什么不同，就是取决你给函数传递的参数的方式，真正的作用是扩充函数运行的作用域，对象不需要与方法有任何的耦合关系。
+ 
+ ```
+   window.color='red';
+   var o={color:'blue'}
+   function sayColor(){
+         alert(this.color)
+    }
+    sayColor();  // red
+    sayColor.call(this);  // red
+    sayColor.call(o);  // blue
+ ```
+ 
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
    - `bind()`
      - 创建一个函数的实例，其`this`值会绑定到传给`bind()`函数的值。
      - 即使在全局作用域调用这个函数，函数里面的`this`也是指向绑定的函数的`this`
    
+<<<<<<< HEAD
    
      ```
          window.color='red';
@@ -284,6 +379,17 @@ var mapR=numbers.map(function(item,index,array){
            var objectS=sayColor.bind(o);
          objectS();  // blue  全局调用也是执行o对象中的this
      ```
+=======
+   ```
+      window.color='red';
+   var o={color:'blue'}
+   function sayColor(){
+         alert(this.color)
+    }
+ var objectS=sayColor.bind(o);
+ objectS();  // blue  全局调用也是执行o对象中的this
+   ```
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
    
 ###  基本包装类
   - `Boolean`
@@ -301,5 +407,9 @@ var mapR=numbers.map(function(item,index,array){
   - 参数：一个；要`执行`的字符串
 
 <div id="music163player">
+<<<<<<< HEAD
   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
+=======
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
+>>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
 </div>

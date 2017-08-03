@@ -111,6 +111,11 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
 
+
+  baidu_url_submit:
+     count: 100
+
+
 html_minifier:
   enable: true
   exclude:
