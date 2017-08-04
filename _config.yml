@@ -142,5 +142,5 @@ deploy:
   type: git
   repository:
     github: git@github.com:icessun/icessun.github.io.git
-    coding: git@git.coding.net:icessun/icessun.io.git
+    coding: git@git.coding.net:icessun/blog.git
   branch: master
