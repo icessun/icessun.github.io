@@ -2,17 +2,12 @@
 title: Hello World
 copyright: true
 ---
-<<<<<<< HEAD
-
-##  hello world
+#  hello world
 
 Welcome to [icessun](https://icessun.github.io/)
-=======
-# Hello World!
+
 <!-- more -->
 
-
-Welcome to [icessun](https://icessun.github.io/)!If you get any problems when watching Bolg, you can ask me on [GitHub](https://github.com/icessun/icessun.github.io/issues).
 
 <div id="music163player">
   
@@ -21,4 +16,3 @@ Welcome to [icessun](https://icessun.github.io/)!If you get any problems when wa
 
 
 
->>>>>>> b9a80be9508673fc2660775381cdcb0ad1661719
