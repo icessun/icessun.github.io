@@ -120,19 +120,19 @@
 
 
 
-<meta name="description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。1var preson=new Object();">
+<meta name="description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。 1var preson=new Object();">
 <meta name="keywords" content="javascript高级程序设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级程序设计读书笔记（五）">
 <meta property="og:url" content="http://icessun.github.io/javascript高级程序设计读书笔记（五）.html">
 <meta property="og:site_name" content="icessun&#39;s Blog">
-<meta property="og:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。1var preson=new Object();">
+<meta property="og:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。 1var preson=new Object();">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1811036-7311264906caafc1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-03T07:53:55.630Z">
+<meta property="og:updated_time" content="2017-08-04T03:21:29.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计读书笔记（五）">
-<meta name="twitter:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。1var preson=new Object();">
+<meta name="twitter:description" content="引用类型  对象是某个特定的引用类型的实例。新对象是使用new操作符后跟一个构造函数来创建的。 1var preson=new Object();">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1811036-7311264906caafc1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -142,7 +142,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -405,8 +405,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-08-03T15:53:55+08:00">
-                2017-08-03
+              <time title="更新于" itemprop="dateModified" datetime="2017-08-04T11:21:29+08:00">
+                2017-08-04
               </time>
             
           </span>
@@ -498,7 +498,8 @@
         <blockquote>
 <p>  引用类型</p>
 </blockquote>
-<p>对象是某个特定的引用类型的实例。新对象是使用<code>new</code>操作符后跟一个构造函数来创建的。<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> preson=<span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure></p>
+<p>对象是某个特定的引用类型的实例。新对象是使用<code>new</code>操作符后跟一个构造函数来创建的。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> preson=<span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a><code>Object</code>类型</h3><ul>
 <li><p>创建对象的方法</p>
@@ -612,11 +613,13 @@
 <li><code>splice(删除的第一项，要删除的项数)</code></li>
 </ul>
 </li>
-<li><code>插入</code>：在指定位置插入任意项<ul>
+<li><p><code>插入</code>：在指定位置插入任意项</p>
+<ul>
 <li><code>splice(插入起始位置，0，要插入的项（可以多个）)</code></li>
 </ul>
 </li>
-<li><code>替换</code>：在指定位置插入任意项<ul>
+<li><p><code>替换</code>：在指定位置插入任意项</p>
+<ul>
 <li><code>splice(起始位置，删除的项，要插入的项)</code></li>
 </ul>
 </li>
@@ -731,8 +734,8 @@
 <h3 id="Function类型"><a href="#Function类型" class="headerlink" title="Function类型"></a><code>Function类型</code></h3><blockquote>
 <p>函数是对象，每一个函数都是<code>Function类型</code>的实例，函数名实际上是一个指向函数对象的指针，操作函数，最重要的是操作函数的属性和方法；<code>prototype</code>：保存着所有的实例方法；其是不可以枚举的，不能使用for  in循环</p>
 </blockquote>
-<h4 id="没有重载重点"><a href="#没有重载重点" class="headerlink" title="没有重载重点"></a>没有重载<strong>重点</strong></h4><blockquote>
-<p>重载：让类以统一的方式处理不同类型数据的一种手段。重载Overloading是一个类中多态性的一种表现。方法名要一样，但是参数类型和个数不一样，返回值类型可以相同也可以不相同。</p>
+<h4 id="没有重载-重点"><a href="#没有重载-重点" class="headerlink" title="没有重载 重点"></a>没有重载 <strong>重点</strong></h4><blockquote>
+<p>重载：让类以统一的方式处理不同类型数据的一种手段。重载<code>Overloading</code>是一个类中多态性的一种表现。方法名要一样，但是参数类型和个数不一样，返回值类型可以相同也可以不相同。</p>
 </blockquote>
 <ul>
 <li><p>函数声明和函数表达式 </p>
@@ -745,26 +748,27 @@
 <ul>
 <li><p>函数内部属性</p>
 <ul>
-<li><p><code>arguments</code></p>
-<ul>
+<li><code>arguments</code><ul>
 <li>类数组对象，包含传入函数中的所有参数，主要是用来保存函数参数的</li>
 <li>还有一个<code>callee属性</code>，是一个指针，指向拥有<code>arguments</code>对象的函数</li>
 </ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">     // 阶乘函数</span></div><div class="line">     function factoriai(num)&#123;</div><div class="line">      if(num&lt;=1)&#123;</div><div class="line">      return 1;</div><div class="line">       &#125;else&#123;</div><div class="line">         return num*arguments.callee(num-1);  // num*facoriai(num-1)</div><div class="line">       &#125;</div><div class="line">     &#125;   </div><div class="line">   ```   </div><div class="line"></div><div class="line">好处是在于：不需要知道函数的名字就可以完成递归调用，降低函数体内的代码与函数名的耦合度</div><div class="line"></div><div class="line">   -<span class="ruby"> <span class="string">`this`</span></span></div><div class="line">     -<span class="ruby"> 函数执行的环境对象</span></div><div class="line">     -<span class="ruby"> 全局函数，指向<span class="string">`window`</span>；谁调用函数就指向谁</span></div><div class="line">     </div><div class="line">   -<span class="ruby"> 函数中的非继承的方法：<span class="string">`apply(),call()`</span></span></div><div class="line">     -<span class="ruby"> 设置函数体内的<span class="string">`this`</span>对象的值</span></div><div class="line">     -<span class="ruby"> <span class="string">`apply()`</span></span></div><div class="line">         -<span class="ruby"> 参数：运行函数的作用域（必须传入），参数数组（arguments对象或者Array实例）</span></div><div class="line">     -<span class="ruby"> <span class="string">`call()`</span></span></div><div class="line">         -<span class="ruby">  参数：运行函数的作用域（必须传入），参数必须逐个列举出来</span></div><div class="line"> </div><div class="line">   -<span class="ruby"> 这两种方法没有什么不同，就是取决你给函数传递的参数的方式，真正的作用是扩充函数运行的作用域，对象不需要与方法有任何的耦合关系。</span></div></pre></td></tr></table></figure>
-<p>   window.color=’red’;<br>   var o={color:’blue’}<br>   function sayColor(){</p>
-<pre><code>alert(this.color)
-</code></pre><p>   }<br>   sayColor();  // red<br>   sayColor.call(this);  // red<br>   sayColor.call(o);  // blue    </p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- `bind()`</div><div class="line">  - 创建一个函数的实例，其`this`值会绑定到传给`bind()`函数的值。</div><div class="line">  - 即使在全局作用域调用这个函数，函数里面的`this`也是指向绑定的函数的`this`</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">    // 阶乘函数</span></div><div class="line">    function factoriai(num)&#123;</div><div class="line">      if(num&lt;=1)&#123;</div><div class="line">     return 1;</div><div class="line">      &#125;else&#123;</div><div class="line">         return num*arguments.callee(num-1);  // num*facoriai(num-1)</div><div class="line">       &#125;</div><div class="line">     &#125;   </div><div class="line">  ```   </div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line"></div><div class="line">好处是在于：不需要知道函数的名字就可以完成递归调用，降低函数体内的代码与函数名的耦合度</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">  -<span class="ruby"> <span class="string">`this`</span></span></div><div class="line">     -<span class="ruby"> 函数执行的环境对象</span></div><div class="line">     -<span class="ruby"> 全局函数，指向<span class="string">`window`</span>；谁调用函数就指向谁</span></div><div class="line">     </div><div class="line">  -<span class="ruby"> 函数中的非继承的方法：<span class="string">`apply(),call()`</span></span></div><div class="line">     -<span class="ruby"> 设置函数体内的<span class="string">`this`</span>对象的值</span></div><div class="line">     -<span class="ruby"> <span class="string">`apply()`</span></span></div><div class="line">         -<span class="ruby"> 参数：运行函数的作用域（必须传入），参数数组（arguments对象或者Array实例）</span></div><div class="line">     -<span class="ruby"> <span class="string">`call()`</span></span></div><div class="line">         -<span class="ruby">  参数：运行函数的作用域（必须传入），参数必须逐个列举出来</span></div><div class="line"> </div><div class="line">  -<span class="ruby"> 这两种方法没有什么不同，就是取决你给函数传递的参数的方式，真正的作用是扩充函数运行的作用域，对象不需要与方法有任何的耦合关系。</span></div></pre></td></tr></table></figure>
 <pre><code>window.color=&apos;red&apos;;
 var o={color:&apos;blue&apos;}
 function sayColor(){
-     alert(this.color)
+   alert(this.color)
 }
-  var objectS=sayColor.bind(o);
-objectS();  // blue  全局调用也是执行o对象中的this
-</code></pre><p>```</p>
-</li>
-</ul>
+sayColor();  // red
+sayColor.call(this);  // red
+sayColor.call(o);  // blue    
+</code></pre> <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="clean">- `bind()`</span></div><div class="line">   - 创建一个函数的实例，其`this`值会绑定到传给`bind()`函数的值。</div><div class="line">   - 即使在全局作用域调用这个函数，函数里面的`this`也是指向绑定的函数的`this`</div></pre></td></tr></table></figure>
+<p>   window.color=’red’;<br>   var o={color:’blue’}<br>   function sayColor(){</p>
+<pre><code>alert(this.color)
+</code></pre><p>   }</p>
+<pre><code>var objectS=sayColor.bind(o);
+</code></pre><p>   objectS();  // blue  全局调用也是执行o对象中的this<br>```</p>
 </li>
 </ul>
 <h3 id="基本包装类"><a href="#基本包装类" class="headerlink" title="基本包装类"></a>基本包装类</h3><ul>
@@ -787,7 +791,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
 </ul>
 </li>
 </ul>
-<div id="music163player"><br>  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br></div>
+<div id="music163player"><br><br>  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br></div>
 
       
     </div>
@@ -816,7 +820,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
   <p><span>本文标题:</span><a href="/javascript高级程序设计读书笔记（五）.html">javascript高级程序设计读书笔记（五）</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 icessun 的个人博客">icessun</a></p>
   <p><span>发布时间:</span>2017年08月03日 - 10:08</p>
-  <p><span>最后更新:</span>2017年08月03日 - 15:08</p>
+  <p><span>最后更新:</span>2017年08月04日 - 11:08</p>
   <p><span>原始链接:</span><a href="/javascript高级程序设计读书笔记（五）.html" title="javascript高级程序设计读书笔记（五）">http://icessun.github.io/javascript高级程序设计读书笔记（五）.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://icessun.github.io/javascript高级程序设计读书笔记（五）.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -901,8 +905,8 @@ objectS();  // blue  全局调用也是执行o对象中的this
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hello-world.html" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/告别秋千.html" rel="next" title="告别秋千">
+                <i class="fa fa-chevron-left"></i> 告别秋千
               </a>
             
           </div>
@@ -1010,7 +1014,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1032,7 +1036,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1144,7 +1148,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类型"><span class="nav-number">1.</span> <span class="nav-text">Object类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array类型"><span class="nav-number">2.</span> <span class="nav-text">Array类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">3.</span> <span class="nav-text">Date类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日期格式化"><span class="nav-number">3.1.</span> <span class="nav-text">日期格式化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExg-类型"><span class="nav-number">4.</span> <span class="nav-text">RegExg()类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function类型"><span class="nav-number">5.</span> <span class="nav-text">Function类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#没有重载重点"><span class="nav-number">5.1.</span> <span class="nav-text">没有重载重点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类"><span class="nav-number">6.</span> <span class="nav-text">基本包装类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单体内置对象"><span class="nav-number">7.</span> <span class="nav-text">单体内置对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类型"><span class="nav-number">1.</span> <span class="nav-text">Object类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array类型"><span class="nav-number">2.</span> <span class="nav-text">Array类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">3.</span> <span class="nav-text">Date类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日期格式化"><span class="nav-number">3.1.</span> <span class="nav-text">日期格式化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExg-类型"><span class="nav-number">4.</span> <span class="nav-text">RegExg()类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function类型"><span class="nav-number">5.</span> <span class="nav-text">Function类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#没有重载-重点"><span class="nav-number">5.1.</span> <span class="nav-text">没有重载 重点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类"><span class="nav-number">6.</span> <span class="nav-text">基本包装类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单体内置对象"><span class="nav-number">7.</span> <span class="nav-text">单体内置对象</span></a></li></ol></div>
             
 
           </div>
@@ -1198,7 +1202,7 @@ objectS();  // blue  全局调用也是执行o对象中的this
 
 
 <div class="theme-info">
-  <span class="post-count">博客全站共5.0k字</span>
+  <span class="post-count">博客全站共5.4k字</span>
 </div>
 
         
@@ -1230,6 +1234,8 @@ objectS();  // blue  全局调用也是执行o对象中的this
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
