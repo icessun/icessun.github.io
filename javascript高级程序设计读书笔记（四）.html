@@ -1,1 +1,1625 @@
-<!DOCTYPE html><html class="theme-next pisces use-motion" lang="zh-Hans"><head><meta charset="UTF-8"><meta name="baidu-site-verification" content="j9xttrBK2Z"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><script></script><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="fonts.useso.com/css?family=Courier New:300,300italic,400,400italic,700,700italic|Iosevka:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css"><meta name="keywords" content="javascript高级程序设计"><link rel="alternate" href="/atom.xml" title="icessun's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1"><meta name="description" content="变量，作用域，和内存的问题"><meta name="keywords" content="javascript高级程序设计"><meta property="og:type" content="article"><meta property="og:title" content="javascript高级程序设计读书笔记（四）"><meta property="og:url" content="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html"><meta property="og:site_name" content="icessun&#39;s Blog"><meta property="og:description" content="变量，作用域，和内存的问题"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2017-08-03T09:15:51.792Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="javascript高级程序设计读书笔记（四）"><meta name="twitter:description" content="变量，作用域，和内存的问题"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",sidebar:{position:"left",display:"post",offset:12,offset_float:0,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!0,motion:!0,duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html"><title>javascript高级程序设计读书笔记（四） | icessun's Blog</title><script>!function(e,t,a,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=t.createElement(a),s=t.getElementsByTagName(a)[0],o.async=1,o.src="https://www.google-analytics.com/analytics.js",s.parentNode.insertBefore(o,s)}(window,document,"script",0,"ga"),ga("create","UA-97211761-1","auto"),ga("send","pageview")</script><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?56cd166fc070f54594c805acc1cd3883";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">icessun's Blog</span> <span class="logo-line-after"><i></i></span></a></div><h1 class="site-subtitle" itemprop="description">有酒有故事</h1></div><div class="site-nav-toggle"><button onclick="showSubtitle()"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav" id="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="icessun"><meta itemprop="description" content="不忘初心，方得始终"><meta itemprop="image" content="/uploads/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="icessun's Blog"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">javascript高级程序设计读书笔记（四）</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T10:20:38+08:00">2017-08-03 </time><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i> </span><span class="post-meta-item-text">更新于</span> <time title="更新于" itemprop="dateModified" datetime="2017-08-03T17:15:51+08:00">2017-08-03 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span> </a></span></span><span class="post-meta-divider">|</span> <span class="page-pv">热度 <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>℃</span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i> </span><span class="post-meta-item-text">字数统计</span> <span title="字数统计">2,354 字 </span><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-clock-o"></i> </span><span class="post-meta-item-text">阅读时长</span> <span title="阅读时长">8 分钟</span></div></div></header><div class="post-body" itemprop="articleBody"><blockquote><p>变量，作用域，和内存的问题</p></blockquote><a id="more"></a><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote><p>不存在定义一个变量就保存这种数据类型的值的规则，一个变量的值和数据类型可以在脚本的生命周期内改变。</p><ul><li>基本类型的值</li><li>引用类型的值</li></ul></blockquote><h4 id="基本类型的值"><a href="#基本类型的值" class="headerlink" title="基本类型的值"></a>基本类型的值</h4><blockquote><p>基本数据类型是<strong>按照值访问的</strong>，可以操作保存在变量里面实际的值</p></blockquote><ul><li>字符串</li><li>数值<ul><li><code>NaN</code>：特殊的数值型；<code>isNaN()</code>：返回是否是不是数值</li><li><code>isNaN()</code>被对象调用的时候，会首先调用对象的<code>valueOf()</code>，看其是否可以转为数值；不能，则基于这个返回值在调用<code>toString()</code>，再看是否是数值</li></ul></li><li>布尔值</li><li><code>undefined</code></li><li><code>null</code><ul><li>只要意在保存的变量还没有真正保存对象，就应该明确的让该变量保存<code>null</code>，体现出<code>null</code>是空对象指针。</li></ul></li></ul><blockquote><p>字符串，数值和布尔值都有<code>toString()</code>方法，但<code>undefined</code>和<code>null</code>没有此方法，但是可以使用<code>String()</code>，这个方法可以传入<code>基数</code>，输出二进制或者八进制或者十六进制的字符串值</p></blockquote><table><thead><tr><th style="text-align:center">数据类型</th><th style="text-align:center">转为true的值</th><th style="text-align:center">转为false的值</th></tr></thead><tbody><tr><td style="text-align:center">Boolean</td><td style="text-align:center">true</td><td style="text-align:center">false</td></tr><tr><td style="text-align:center">Number</td><td style="text-align:center">任何非0数字，包括无穷大</td><td style="text-align:center">0和NaN</td></tr><tr><td style="text-align:center">String</td><td style="text-align:center">任何非空字符串</td><td style="text-align:center">‘ ‘(空字符串)</td></tr><tr><td style="text-align:center">Object</td><td style="text-align:center">任何对象</td><td style="text-align:center">null</td></tr><tr><td style="text-align:center">Undefined</td><td style="text-align:center">不适用</td><td style="text-align:center">undefined</td></tr></tbody></table><p>在内存中占据固定大小的空间，因此保存在<code>栈内存</code>里面</p><h4 id="引用类型的值"><a href="#引用类型的值" class="headerlink" title="引用类型的值"></a>引用类型的值</h4><blockquote><p>是保存在内存中的对象，是<strong>按照引用来访问</strong>的，因为，<code>JS</code>是不允许直接访问内存中的位置，也就不能直接操作对象的内存空间，实际上是操作对象的引用</p></blockquote><p>引用类型的值是对象，保存在<code>堆内存</code>中</p><ul><li><code>Object类型</code><blockquote><p>对象其实就是数据和功能的集合，<code>Object类型</code>是所有它的实例的基础，其所具有的任何的属性和方法同样都存在更具体的对象中。</p></blockquote></li></ul><h4 id="两种值的不同点"><a href="#两种值的不同点" class="headerlink" title="两种值的不同点"></a>两种值的不同点</h4><ul><li>当定义一个引用类型的变量，可以为其动态的添加属性和方法，但是基本类型的变量就不可以，虽然操作是不会出现错误，返回<code>undefined</code></li><li><p>基本类型的变量的复制</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="attribute">num1</span>=5;</div><div class="line">var <span class="attribute">num1</span>=num2;</div></pre></td></tr></table></figure></li></ul><ul><li>num1和num2是<strong>相互独立</strong>的，互不影响，在内存空间里面分配不同的空间</li></ul><ul><li><p>引用类型值的复制：</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1=<span class="keyword">new</span> <span class="type">Person</span>();</div><div class="line"><span class="keyword">var</span> obj2=obj1;</div></pre></td></tr></table></figure></li><li><p>此时的obj2和obj1是指向同一个地址空间，之间的复制是把引用，也就是指向这个对象的内存空间的<strong>指针复制</strong>了一份，当操作obj1的属性的时候，obj2也受到影响</p></li></ul><h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><blockquote><p><code>ECMAScript</code>中所有函数的参数都是<code>按值传递</code>的。就是把值，从外部的变量，复制一份给函数中参数变量。传递基本类型的值给函数中的参数的时候，被传递的值被复制给函数参数<code>aguments</code>对象的一个元素，局部变量；给参数传递引用类型的时候，就是把这个值在内存中的地址复制给<code>arguments</code>中的一个局部变量，所以这个局部变量变化会反映在函数的外部。</p></blockquote><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">       obj.name=<span class="string">'icessun'</span>;</div><div class="line">       obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">       obj.name=<span class="string">'icessun1'</span>;  <span class="comment">//将新的对象赋值给obj对象并设置name属性 </span></div><div class="line">  &#125; </div><div class="line">  <span class="keyword">var</span> person=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">  setName(person);</div><div class="line">  alert(person.name);   <span class="comment">// 弹出icessun  这说明参数的传递是按照值来的</span></div></pre></td></tr></table></figure><p>上面的代码说明，参数是按照值传递的，因为在函数<code>setName</code>中，重新赋值一个对象给<code>obj</code>，并且改变了其<code>name</code>属性，要是按照引用传递的话，那么后面弹出来的是<code>icessun1</code>；结果却不是这样，这说明：</p><blockquote><p>函数内部改变了参数的值，但是原始的引用保持不变；因为在函数内部重写参数时，这个变量引用就是一个局部变量，会在函数执行完毕立即销毁。</p></blockquote><h4 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h4><ul><li><code>typeof</code><ul><li>字符串 ——&gt; <code>string</code><br><code>var n; console.log(typeof n); // undefined</code></li><li>数值 ——-&gt; <code>number</code></li><li>布尔值 ——–&gt; <code>boolean</code></li><li><code>undefined</code> ——-&gt; <code>undefined</code></li></ul></li></ul><p><code>unll == undefined; true</code></p><blockquote><p><code>typeof</code>是检测上面这几种类型的最佳工具，但是对于<code>null</code>和<code>对象</code>都返回<code>object</code>，因为<code>null</code>表示一个空对象指针，所以<code>typeof null</code>为<code>Object</code>；检测函数的时候，会返回<code>function</code>；这是区分函数和其他对象的方法，函数是一个对象，不是一种数据类型。</p></blockquote><p>对于未声明的变量和为初始化的变量，执行<code>typeof</code>操作都返回<code>undefined</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message; <span class="comment">//  未初始化</span></div><div class="line"><span class="comment">// var age;   未声明</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);  <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> age);     <span class="comment">// undefined</span></div></pre></td></tr></table></figure><ul><li><code>instanceof</code> ：检测什么类型的对象（引用类型）</li></ul><blockquote><p><code>variable instanceof constructor</code> 返回<code>true/false</code></p></blockquote><ul><li><code>Object</code></li><li><code>Array</code></li><li><code>RegExp</code><br>如果变量是给定引用类型的实例，那么<code>instanceof</code>之后返回的结果都是<code>true</code>；基本类型不是对象，都返回<code>false</code>。所有的引用类型的值都是<code>Object</code>的实例。</li></ul><h4 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h4><blockquote><p>执行环境定义了变量和函数有权访问的其他数据。决定了各自的行为。某个执行环境中的所有代码执行完毕，该环境就被销毁，保存在里面的所有的变量和函数定义也随之销毁。每个函数都有自己的执行环境，当执行这个函数的时候，会把这个函数推入到一个环境栈里面，直到函数执行完成，再从环境栈里面弹出，交到之前的执行环境。</p></blockquote><ul><li>作用域链<ul><li>保证对执行环境有权访问的所有变量和函数的有序访问；其前端，始终是当前执行代码的所在环境的变量对象<code>环境是函数，则这个活动对象就是arguments对象</code>。下一个变量对象来自包含环境（包含当前变量对象的外部环境），就这样一直延续到全局执行环境，故全局的执行环境是作用域链的最后一个对象。</li></ul></li></ul><figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">color</span>=<span class="string">'blue'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">color</span>===<span class="string">'blue'</span>)&#123;</div><div class="line">         <span class="built_in">color</span>=<span class="string">'red'</span>;</div><div class="line">     &#125;<span class="title">else</span>&#123;</div><div class="line">         <span class="built_in">color</span>=<span class="string">'blue'</span>;</div><div class="line">      &#125;</div><div class="line"> &#125;</div><div class="line"> changeColor();</div><div class="line"> <span class="built_in">console</span>.log(<span class="string">'Color is now'</span>+<span class="built_in">color</span>);</div></pre></td></tr></table></figure><p>上面的代码中，函数的作用域链包含两个对象：自己的变量对象<code>arguments对象</code>和全局环境的变量对象。可以在函数内部访问到全局的变量，因为在其的作用域链上面可以找到。<br></p><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">作用域链： </div><div class="line">    -<span class="ruby"> window</span></div><div class="line">       -<span class="ruby"> color</span></div><div class="line">       -<span class="ruby"> changeColor()</span></div><div class="line">          -<span class="ruby"> arguments</span></div></pre></td></tr></table></figure><p></p><p>每一个环境都可以向上搜索作用域链，查询变量和函数名，但是不能向下搜索作用域链；函数参数也是函数执行环境中内部的变量，局部变量。</p><ul><li><p>延长作用域链</p><ul><li><code>try-catch语句</code>中的<code>catch块</code></li><li><code>with语句</code></li></ul></li><li><p><code>没有块级作用域</code></p><blockquote><p>在其他的类<code>C</code>语言，由花括号封闭的代码块都有自己的作用域，因而支持根据条件来定义变量。但是<code>JavaScript</code>没有块级作用域</p></blockquote><ul><li><p>声明变量</p><blockquote><p>使用<code>var</code>声明的变量会自动添加到<code>最接近的环境中</code>：在函数内部，最接近的就是函数的局部环境；在<code>with</code>语句中，最接近的是函数环境；如果初始化变量时没有使用<code>var</code>，则会自动把该变量添加到全局环境中。</p></blockquote><ul><li><strong>注意</strong>：<br>在<code>javascript</code>中，由<code>for</code>语句创建的变量<code>i</code>（由<code>var</code>声明的），即使循环结束，也依旧存在循环外部的执行环境中。</li></ul></li><li><p>作用域向上搜索</p><p>在执行环境中查找一个变量的时候，在局部环境里面找到，就直接使用；否者，继续向上的作用域链查找，没有找到，说明该变量没有声明。</p></li></ul></li></ul><h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><blockquote><p><code>javascript</code>中有自动垃圾回收机制；原理就是：找到那些不再需要继续使用的变量，然后释放其占用的内存。垃圾回收机制会按照固定的时间间隔，周期性的去执行这一操作。</p></blockquote><ul><li>标记清除<br>给存储在内存中的变量都加上标记，然后去掉环境中的变量标记以及被环境中的变量引用的变量的标记；之后再加上的标记的变量是当做准备删除的变量，因为环境中的变量已经无法访问到这些变量了；最后，垃圾回收器完成垃圾的回收。</li><li>计数清除<br>记录每一个值被引用的次数，当声明了一个变量并将一个引用类型赋值给该变量的时候，引用次数为1，如果同一个值又被赋给其他的变量，该值引用次数就加1，包含对这个值引用的变量又取得另外一个值，则这个值的引用次数减1，当次数为0的时候就说明不能访问到，应该回收；<strong>坏结果</strong>：循环引用。</li></ul><p><code>IE9</code>把<code>BOM</code>和<code>DOM</code>对象都转换成真正的<code>JavaScript</code>对象。就避免了垃圾回收的问题，也消除了常见的内存泄漏现象。</p><p>一般来说：一旦数据不再使用，最好手动将其设置为<code>null</code>，来释放其引用，适合大多数的全局变量和全局对象的属性。局部变量会在离开执行环境的时候自动解除引用。解除引用，是让值脱离执行环境，等待垃圾回收运行将其回收。</p><div id="music163player"><br><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div></div><div><div><div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束,感谢您的阅读------------</div></div></div><div><div class="my_post_copyright"><script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script><script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script><script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script><link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"><p><span>本文标题:</span><a href="/javascript高级程序设计读书笔记（四）.html">javascript高级程序设计读书笔记（四）</a></p><p><span>文章作者:</span><a href="/" title="访问 icessun 的个人博客">icessun</a></p><p><span>发布时间:</span>2017年08月03日 - 10:08</p><p><span>最后更新:</span>2017年08月03日 - 17:08</p><p><span>原始链接:</span><a href="/javascript高级程序设计读书笔记（四）.html" title="javascript高级程序设计读书笔记（四）">http://icessun.github.io/javascript高级程序设计读书笔记（四）.html</a> <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html" aria-label="复制成功！"></i></span></p><p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p></div><script>var clipboard=new Clipboard(".fa-clipboard");clipboard.on("success",$(function(){$(".fa-clipboard").click(function(){swal({title:"",text:"复制成功",html:!1,timer:500,showConfirmButton:!1})})}))</script></div><div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>坚持原创技术分享，您的支持将鼓励我继续创作！</div><button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'><span>翻牌</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"><img id="wechat_qr" src="/images/wechat-reward-image.png" alt="icessun WeChat Pay"><p>微信打赏</p></div><div id="alipay" style="display:inline-block"><img id="alipay_qr" src="/images/alipay-reward-image.png" alt="icessun Alipay"><p>支付宝打赏</p></div></div></div></div><div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/javascript/" rel="tag"># javascript</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/javascript高级程序设计读书笔记（五）.html" rel="next" title="javascript高级程序设计读书笔记（五）"><i class="fa fa-chevron-left"></i> javascript高级程序设计读书笔记（五）</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></article><div class="post-spread"><div class="jiathis_style"><a class="jiathis_button_tsina"></a> <a class="jiathis_button_tqq"></a> <a class="jiathis_button_weixin"></a> <a class="jiathis_button_cqq"></a> <a class="jiathis_button_douban"></a> <a class="jiathis_button_renren"></a> <a class="jiathis_button_qzone"></a> <a class="jiathis_button_kaixin001"></a> <a class="jiathis_button_copy"></a> <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a> <a class="jiathis_counter_style"></a></div><script type="text/javascript">var jiathis_config={hideMore:!1}</script><script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script></div></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview">站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/uploads/avatar.png" alt="icessun"><p class="site-author-name" itemprop="name">icessun</p><p class="site-description motion-element" itemprop="description">不忘初心，方得始终</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/"><span class="site-state-item-count">4</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/icessun" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub </a></span><span class="links-of-author-item"><a href="http://weibo.com/2854971872/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i> Weibo </a></span><span class="links-of-author-item"><a href="http://www.jianshu.com/u/057de46175ba" target="_blank" title="简书"><i class="fa fa-fw fa-book"></i> 简书 </a></span><span class="links-of-author-item"><a href="https://www.zhihu.com/people/icessun/answers" target="_blank" title="知乎"><i class="fa fa-fw fa-heart"></i> 知乎</a></span></div><div class="cc-license motion-element" itemprop="license"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-globe"></i> 友情链接</div><ul class="links-of-blogroll-list"><span class="links-of-author-item" style="text-align:left"><a href="http://www.jianshu.com/u/057de46175ba" title="CSDN" target="_blank">CSDN</a> </span><span class="links-of-author-item" style="text-align:left"><a href="https://github.com/icessun/icessun.github.io/wiki" title="wiki" target="_blank">wiki</a></span></ul></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型的值"><span class="nav-number">1.1.</span> <span class="nav-text">基本类型的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型的值"><span class="nav-number">1.2.</span> <span class="nav-text">引用类型的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种值的不同点"><span class="nav-number">1.3.</span> <span class="nav-text">两种值的不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传递参数"><span class="nav-number">1.4.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型检测"><span class="nav-number">1.5.</span> <span class="nav-text">类型检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行环境和作用域"><span class="nav-number">1.6.</span> <span class="nav-text">执行环境和作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.7.</span> <span class="nav-text">垃圾回收</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2017</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">icessun</span></div><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><div class="theme-info"><span class="post-count">博客全站共5.4k字</span></div><div class="busuanzi-count"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><span class="site-uv">您是第 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位小伙伴 </span><span class="site-pv">本站总访问量 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script><script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script><script type="text/javascript">function proceedsearch(){$("body").append('<div class="search-popup-overlay local-search-pop-overlay"></div>').css("overflow","hidden"),$(".search-popup-overlay").click(onPopupClose),$(".popup").toggle();var t=$("#local-search-input");t.attr("autocapitalize","none"),t.attr("autocorrect","off"),t.focus()}var isfetched=!1,isXml=!0,search_path="search.xml";0===search_path.length?search_path="search.xml":/json$/i.test(search_path)&&(isXml=!1);var path="/"+search_path,onPopupClose=function(t){$(".popup").hide(),$("#local-search-input").val(""),$(".search-result-list").remove(),$("#no-result").remove(),$(".local-search-pop-overlay").remove(),$("body").css("overflow","")},searchFunc=function(t,e,o){"use strict";$("body").append('<div class="search-popup-overlay local-search-pop-overlay"><div id="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div>').css("overflow","hidden"),$("#search-loading-icon").css("margin","20% auto 0 auto").css("text-align","center"),$.ajax({url:t,dataType:isXml?"xml":"json",async:!0,success:function(t){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var n=isXml?$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get():t,r=document.getElementById(e),s=document.getElementById(o),a=function(){var t=r.value.trim().toLowerCase(),e=t.split(/[\s\-]+/);e.length>1&&e.push(t);var o=[];if(t.length>0&&n.forEach(function(n){var r=!1,s=0,a=0,i=n.title.trim(),c=i.toLowerCase(),l=n.content.trim().replace(/<[^>]+>/g,""),h=l.toLowerCase(),p=decodeURIComponent(n.url),u=[],f=[];if(""!=i&&(e.forEach(function(t){function e(t,e,o){var n=t.length;if(0===n)return[];var r=0,s=[],a=[];for(o||(e=e.toLowerCase(),t=t.toLowerCase());(s=e.indexOf(t,r))>-1;)a.push({position:s,word:t}),r=s+n;return a}u=u.concat(e(t,c,!1)),f=f.concat(e(t,h,!1))}),(u.length>0||f.length>0)&&(r=!0,s=u.length+f.length)),r){[u,f].forEach(function(t){t.sort(function(t,e){return e.position!==t.position?e.position-t.position:t.word.length-e.word.length})});function d(e,o,n,r){for(var s=r[r.length-1],i=s.position,c=s.word,l=[],h=0;i+c.length<=n&&0!=r.length;){c===t&&h++,l.push({position:i,length:c.length});var p=i+c.length;for(r.pop();0!=r.length&&(s=r[r.length-1],i=s.position,c=s.word,p>i);)r.pop()}return a+=h,{hits:l,start:o,end:n,searchTextCount:h}}var g=[];0!=u.length&&g.push(d(0,0,i.length,u));for(var v=[];0!=f.length;){var $=f[f.length-1],C=$.position,m=$.word,x=C-20,w=C+80;x<0&&(x=0),w<C+m.length&&(w=C+m.length),w>l.length&&(w=l.length),v.push(d(0,x,w,f))}v.sort(function(t,e){return t.searchTextCount!==e.searchTextCount?e.searchTextCount-t.searchTextCount:t.hits.length!==e.hits.length?e.hits.length-t.hits.length:t.start-e.start});var y=parseInt("1");y>=0&&(v=v.slice(0,y));function T(t,e){var o="",n=e.start;return e.hits.forEach(function(e){o+=t.substring(n,e.position);var r=e.position+e.length;o+='<b class="search-keyword">'+t.substring(e.position,r)+"</b>",n=r}),o+=t.substring(n,e.end)}var b="";0!=g.length?b+="<li><a href='"+p+"' class='search-result-title'>"+T(i,g[0])+"</a>":b+="<li><a href='"+p+"' class='search-result-title'>"+i+"</a>",v.forEach(function(t){b+="<a href='"+p+'\'><p class="search-result">'+T(l,t)+"...</p></a>"}),b+="</li>",o.push({item:b,searchTextCount:a,hitCount:s,id:o.length})}}),1===e.length&&""===e[0])s.innerHTML='<div id="no-result"><i class="fa fa-search fa-5x" /></div>';else if(0===o.length)s.innerHTML='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>';else{o.sort(function(t,e){return t.searchTextCount!==e.searchTextCount?e.searchTextCount-t.searchTextCount:t.hitCount!==e.hitCount?e.hitCount-t.hitCount:e.id-t.id});var a='<ul class="search-result-list">';o.forEach(function(t){a+=t.item}),a+="</ul>",s.innerHTML=a}};r.addEventListener("input",a),$(".local-search-pop-overlay").remove(),$("body").css("overflow",""),proceedsearch()}})};$(".popup-trigger").click(function(t){t.stopPropagation(),!1===isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(onPopupClose),$(".popup").click(function(t){t.stopPropagation()}),$(document).on("keyup",function(t){27===t.which&&$(".search-popup").is(":visible")&&onPopupClose()})</script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script><script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script><script type="text/JavaScript">function showSubtitle(){if("block"==document.getElementById("site-nav").style.display)(e=document.getElementById("site-subtitle")).style.display="none";else{var e=document.getElementById("site-subtitle");e.style.display="block"}}</script><script type="text/javascript" src="/js/src/love.js"></script><script type="text/javascript" src="/live2d/script.js"></script><canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas><style>#live2dcanvas{position:fixed;right:0;z-index:999;pointer-events:none;bottom:-20px}</style><script>loadlive2d("live2dcanvas","/live2d/assets/z16/z16.model.json")</script></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta name="baidu-site-verification" content="j9xttrBK2Z" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="fonts.useso.com/css?family=Courier New:300,300italic,400,400italic,700,700italic|Iosevka:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript高级程序设计" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="icessun's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="变量，作用域，和内存的问题">
+<meta name="keywords" content="javascript高级程序设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript高级程序设计读书笔记（四）">
+<meta property="og:url" content="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html">
+<meta property="og:site_name" content="icessun&#39;s Blog">
+<meta property="og:description" content="变量，作用域，和内存的问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-03T09:15:51.792Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript高级程序设计读书笔记（四）">
+<meta name="twitter:description" content="变量，作用域，和内存的问题">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html"/>
+
+
+
+
+
+  <title>javascript高级程序设计读书笔记（四） | icessun's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-97211761-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?56cd166fc070f54594c805acc1cd3883";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">icessun's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">有酒有故事</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button onclick="showSubtitle()">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav" id="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="icessun">
+      <meta itemprop="description" content="不忘初心，方得始终">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="icessun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">javascript高级程序设计读书笔记（四）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T10:20:38+08:00">
+                2017-08-03
+              </time>
+            
+
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-08-03T17:15:51+08:00">
+                2017-08-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,354 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>  变量，作用域，和内存的问题</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><blockquote>
+<p>不存在定义一个变量就保存这种数据类型的值的规则，一个变量的值和数据类型可以在脚本的生命周期内改变。</p>
+<ul>
+<li>基本类型的值</li>
+<li>引用类型的值</li>
+</ul>
+</blockquote>
+<h4 id="基本类型的值"><a href="#基本类型的值" class="headerlink" title="基本类型的值"></a>基本类型的值</h4><blockquote>
+<p>基本数据类型是<strong>按照值访问的</strong>，可以操作保存在变量里面实际的值</p>
+</blockquote>
+<ul>
+<li>字符串</li>
+<li>数值<ul>
+<li><code>NaN</code>：特殊的数值型；<code>isNaN()</code>：返回是否是不是数值</li>
+<li><code>isNaN()</code>被对象调用的时候，会首先调用对象的<code>valueOf()</code>，看其是否可以转为数值；不能，则基于这个返回值在调用<code>toString()</code>，再看是否是数值</li>
+</ul>
+</li>
+<li>布尔值</li>
+<li><code>undefined</code></li>
+<li><code>null</code><ul>
+<li>只要意在保存的变量还没有真正保存对象，就应该明确的让该变量保存<code>null</code>，体现出<code>null</code>是空对象指针。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>字符串，数值和布尔值都有<code>toString()</code>方法，但<code>undefined</code>和<code>null</code>没有此方法，但是可以使用<code>String()</code>，这个方法可以传入<code>基数</code>，输出二进制或者八进制或者十六进制的字符串值</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">转为true的值</th>
+<th style="text-align:center">转为false的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">true</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">任何非0数字，包括无穷大</td>
+<td style="text-align:center">0和NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">任何非空字符串</td>
+<td style="text-align:center">‘ ‘(空字符串)</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">不适用</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<p>在内存中占据固定大小的空间，因此保存在<code>栈内存</code>里面</p>
+<h4 id="引用类型的值"><a href="#引用类型的值" class="headerlink" title="引用类型的值"></a>引用类型的值</h4><blockquote>
+<p>是保存在内存中的对象，是<strong>按照引用来访问</strong>的，因为，<code>JS</code>是不允许直接访问内存中的位置，也就不能直接操作对象的内存空间，实际上是操作对象的引用 </p>
+</blockquote>
+<p>引用类型的值是对象，保存在<code>堆内存</code>中</p>
+<ul>
+<li><code>Object类型</code><blockquote>
+<p>对象其实就是数据和功能的集合，<code>Object类型</code>是所有它的实例的基础，其所具有的任何的属性和方法同样都存在更具体的对象中。</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="两种值的不同点"><a href="#两种值的不同点" class="headerlink" title="两种值的不同点"></a>两种值的不同点</h4><ul>
+<li>当定义一个引用类型的变量，可以为其动态的添加属性和方法，但是基本类型的变量就不可以，虽然操作是不会出现错误，返回<code>undefined</code></li>
+<li><p>基本类型的变量的复制</p>
+  <figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var <span class="attribute">num1</span>=5;</div><div class="line">var <span class="attribute">num1</span>=num2;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>num1和num2是<strong>相互独立</strong>的，互不影响，在内存空间里面分配不同的空间</li>
+</ul>
+<ul>
+<li><p>引用类型值的复制：</p>
+  <figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1=<span class="keyword">new</span> <span class="type">Person</span>();</div><div class="line"><span class="keyword">var</span> obj2=obj1;</div></pre></td></tr></table></figure>
+</li>
+<li><p>此时的obj2和obj1是指向同一个地址空间，之间的复制是把引用，也就是指向这个对象的内存空间的<strong>指针复制</strong>了一份，当操作obj1的属性的时候，obj2也受到影响</p>
+</li>
+</ul>
+<h4 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h4><blockquote>
+<p><code>ECMAScript</code>中所有函数的参数都是<code>按值传递</code>的。就是把值，从外部的变量，复制一份给函数中参数变量。传递基本类型的值给函数中的参数的时候，被传递的值被复制给函数参数<code>aguments</code>对象的一个元素，局部变量；给参数传递引用类型的时候，就是把这个值在内存中的地址复制给<code>arguments</code>中的一个局部变量，所以这个局部变量变化会反映在函数的外部。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">       obj.name=<span class="string">'icessun'</span>;</div><div class="line">       obj=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">       obj.name=<span class="string">'icessun1'</span>;  <span class="comment">//将新的对象赋值给obj对象并设置name属性 </span></div><div class="line">  &#125; </div><div class="line">  <span class="keyword">var</span> person=<span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">  setName(person);</div><div class="line">  alert(person.name);   <span class="comment">// 弹出icessun  这说明参数的传递是按照值来的</span></div></pre></td></tr></table></figure>
+<p>上面的代码说明，参数是按照值传递的，因为在函数<code>setName</code>中，重新赋值一个对象给<code>obj</code>，并且改变了其<code>name</code>属性，要是按照引用传递的话，那么后面弹出来的是<code>icessun1</code>；结果却不是这样，这说明：</p>
+<blockquote>
+<p>函数内部改变了参数的值，但是原始的引用保持不变；因为在函数内部重写参数时，这个变量引用就是一个局部变量，会在函数执行完毕立即销毁。</p>
+</blockquote>
+<h4 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h4><ul>
+<li><code>typeof</code><ul>
+<li>字符串  ——&gt;    <code>string</code><br><code>var n; console.log(typeof n); // undefined</code></li>
+<li>数值   ——-&gt;  <code>number</code></li>
+<li>布尔值  ——–&gt; <code>boolean</code></li>
+<li><code>undefined</code> ——-&gt; <code>undefined</code></li>
+</ul>
+</li>
+</ul>
+<p><code>unll == undefined;      true</code></p>
+<blockquote>
+<p><code>typeof</code>是检测上面这几种类型的最佳工具，但是对于<code>null</code>和<code>对象</code>都返回<code>object</code>，因为<code>null</code>表示一个空对象指针，所以<code>typeof null</code>为<code>Object</code>；检测函数的时候，会返回<code>function</code>；这是区分函数和其他对象的方法，函数是一个对象，不是一种数据类型。</p>
+</blockquote>
+<p>对于未声明的变量和为初始化的变量，执行<code>typeof</code>操作都返回<code>undefined</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message; <span class="comment">//  未初始化</span></div><div class="line"><span class="comment">// var age;   未声明</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> message);  <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> age);     <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>instanceof</code> ：检测什么类型的对象（引用类型）</li>
+</ul>
+<blockquote>
+<p><code>variable instanceof constructor</code>  返回<code>true/false</code> </p>
+</blockquote>
+<ul>
+<li><code>Object</code></li>
+<li><code>Array</code></li>
+<li><code>RegExp</code><br>如果变量是给定引用类型的实例，那么<code>instanceof</code>之后返回的结果都是<code>true</code>；基本类型不是对象，都返回<code>false</code>。所有的引用类型的值都是<code>Object</code>的实例。</li>
+</ul>
+<h4 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h4><blockquote>
+<p>执行环境定义了变量和函数有权访问的其他数据。决定了各自的行为。某个执行环境中的所有代码执行完毕，该环境就被销毁，保存在里面的所有的变量和函数定义也随之销毁。每个函数都有自己的执行环境，当执行这个函数的时候，会把这个函数推入到一个环境栈里面，直到函数执行完成，再从环境栈里面弹出，交到之前的执行环境。</p>
+</blockquote>
+<ul>
+<li>作用域链<ul>
+<li>保证对执行环境有权访问的所有变量和函数的有序访问；其前端，始终是当前执行代码的所在环境的变量对象<code>环境是函数，则这个活动对象就是arguments对象</code>。下一个变量对象来自包含环境（包含当前变量对象的外部环境），就这样一直延续到全局执行环境，故全局的执行环境是作用域链的最后一个对象。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">color</span>=<span class="string">'blue'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="built_in">color</span>===<span class="string">'blue'</span>)&#123;</div><div class="line">         <span class="built_in">color</span>=<span class="string">'red'</span>;</div><div class="line">     &#125;<span class="title">else</span>&#123;</div><div class="line">         <span class="built_in">color</span>=<span class="string">'blue'</span>;</div><div class="line">      &#125;</div><div class="line"> &#125;</div><div class="line"> changeColor();</div><div class="line"> <span class="built_in">console</span>.log(<span class="string">'Color is now'</span>+<span class="built_in">color</span>);</div></pre></td></tr></table></figure>
+<p>上面的代码中，函数的作用域链包含两个对象：自己的变量对象<code>arguments对象</code>和全局环境的变量对象。可以在函数内部访问到全局的变量，因为在其的作用域链上面可以找到。<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">作用域链： </div><div class="line">    -<span class="ruby"> window</span></div><div class="line">       -<span class="ruby"> color</span></div><div class="line">       -<span class="ruby"> changeColor()</span></div><div class="line">          -<span class="ruby"> arguments</span></div></pre></td></tr></table></figure></p>
+<p>  每一个环境都可以向上搜索作用域链，查询变量和函数名，但是不能向下搜索作用域链；函数参数也是函数执行环境中内部的变量，局部变量。</p>
+<ul>
+<li><p>延长作用域链</p>
+<ul>
+<li><code>try-catch语句</code>中的<code>catch块</code></li>
+<li><code>with语句</code></li>
+</ul>
+</li>
+<li><p><code>没有块级作用域</code></p>
+<blockquote>
+<p>在其他的类<code>C</code>语言，由花括号封闭的代码块都有自己的作用域，因而支持根据条件来定义变量。但是<code>JavaScript</code>没有块级作用域</p>
+</blockquote>
+<ul>
+<li><p>声明变量</p>
+<blockquote>
+<p>使用<code>var</code>声明的变量会自动添加到<code>最接近的环境中</code>：在函数内部，最接近的就是函数的局部环境；在<code>with</code>语句中，最接近的是函数环境；如果初始化变量时没有使用<code>var</code>，则会自动把该变量添加到全局环境中。</p>
+</blockquote>
+<ul>
+<li><strong>注意</strong>：<br>在<code>javascript</code>中，由<code>for</code>语句创建的变量<code>i</code>（由<code>var</code>声明的），即使循环结束，也依旧存在循环外部的执行环境中。</li>
+</ul>
+</li>
+<li><p>作用域向上搜索</p>
+<p>在执行环境中查找一个变量的时候，在局部环境里面找到，就直接使用；否者，继续向上的作用域链查找，没有找到，说明该变量没有声明。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><blockquote>
+<p><code>javascript</code>中有自动垃圾回收机制；原理就是：找到那些不再需要继续使用的变量，然后释放其占用的内存。垃圾回收机制会按照固定的时间间隔，周期性的去执行这一操作。</p>
+</blockquote>
+<ul>
+<li>标记清除<br> 给存储在内存中的变量都加上标记，然后去掉环境中的变量标记以及被环境中的变量引用的变量的标记；之后再加上的标记的变量是当做准备删除的变量，因为环境中的变量已经无法访问到这些变量了；最后，垃圾回收器完成垃圾的回收。</li>
+<li>计数清除<br>  记录每一个值被引用的次数，当声明了一个变量并将一个引用类型赋值给该变量的时候，引用次数为1，如果同一个值又被赋给其他的变量，该值引用次数就加1，包含对这个值引用的变量又取得另外一个值，则这个值的引用次数减1，当次数为0的时候就说明不能访问到，应该回收；<strong>坏结果</strong>：循环引用。</li>
+</ul>
+<p><code>IE9</code>把<code>BOM</code>和<code>DOM</code>对象都转换成真正的<code>JavaScript</code>对象。就避免了垃圾回收的问题，也消除了常见的内存泄漏现象。</p>
+<p>一般来说：一旦数据不再使用，最好手动将其设置为<code>null</code>，来释放其引用，适合大多数的全局变量和全局对象的属性。局部变量会在离开执行环境的时候自动解除引用。解除引用，是让值脱离执行环境，等待垃圾回收运行将其回收。</p>
+<div id="music163player"><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
+
+      
+    </div>
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束,感谢您的阅读------------</div>
+    
+</div>
+
+  
+</div>
+
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/javascript高级程序设计读书笔记（四）.html">javascript高级程序设计读书笔记（四）</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 icessun 的个人博客">icessun</a></p>
+  <p><span>发布时间:</span>2017年08月03日 - 10:08</p>
+  <p><span>最后更新:</span>2017年08月03日 - 17:08</p>
+  <p><span>原始链接:</span><a href="/javascript高级程序设计读书笔记（四）.html" title="javascript高级程序设计读书笔记（四）">http://icessun.github.io/javascript高级程序设计读书笔记（四）.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://icessun.github.io/javascript高级程序设计读书笔记（四）.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+
+
+      
+</div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>翻牌</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="icessun WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="icessun Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/javascript高级程序设计读书笔记（五）.html" rel="next" title="javascript高级程序设计读书笔记（五）">
+                <i class="fa fa-chevron-left"></i> javascript高级程序设计读书笔记（五）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="icessun" />
+          <p class="site-author-name" itemprop="name">icessun</p>
+           
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终</p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+
+
+
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/icessun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2854971872/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/057de46175ba" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/icessun/answers" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-heart"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+
+            <ul class="links-of-blogroll-list">
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="http://www.jianshu.com/u/057de46175ba" title="CSDN" target="_blank">CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align:left">
+                  <a href="https://github.com/icessun/icessun.github.io/wiki" title="wiki" target="_blank">wiki</a>
+                </span>
+              
+            </ul>
+
+          </div>
+
+        
+
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型的值"><span class="nav-number">1.1.</span> <span class="nav-text">基本类型的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型的值"><span class="nav-number">1.2.</span> <span class="nav-text">引用类型的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种值的不同点"><span class="nav-number">1.3.</span> <span class="nav-text">两种值的不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传递参数"><span class="nav-number">1.4.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型检测"><span class="nav-number">1.5.</span> <span class="nav-text">类型检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行环境和作用域"><span class="nav-number">1.6.</span> <span class="nav-text">执行环境和作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.7.</span> <span class="nav-text">垃圾回收</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">icessun</span>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+<div class="theme-info">
+  <span class="post-count">博客全站共5.4k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      您是第
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      位小伙伴
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.1"></script>
+
+
+  
+
+
+
+  </script>
+<script type="text/JavaScript">
+function showSubtitle()
+{
+  var siteNav=document.getElementById("site-nav");
+  if(siteNav.style.display=="block")
+  {
+   var subTitle=document.getElementById("site-subtitle");
+   subTitle.style.display="none";
+  }else
+  {
+   var subTitle=document.getElementById("site-subtitle");
+   subTitle.style.display="block";
+  }
+}
+</script>
+
+  <!-- 小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="150" height="300" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 0px;
+        z-index: 999;
+        pointer-events: none;
+        bottom: -20px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/z16/z16.model.json")</script>
+  
+
+</body>
+</html>
