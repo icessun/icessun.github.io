@@ -33,5 +33,11 @@
     "hexo-server": "^0.2.0",
     "hexo-wordcount": "^3.0.2",
     "shelljs": "^0.7.8"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-inline-image": "^1.0.0",
+    "run-sequence": "^2.1.0"
   }
 }
