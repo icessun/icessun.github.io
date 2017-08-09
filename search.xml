@@ -6,6 +6,7 @@
       <title><![CDATA[git与github学习笔记]]></title>
       <url>/git%E4%B8%8Egithub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html</url>
       <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工作流图"></p>
+<a id="more"></a>
 <h2 id="认识Git"><a href="#认识Git" class="headerlink" title="认识Git"></a>认识<code>Git</code></h2><ul>
 <li>是一个强大的分布式版本控制工具 </li>
 <li>分布式：可以协作，任务可以拆分；每次的改动都有记录，版本可以控制</li>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-08-09T09:11:08.694Z</updated>
+  <updated>2017-08-09T09:16:18.029Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://icessun.github.io/git%E4%B8%8Egithub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://icessun.github.io/git与github学习笔记.html</id>
     <published>2017-08-08T09:22:05.000Z</published>
-    <updated>2017-08-09T09:11:08.694Z</updated>
+    <updated>2017-08-09T09:16:18.029Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工作流图"></p>
+<a id="more"></a>
 <h2 id="认识Git"><a href="#认识Git" class="headerlink" title="认识Git"></a>认识<code>Git</code></h2><ul>
 <li>是一个强大的分布式版本控制工具 </li>
 <li>分布式：可以协作，任务可以拆分；每次的改动都有记录，版本可以控制</li>
@@ -212,7 +213,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;工作流图&quot;&gt;&lt;/p&gt;
     
     </summary>
     
