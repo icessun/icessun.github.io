@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-08-08T09:25:53.529Z</updated>
+  <updated>2017-08-09T09:11:08.694Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://icessun.github.io/git%E4%B8%8Egithub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://icessun.github.io/git与github学习笔记.html</id>
     <published>2017-08-08T09:22:05.000Z</published>
-    <updated>2017-08-08T09:25:53.529Z</updated>
+    <updated>2017-08-09T09:11:08.694Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工作流图"><br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工作流图"></p>
 <h2 id="认识Git"><a href="#认识Git" class="headerlink" title="认识Git"></a>认识<code>Git</code></h2><ul>
 <li>是一个强大的分布式版本控制工具 </li>
 <li>分布式：可以协作，任务可以拆分；每次的改动都有记录，版本可以控制</li>
@@ -137,28 +137,55 @@
 <li>然后在远程仓库里面创建一个仓库，在本地仓库里面使用下面命令和远程仓库建立链接：<code>$ git remote add origin git@github.com:icessun/icessun.github.io.git // 添加远程仓库</code>，远程库的名字默认<code>origin</code></li>
 <li>推送本地仓库的文件到远程库中</li>
 </ul>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git push origin master / 远程仓库的名字  分支的名字</span></div><div class="line"><span class="meta">$</span><span class="bash"> git remote show 远程仓库的名字 // 查看远程仓库的信息</span></div><div class="line"><span class="meta">$</span><span class="bash"> git remote rename 原远程仓库的名字  现在仓库的名字 // 修改某个远程仓库在本地的简称</span></div><div class="line"><span class="meta">$</span><span class="bash"> git remote rm 远程仓库的名字  // 碰到远端仓库服务器迁移，或者原来的克隆镜像不再使用，又或者某个参与者不再贡献代码，那么需要移除对应的远端仓库，</span></div></pre></td></tr></table></figure>
 <ul>
 <li>把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支<code>master</code>推送到远程。以后每次提交只需要<code>$ git push origin master</code></li>
 </ul>
 <ul>
 <li>查看当前配置了那些远程仓库</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote</span></div><div class="line"><span class="meta"></span></div><div class="line"> $<span class="bash"> git remote -v // 显示对于的克隆地址</span></div></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> git remote <span class="comment">// 查看配置了那些远程仓库</span></div><div class="line"></div><div class="line"><span class="symbol">$</span> git remote -v <span class="comment">// 显示对应的克隆地址  </span></div><div class="line"></div><div class="line"><span class="comment">// 如果是克隆了一个仓库，此命令会自动将远程仓库归于 origin 名下。 </span></div><div class="line"><span class="symbol">$</span> git fetch origin  <span class="comment">// 会抓取从你上次克隆以来别人上传到此远程仓库中的所有更新（或是上次 fetch 以来别人提交的更新）</span></div><div class="line"></div><div class="line"><span class="symbol">$</span> git fetch 远程仓库名 <span class="comment">// 拉取本地仓库没有的信息 从远程仓库抓取数据到本地 并不自动合并到当前工作分支</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>克隆远程仓库</strong><code>$ git clone git@github.com:icessun/icessun.github.io.git</code></li>
 </ul>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ul>
+<blockquote>
+<p><code>git clone</code> 命令本质上就是自动创建了本地的 <code>master</code>分支用于跟踪远程仓库中的 <code>master</code> 分支；运行 <code>git pull</code>，目的都是要从原始克隆的远端仓库中抓取数据后，合并到工作目录中的当前分支。</p>
+</blockquote>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><blockquote>
+<p>使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作；切换分支之前要保存当前分支的工作区是干净的，把修改提交，否则不让你切换分支</p>
+</blockquote>
+<ul>
 <li>创建分支：<code>$ git branch 分支的名字</code></li>
-<li><p>切换分支：<code>$ git checkout 分支的名字</code></p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 上面两个命令合并成为一条</span></div><div class="line"> $ git checkout -<span class="selector-tag">b</span> 分支的名字</div></pre></td></tr></table></figure>
+<li>切换分支：<code>$ git checkout 分支的名字</code><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 上面两个命令合并成为一条</span></div><div class="line"> <span class="symbol">$</span> git checkout -b 分支的名字</div><div class="line"></div><div class="line"> <span class="symbol">$</span> git branch -v <span class="comment">// 查看各个分支最后一个提交对象的信息</span></div><div class="line"> </div><div class="line"> <span class="symbol">$</span> git branch --merged <span class="comment">// 查看哪些分支已被并入当前分支，也就是说哪些分支是当前分支的直接上游。</span></div><div class="line"></div><div class="line">  <span class="symbol">$</span> git branch --<span class="keyword">no</span>-merged <span class="comment">// 查看尚未合并的工作</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>查看当前的分支：<code>$ git branch</code>，当前的分支会出现一个<code>*</code>号</p>
-</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-cf10ad8782bbf5dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建分支testing"></p>
+<p><code>HEAD</code>指向当前工作的分支，也可以说是当前分支的别名，<code>HEAD</code>会随着当前工作分支的变化而变化，每提交一次，<code>HEAD</code>向前走动一次</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-c7cbd04c0d0c6675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="切换到新建的分支上面"></p>
+<p>在当前新建的分支上面提交后，会向前移动了一格，而<code>master</code>分支仍然指向原先 <code>git checkout</code>时所在的 <code>commit</code> 对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-d8be59b377236c97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在新建的分支上面提交"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-f772fd796b75f803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="切换到主分支上面"></p>
+<p>在当前分支上面再次提交，项目提交历史产生了分叉；因为刚才我们创建了一个分支，转换到其中进行了一些工作，然后又回到原来的主分支进行了另外一些工作。这些改变分别孤立在不同的分支里：我们可以在不同分支里反复切换，并在时机成熟时把它们合并到一起。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-a2184c59fda15d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="项目提交历史出现分叉"></p>
+<ul>
+<li>查看当前的分支：<code>$ git branch</code>，当前的分支会出现一个<code>*</code>号</li>
 <li>把当前分支合并到主分支上面：<code>$ git merge 要合并的分支</code>，合并到<code>master</code>分支上面，合并分支前要切换到要合并的分支上面</li>
+</ul>
+<p>由于当前 master 分支所指向的提交对象<code>（C4）</code>并不是 <code>iss53</code>分支的直接祖先，Git 不得不进行一些额外处理。就此例而言，Git 会用两个分支的末端<code>（C4 和 C5）</code>以及它们的共同祖先<code>（C2）</code>进行一次简单的三方合并计算。用红框标出了<code>Git</code>用于合并的三个提交对象：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-a895f2357b36eac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分支的合并"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-7355bcfa08d7aa04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="合并后"></p>
+<h4 id="合并出现冲突"><a href="#合并出现冲突" class="headerlink" title="合并出现冲突"></a>合并出现冲突</h4><ul>
+<li>如果在不同的分支中都修改了同一个文件的同一部分，Git 就无法干净地把两者合到一起（译注：逻辑上说，这种问题只能由人来裁决。）<ul>
+<li>要看看哪些文件在合并时发生冲突，可以用 git status 查阅</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="code"> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></div><div class="line"><span class="section">&lt;div id="footer"&gt;contact : email.support@github.com&lt;/div&gt;</span></div><div class="line">=======</div><div class="line">&lt;div id="footer"&gt;</div><div class="line"><span class="code">  please contact us at support@github.com</span></div><div class="line">&lt;/div&gt;</div><div class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53</div></pre></td></tr></table></figure>
+<p>可以看到<code>=======</code>隔开的上半部分，是 <code>HEAD</code>（即 <code>master</code>分支，在运行<code>merge</code> 命令时所切换到的分支）中的内容，下半部分是在 <code>iss53</code>分支中的内容。</p>
+<ul>
 <li>删除分支：<code>$ git branch -d 要删除的分支的名字</code></li>
 <li>分支合并出现冲突：<code>$ git log --graph --pretty=oneline --abbrev-commit</code>查看分支合并的情况，出现冲突的时候，我们应该手动修改冲突，在提交</li>
-<li>合并禁止<code>Fast forward</code>模式：<code>$ git merge --no-ff -m &#39;描述&#39; 要合并的分支</code>；这样可以保存合并的分支</li>
+<li>合并禁止<code>Fast forward（当前要合并的分支[新]是master分支[老]的直接上游）</code>模式：<code>$ git merge --no-ff -m &#39;描述&#39; 要合并的分支</code>；这样可以保存合并的分支</li>
 <li><code>Bug</code>分支：把当前的工作现场隐藏起来：<code>$ git stash</code>；接着和创建分支一样，创建一个临时的bug分支，修改完成之后合并bug分支到master主分支上面，<code>$ git stash list</code>；查看当前的工作区的隐藏列表，恢复工作区：<code>$ git stash pop</code>，继续工作区的任务</li>
 <li>每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支；如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -d &lt;分支name&gt;强行删除</code></li>
 </ul>
@@ -169,6 +196,14 @@
 <li>当你小伙伴把修改的推送到了远程，而你正好也修改了相同的文件，那么你就必须<code>git pull</code>下来最新的添加，在本地解决冲突合并，在推送到远程，如果<code>pull</code> 下来提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream 本地分支的名字 远程仓库分支的名字。</code></li>
 <li>在本地创建和远程分支对应的分支，使用  <code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</li>
 </ul>
+<h3 id="小窍门"><a href="#小窍门" class="headerlink" title="小窍门"></a>小窍门</h3><p>在 Windows 上安装了<code>msysGit</code>，默认使用的<code>Git Bash</code>就已经配好了这个自动补全脚本，可以直接使用。</p>
+<p>在输入<code>Git</code>命令的时候可以敲两次跳格键（Tab），就会看到列出所有匹配的可用命令建议：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">co</span><span class="symbol">&lt;tab&gt;</span><span class="symbol">&lt;tab&gt;</span></div><div class="line">commit   config</div></pre></td></tr></table></figure>
+<ul>
+<li><code>GIT</code>命名别名</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.co</span> checkout</div><div class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.br</span> branch</div><div class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.ci</span> commit</div><div class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.st</span> status</div><div class="line">$ git <span class="keyword">config</span> --<span class="keyword">global</span> <span class="keyword">alias</span><span class="variable">.last</span> 'log -<span class="number">1</span> HEAD' <span class="comment">// 要看最后一次的提交信息 git last</span></div></pre></td></tr></table></figure>
+<p>现在，如果要输入 <code>git commit</code>只需键入 <code>git ci</code> 即可</p>
 <blockquote>
 <p>参考资料<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰网站git教程</a><br><a href="http://iissnan.com/progit/html/zh/ch2_5.html" target="_blank" rel="external">git pro</a></p>
 </blockquote>
@@ -177,7 +212,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;工作流图&quot;&gt;&lt;br&gt;
+      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; 
     
     </summary>
     
