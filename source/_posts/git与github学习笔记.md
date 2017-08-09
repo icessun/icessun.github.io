@@ -10,6 +10,8 @@ password:
 categories: 读书笔记
 ---
 ![工作流图](http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+<!-- more -->
 ## 认识`Git`
 - 是一个强大的分布式版本控制工具 
 - 分布式：可以协作，任务可以拆分；每次的改动都有记录，版本可以控制
