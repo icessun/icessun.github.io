@@ -9,9 +9,7 @@ top: 5
 password:
 categories: 读书笔记
 ---
-
 ![工作流图](http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-<!-- more -->
 ## 认识`Git`
 - 是一个强大的分布式版本控制工具 
 - 分布式：可以协作，任务可以拆分；每次的改动都有记录，版本可以控制
@@ -176,34 +174,97 @@ $ git reset --hard HEAD^
   - 推送本地仓库的文件到远程库中
    
 ```
-  $ git push -u origin master
+  $ git push origin master / 远程仓库的名字  分支的名字
+  $ git remote show 远程仓库的名字 // 查看远程仓库的信息
+  $ git remote rename 原远程仓库的名字  现在仓库的名字 // 修改某个远程仓库在本地的简称
+  $ git remote rm 远程仓库的名字  // 碰到远端仓库服务器迁移，或者原来的克隆镜像不再使用，又或者某个参与者不再贡献代码，那么需要移除对应的远端仓库，
 ```
   - 把本地库的内容推送到远程，用`git push`命令，实际上是把当前分支`master`推送到远程。以后每次提交只需要`$ git push origin master`
 
 - 查看当前配置了那些远程仓库
 
 ```
- $ git remote
+  $ git remote // 查看配置了那些远程仓库
 
-  $ git remote -v // 显示对于的克隆地址  
+  $ git remote -v // 显示对应的克隆地址  
+
+  // 如果是克隆了一个仓库，此命令会自动将远程仓库归于 origin 名下。 
+  $ git fetch origin  // 会抓取从你上次克隆以来别人上传到此远程仓库中的所有更新（或是上次 fetch 以来别人提交的更新）
+
+  $ git fetch 远程仓库名 // 拉取本地仓库没有的信息 从远程仓库抓取数据到本地 并不自动合并到当前工作分支
+  
 ```
 
   - **克隆远程仓库**`$ git clone git@github.com:icessun/icessun.github.io.git`
 
+> `git clone` 命令本质上就是自动创建了本地的 `master `分支用于跟踪远程仓库中的 `master` 分支；运行 `git pull`，目的都是要从原始克隆的远端仓库中抓取数据后，合并到工作目录中的当前分支。
 
 ### 分支管理
+> 使用分支意味着你可以从开发主线上分离开来，然后在不影响主线的同时继续工作；切换分支之前要保存当前分支的工作区是干净的，把修改提交，否则不让你切换分支
 
 - 创建分支：`$ git branch 分支的名字`
 - 切换分支：`$ git checkout 分支的名字`
 ```
 // 上面两个命令合并成为一条
  $ git checkout -b 分支的名字
+
+ $ git branch -v // 查看各个分支最后一个提交对象的信息
+ 
+ $ git branch --merged // 查看哪些分支已被并入当前分支，也就是说哪些分支是当前分支的直接上游。
+
+  $ git branch --no-merged // 查看尚未合并的工作
 ```
+
+![创建分支testing](http://upload-images.jianshu.io/upload_images/1811036-cf10ad8782bbf5dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+`HEAD`指向当前工作的分支，也可以说是当前分支的别名，`HEAD`会随着当前工作分支的变化而变化，每提交一次，`HEAD`向前走动一次
+
+![切换到新建的分支上面](http://upload-images.jianshu.io/upload_images/1811036-c7cbd04c0d0c6675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在当前新建的分支上面提交后，会向前移动了一格，而`master`分支仍然指向原先 `git checkout `时所在的 `commit` 对象。
+
+![在新建的分支上面提交](http://upload-images.jianshu.io/upload_images/1811036-d8be59b377236c97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+![切换到主分支上面](http://upload-images.jianshu.io/upload_images/1811036-f772fd796b75f803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在当前分支上面再次提交，项目提交历史产生了分叉；因为刚才我们创建了一个分支，转换到其中进行了一些工作，然后又回到原来的主分支进行了另外一些工作。这些改变分别孤立在不同的分支里：我们可以在不同分支里反复切换，并在时机成熟时把它们合并到一起。
+
+
+![项目提交历史出现分叉](http://upload-images.jianshu.io/upload_images/1811036-a2184c59fda15d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
 - 查看当前的分支：`$ git branch`，当前的分支会出现一个`*`号
 - 把当前分支合并到主分支上面：`$ git merge 要合并的分支`，合并到`master`分支上面，合并分支前要切换到要合并的分支上面
+
+由于当前 master 分支所指向的提交对象`（C4）`并不是 `iss53 `分支的直接祖先，Git 不得不进行一些额外处理。就此例而言，Git 会用两个分支的末端`（C4 和 C5）`以及它们的共同祖先`（C2）`进行一次简单的三方合并计算。用红框标出了`Git`用于合并的三个提交对象：
+
+![分支的合并](http://upload-images.jianshu.io/upload_images/1811036-a895f2357b36eac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+![合并后](http://upload-images.jianshu.io/upload_images/1811036-7355bcfa08d7aa04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 合并出现冲突
+
+- 如果在不同的分支中都修改了同一个文件的同一部分，Git 就无法干净地把两者合到一起（译注：逻辑上说，这种问题只能由人来裁决。）
+   - 要看看哪些文件在合并时发生冲突，可以用 git status 查阅
+   
+```
+ <<<<<<< HEAD
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+  please contact us at support@github.com
+</div>
+>>>>>>> iss53
+```
+可以看到` ======= `隔开的上半部分，是 `HEAD`（即 `master `分支，在运行` merge` 命令时所切换到的分支）中的内容，下半部分是在 `iss53 `分支中的内容。
+
+
 - 删除分支：`$ git branch -d 要删除的分支的名字`
 - 分支合并出现冲突：`$ git log --graph --pretty=oneline --abbrev-commit`查看分支合并的情况，出现冲突的时候，我们应该手动修改冲突，在提交
-- 合并禁止`Fast forward`模式：`$ git merge --no-ff -m '描述' 要合并的分支`；这样可以保存合并的分支
+- 合并禁止`Fast forward（当前要合并的分支[新]是master分支[老]的直接上游）`模式：`$ git merge --no-ff -m '描述' 要合并的分支`；这样可以保存合并的分支
 - `Bug`分支：把当前的工作现场隐藏起来：`$ git stash`；接着和创建分支一样，创建一个临时的bug分支，修改完成之后合并bug分支到master主分支上面，`$ git stash list`；查看当前的工作区的隐藏列表，恢复工作区：`$ git stash pop`，继续工作区的任务
 - 每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支；如果要丢弃一个没有被合并过的分支，可以通过`git branch -d <分支name>强行删除`
 
@@ -213,6 +274,28 @@ $ git reset --hard HEAD^
 - 推送分支（把该分支上的所有本地提交推送到远程仓库）：`$ git push origin 本地分支的名字`
 - 当你小伙伴把修改的推送到了远程，而你正好也修改了相同的文件，那么你就必须`git pull`下来最新的添加，在本地解决冲突合并，在推送到远程，如果`pull` 下来提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream 本地分支的名字 远程仓库分支的名字。`
 - 在本地创建和远程分支对应的分支，使用  `git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
+
+### 小窍门
+在 Windows 上安装了`msysGit`，默认使用的`Git Bash`就已经配好了这个自动补全脚本，可以直接使用。
+
+在输入`Git `命令的时候可以敲两次跳格键（Tab），就会看到列出所有匹配的可用命令建议：
+
+```
+$ git co<tab><tab>
+commit   config
+
+```
+- `GIT`命名别名
+
+```
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.last 'log -1 HEAD' // 要看最后一次的提交信息 git last
+```
+现在，如果要输入 `git commit`只需键入 `git ci` 即可
+
 
 > 参考资料[廖雪峰网站git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 [git pro](http://iissnan.com/progit/html/zh/ch2_5.html)
