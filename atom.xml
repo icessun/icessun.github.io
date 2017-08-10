@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-08-09T09:16:18.029Z</updated>
+  <updated>2017-08-10T02:58:46.516Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -14,6 +14,91 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>javaScript高级程序设计读书笔记（六）</title>
+    <link href="http://icessun.github.io/javaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89.html"/>
+    <id>http://icessun.github.io/javaScript高级程序设计读书笔记（六）.html</id>
+    <published>2017-08-10T02:57:20.000Z</published>
+    <updated>2017-08-10T02:58:46.516Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>面向对象的程序设计，面向对象的语言有类的概念，通过类创造多个具有相同的属性和方法的对象。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h4 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h4><ul>
+<li>数据属性：包含一个数据值的位置，可以读取和写入<ul>
+<li><code>[[Configurable]]</code>：是否可以delect删除属性</li>
+<li><code>[[Enumerable]]</code>：是否可以for-in循环对象</li>
+<li><code>[[Writable]]</code>：是否可以修改属性的值</li>
+<li><code>[[Value]]</code>：属性的数据值</li>
+</ul>
+</li>
+<li>访问器属性：不包含数据值，包含下面两个函数<ul>
+<li><code>getter</code></li>
+<li><code>setter</code></li>
+</ul>
+</li>
+</ul>
+<p>####创建对象</p>
+<blockquote>
+<p>以前使用的创建对象的方法（直接<code>new Object</code>和字面量），有明显的缺点：会出现大量冗余的代码。</p>
+</blockquote>
+<h5 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h5><blockquote>
+<p> 用函数来封装以特定接口创建对象的细节，根据接收的参数来创建一个包含所有必要信息的对象。缺点是无法解决对象识别的问题，就是怎么知道一个对象的类型。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">creatPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</div><div class="line">   <span class="keyword">var</span> o=<span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">// 创建一个对象</span></div><div class="line">   o.name=name;</div><div class="line">   o.age=age;</div><div class="line">   o.job=job;</div><div class="line">   o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;  <span class="comment">// 返回这个创建的对象</span></div><div class="line"> &#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> preson=creatPerson(<span class="string">'icessun'</span>,<span class="number">18</span>,<span class="string">'sofeware engineer'</span>)</div></pre></td></tr></table></figure>
+<h5 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h5><blockquote>
+<p>Object和Array这样原生的构造函数，在运行时会自动出现在执行环境中，也可以自定义构造函数，可以直接创建对象。使用构造函数重写工厂模式代码，有以下不同：</p>
+<ul>
+<li>没有显示的创建对象</li>
+<li>直接将属性和方法赋给<code>this</code>对象</li>
+<li>没有return语句</li>
+</ul>
+<p>问题：每个实例都重复的创建方法，包含了不同的<code>Function</code>实例，导致不同的作用域链和标识的解析，person1和person2中的方法是不相同的。虽然可以在全局定义一个函数，然后在构造函数里面将属性设置为全局的函数，但一个全局函数只能被一个对象调用，物不能尽其所用，也没有封装可言。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.age=age;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="keyword">this</span>.job=job;</div><div class="line">    <span class="keyword">this</span>.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">     &#125;;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> person1=<span class="keyword">new</span> Person(<span class="string">'icessun'</span>,<span class="number">18</span>,<span class="string">"software Enginner"</span>);</div><div class="line"> <span class="keyword">var</span> person2=<span class="keyword">new</span> Person(<span class="string">'icessun1'</span>,<span class="number">19</span>,<span class="string">'student'</span>);</div></pre></td></tr></table></figure>
+<p>使用new方式（调用构造函数的方法）创建的对象实例， 会经历下面四步：</p>
+<ul>
+<li>创建一个新对象</li>
+<li>将构造函数的作用域赋给新对象，this就指向这个新对象</li>
+<li>执行构造函数中的代码，添加属性和方法</li>
+<li>返回新对象</li>
+</ul>
+<p>这样的每一个实例对象身上都有一个constructor（构造函数）属性，指向Person，可以用来标识对象类型的（特定的类型）；但是检测对象类型一般使用instanceof操作符可靠一些。</p>
+<h5 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h5><blockquote>
+<p>创建的每一个函数都有一个prototype（原型）属性，指向一个对象；这个对象（原型对象 ）的用途是包含可以由特定类型的所有实例共享的属性和方法。prototype就是通过调用构造函数而创建的实例的原型对象。好处：可以让所有的实例共享原型对象包含的属性和方法，不用在构造函数里面定义实例的信息，而是直接添加到原型对象中。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Person.prototype.constructor------&gt; Person </div><div class="line"><span class="comment">// 空的构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 属性和方法都添加到Person的prototype属性中，由实例共享</span></div><div class="line">Person.prototype.name=<span class="string">"icessun"</span>;</div><div class="line">Person.prototype.age=<span class="string">"18"</span>;</div><div class="line">Person.prototype.job=<span class="string">"engineer"</span>;</div><div class="line">Person.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line"> &#125;;</div><div class="line"><span class="keyword">var</span> person1=<span class="keyword">new</span> Person(); <span class="comment">// 调用构造函数创建对象实例</span></div><div class="line">preson1.sayName(); <span class="comment">// icessun</span></div><div class="line"><span class="keyword">var</span> person2=<span class="keyword">new</span> Person();</div><div class="line">person2.sayName();<span class="comment">// icessun</span></div><div class="line"></div><div class="line"> <span class="built_in">console</span>.log(person1.sayName == person2.sayName); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<ul>
+<li>理解原型对象</li>
+</ul>
+<blockquote>
+<p>创建一个函数就会为该函数创建一个<code>prototype</code>属性，指向函数的原型对象<code>函数.Prototype</code>；所有的原型对象都自动获得一个<code>constructor</code>（构造函数）属性，这个属性包含一个指向<code>prototype</code>属性所在函数的指针。构造函数创建的实例，其内部有一个指针<code>[[Prototype]](或者)__proto__</code>，指向构造函数的原型对象，这个链接是在实例和构造函数的原型对象之间的。</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-4b8b7a5e218b66cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="原型对象和构造函数和实例对象之间的关系"></p>
+<p>Person.prototype指向原型对象，而Person.prototype..constructor有指向Person。原型对象中除了包含constructor属性之外，还包括后来添加的其他属性。Person的实例都包含一个内部属性指向Person.prototype，与构造函数没有直接的关系。在所有的实现中都无法访问到[[Prototype]]，但是可以通过isPrototypeOf()方法来确定对象之间是否存在这种关系，如果[[Prototype]]指向调用isPrototypeOf()方法(ECMAScript 5中新方法：Object.getPrototypeOf())的对象（Person.prototype），那就返回true</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>(person.prototype.isPrototypeOf(person1)) //<span class="literal">true</span> </div><div class="line">console.<span class="built_in">log</span>(person.prototype == Object.getPrototypeOf(person1)) //<span class="literal">true</span> </div><div class="line">console.<span class="built_in">log</span>(Object.getPrototypeOf(person1).name);// icessun  Object.getPrototypeOf(person1) 直接返回<span class="string">[[Prototype]]</span>的值</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当查找对象的属性时，现在实例找，没有找到才去原型对象上面找；可以通过实例对象访问保存在原型中的值，但是却不能通过对象实例重写原型中的值，当与原型中的属性同名的时，会自动屏蔽原型中的属性。</p>
+</blockquote>
+<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;面向对象的程序设计，面向对象的语言有类的概念，通过类创造多个具有相同的属性和方法的对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://icessun.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="javascript" scheme="http://icessun.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>git与github学习笔记</title>
