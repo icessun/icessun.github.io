@@ -64,7 +64,7 @@
     <link href="http://icessun.github.io/javaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89.html"/>
     <id>http://icessun.github.io/javaScript高级程序设计读书笔记（六）.html</id>
     <published>2017-08-10T02:57:20.000Z</published>
-    <updated>2017-08-10T02:58:46.516Z</updated>
+    <updated>2017-08-11T03:30:43.977Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>面向对象的程序设计，面向对象的语言有类的概念，通过类创造多个具有相同的属性和方法的对象。</p>
@@ -86,7 +86,7 @@
 </ul>
 <p>####创建对象</p>
 <blockquote>
-<p>以前使用的创建对象的方法（直接<code>new Object</code>和字面量），有明显的缺点：会出现大量冗余的代码。</p>
+<p>以前使用的创建对象的方法（直接new Object和字面量），有明显的缺点：会出现大量冗余的代码。</p>
 </blockquote>
 <h5 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h5><blockquote>
 <p> 用函数来封装以特定接口创建对象的细节，根据接收的参数来创建一个包含所有必要信息的对象。缺点是无法解决对象识别的问题，就是怎么知道一个对象的类型。</p>
@@ -96,10 +96,10 @@
 <p>Object和Array这样原生的构造函数，在运行时会自动出现在执行环境中，也可以自定义构造函数，可以直接创建对象。使用构造函数重写工厂模式代码，有以下不同：</p>
 <ul>
 <li>没有显示的创建对象</li>
-<li>直接将属性和方法赋给<code>this</code>对象</li>
+<li>直接将属性和方法赋给this对象</li>
 <li>没有return语句</li>
 </ul>
-<p>问题：每个实例都重复的创建方法，包含了不同的<code>Function</code>实例，导致不同的作用域链和标识的解析，person1和person2中的方法是不相同的。虽然可以在全局定义一个函数，然后在构造函数里面将属性设置为全局的函数，但一个全局函数只能被一个对象调用，物不能尽其所用，也没有封装可言。</p>
+<p>问题：每个实例都重复的创建方法，包含了不同的Function实例，导致不同的作用域链和标识的解析，person1和person2中的方法是不相同的。虽然可以在全局定义一个函数，然后在构造函数里面将属性设置为全局的函数，但一个全局函数只能被一个对象调用，物不能尽其所用，也没有封装可言。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,job</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.age=age;</div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="keyword">this</span>.job=job;</div><div class="line">    <span class="keyword">this</span>.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">     &#125;;</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">var</span> person1=<span class="keyword">new</span> Person(<span class="string">'icessun'</span>,<span class="number">18</span>,<span class="string">"software Enginner"</span>);</div><div class="line"> <span class="keyword">var</span> person2=<span class="keyword">new</span> Person(<span class="string">'icessun1'</span>,<span class="number">19</span>,<span class="string">'student'</span>);</div></pre></td></tr></table></figure>
 <p>使用new方式（调用构造函数的方法）创建的对象实例， 会经历下面四步：</p>
@@ -124,9 +124,31 @@
 <p>Person.prototype指向原型对象，而Person.prototype..constructor有指向Person。原型对象中除了包含constructor属性之外，还包括后来添加的其他属性。Person的实例都包含一个内部属性指向Person.prototype，与构造函数没有直接的关系。在所有的实现中都无法访问到[[Prototype]]，但是可以通过isPrototypeOf()方法来确定对象之间是否存在这种关系，如果[[Prototype]]指向调用isPrototypeOf()方法(ECMAScript 5中新方法：Object.getPrototypeOf())的对象（Person.prototype），那就返回true</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.<span class="built_in">log</span>(person.prototype.isPrototypeOf(person1)) //<span class="literal">true</span> </div><div class="line">console.<span class="built_in">log</span>(person.prototype == Object.getPrototypeOf(person1)) //<span class="literal">true</span> </div><div class="line">console.<span class="built_in">log</span>(Object.getPrototypeOf(person1).name);// icessun  Object.getPrototypeOf(person1) 直接返回<span class="string">[[Prototype]]</span>的值</div></pre></td></tr></table></figure>
 <blockquote>
-<p>当查找对象的属性时，现在实例找，没有找到才去原型对象上面找；可以通过实例对象访问保存在原型中的值，但是却不能通过对象实例重写原型中的值，当与原型中的属性同名的时，会自动屏蔽原型中的属性。</p>
+<p>当查找对象的属性时，现在实例找，没有找到才去原型对象上面找；可以通过实例对象访问保存在原型中的值，但是却不能通过对象实例重写原型中的值，当与原型中的属性同名的时，会自动屏蔽原型中的属性。对象实例可以访问到原型对象上<code>constructor</code>属性，使用<code>delete 实例属性</code>可以删除实例的属性，重新访问原型上面的属性；</p>
 </blockquote>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
+<h6 id="确定属性是在原型对象上面还是实例对象上面"><a href="#确定属性是在原型对象上面还是实例对象上面" class="headerlink" title="确定属性是在原型对象上面还是实例对象上面"></a>确定属性是在原型对象上面还是实例对象上面</h6><ul>
+<li><code>hasOwnProperty()</code>可以检测一个属性是存在与实例中，还是存在原型中。属性存在实例对象里面就返回<code>true</code></li>
+<li><code>in操作符</code>：对象能够访问给定属性的时候，返回<code>true</code>，无论属性是在原型还是实例上；<code>属性  in   对象 // 只要存在就返回 true</code></li>
+</ul>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span>  <span class="title">hasPrototypeProperty</span>(object,name)&#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">!object.hasOwnProperty(name)</span> &amp;&amp; (name <span class="keyword">in</span> object);</div><div class="line">    // 返回<span class="literal">false</span> 就是实例属性  否者是原型属性</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>为了更好的减少输入，我们可以使用一个对象字面量来表示整个原型对象</li>
+</ul>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span><span class="params">()</span><span class="comment">&#123;&#125;</span>;</span></div><div class="line"></div><div class="line"><span class="comment">// 把Person.prototype设置为一个以字面量的形式创建的一个新对象，重写了默认的原型对象prototype对象</span></div><div class="line">Person.prototype=<span class="comment">&#123;</span></div><div class="line">   name:'icessun',</div><div class="line">   age:18,</div><div class="line">   job:'Engineer',</div><div class="line">   sayName:function()&#123;</div><div class="line">      console.log(this.name);</div><div class="line">    &#125;,</div><div class="line">    <span class="function"><span class="keyword">constructor</span>:</span>Person;  <span class="comment">// 解决`constructor`属性不再指向`Person函数`的问题，但是会导致constructor属性可以枚举</span></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>但是这种方法的<code>constructor</code>属性不再指向<code>Person函数</code>，前面说过，每创建一个函数，就会同时创建它的原型对象<code>prototype对象</code>，而这个对象也会自动获取<code>constructor属性</code>。这方法的<code>constructor</code>属性指向新对象的<code>constructor属性，指向Object构造函数</code>，通过<code>constructor</code>属性无法确定对象的类型</p>
+<h6 id="原型的动态性"><a href="#原型的动态性" class="headerlink" title="原型的动态性"></a>原型的动态性</h6><blockquote>
+<p>实例获取原型对象上的属性和方法的时候，是一次查找过程；所以在原型对象上面的修改，都能够立即在实例上面反映出来。即使是先创建实例后修改原型对象也是一样的。</p>
+</blockquote>
+<ul>
+<li>实例和原型之间的松散链接关系，连接是一个指针。</li>
+<li>调用构造函数的时候，会为实例添加一个指向最初原型的指针<code>[[protorype]]</code>，要是把原型修改为另外一个对象就切断了实例与原型对象的最初的连接。</li>
+<li>实例中的指针仅仅指向原型，而不是构造函数</li>
+</ul>
+<h6 id="原生对象的原型"><a href="#原生对象的原型" class="headerlink" title="原生对象的原型"></a>原生对象的原型</h6><blockquote>
+<p>通过原生对象的原型，不仅可以取得所有默认方法的引用，而且也可以定义新的方法。可以向自定义对象的原型引用修改原生对象的原型，可以随时添加方法</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype找到sort（）方法</div><div class="line"><span class="built_in">String</span>.prototype找到substring（）方法</div><div class="line"></div><div class="line">为基本的包装类型<span class="built_in">String</span>添加自定义方法</div><div class="line"></div><div class="line"><span class="built_in">String</span>.prototype.start=<span class="function"><span class="keyword">function</span>(<span class="params">text</span>)</span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.indexOf(text) == <span class="number">0</span>; <span class="comment">// 传入的字符串位于一个字符串的开始 返回true</span></div><div class="line"> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> msg=<span class="string">'icess un'</span>;</div><div class="line"><span class="built_in">console</span>.log(msg.start(<span class="string">'icess'</span>)); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h6 id="原型对象的问题"><a href="#原型对象的问题" class="headerlink" title="原型对象的问题"></a>原型对象的问题</h6><div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
