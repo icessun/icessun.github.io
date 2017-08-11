@@ -13,6 +13,7 @@ categories: 读书笔记
 
 <!-- more -->
 
+
 ### 对象
 #### 属性类型
  - 数据属性：包含一个数据值的位置，可以读取和写入
@@ -24,8 +25,9 @@ categories: 读书笔记
    - `getter`
    - `setter`
 
+
 ####创建对象
-> 以前使用的创建对象的方法（直接`new Object`和字面量），有明显的缺点：会出现大量冗余的代码。
+> 以前使用的创建对象的方法（直接new Object和字面量），有明显的缺点：会出现大量冗余的代码。
 
 ##### 工厂模式
 >  用函数来封装以特定接口创建对象的细节，根据接收的参数来创建一个包含所有必要信息的对象。缺点是无法解决对象识别的问题，就是怎么知道一个对象的类型。
@@ -48,11 +50,11 @@ var preson=creatPerson('icessun',18,'sofeware engineer')
 ##### 构造函数模式
 > Object和Array这样原生的构造函数，在运行时会自动出现在执行环境中，也可以自定义构造函数，可以直接创建对象。使用构造函数重写工厂模式代码，有以下不同：
 > - 没有显示的创建对象
-> - 直接将属性和方法赋给`this`对象
+> - 直接将属性和方法赋给this对象
 > - 没有return语句
 
 
-> 问题：每个实例都重复的创建方法，包含了不同的`Function`实例，导致不同的作用域链和标识的解析，person1和person2中的方法是不相同的。虽然可以在全局定义一个函数，然后在构造函数里面将属性设置为全局的函数，但一个全局函数只能被一个对象调用，物不能尽其所用，也没有封装可言。
+> 问题：每个实例都重复的创建方法，包含了不同的Function实例，导致不同的作用域链和标识的解析，person1和person2中的方法是不相同的。虽然可以在全局定义一个函数，然后在构造函数里面将属性设置为全局的函数，但一个全局函数只能被一个对象调用，物不能尽其所用，也没有封装可言。
 
 ```
  function Person(name,age,job){
@@ -113,8 +115,64 @@ console.log(person.prototype == Object.getPrototypeOf(person1)) //true
 console.log(Object.getPrototypeOf(person1).name);// icessun  Object.getPrototypeOf(person1) 直接返回[[Prototype]]的值
 ```
 
-> 当查找对象的属性时，现在实例找，没有找到才去原型对象上面找；可以通过实例对象访问保存在原型中的值，但是却不能通过对象实例重写原型中的值，当与原型中的属性同名的时，会自动屏蔽原型中的属性。
+> 当查找对象的属性时，现在实例找，没有找到才去原型对象上面找；可以通过实例对象访问保存在原型中的值，但是却不能通过对象实例重写原型中的值，当与原型中的属性同名的时，会自动屏蔽原型中的属性。对象实例可以访问到原型对象上`constructor`属性，使用`delete 实例属性`可以删除实例的属性，重新访问原型上面的属性；
 
+###### 确定属性是在原型对象上面还是实例对象上面
+- `hasOwnProperty()`可以检测一个属性是存在与实例中，还是存在原型中。属性存在实例对象里面就返回`true`
+- `in操作符`：对象能够访问给定属性的时候，返回`true`，无论属性是在原型还是实例上；`属性  in   对象 // 只要存在就返回 true`
+
+```
+ function  hasPrototypeProperty(object,name){
+     return !object.hasOwnProperty(name) && (name in object);
+     // 返回false 就是实例属性  否者是原型属性
+  }
+```
+- 为了更好的减少输入，我们可以使用一个对象字面量来表示整个原型对象
+
+```
+function Person(){};
+
+// 把Person.prototype设置为一个以字面量的形式创建的一个新对象，重写了默认的原型对象prototype对象
+Person.prototype={
+   name:'icessun',
+   age:18,
+   job:'Engineer',
+   sayName:function(){
+      console.log(this.name);
+    },
+    constructor:Person;  // 解决`constructor`属性不再指向`Person函数`的问题，但是会导致constructor属性可以枚举
+ }
+```
+
+但是这种方法的`constructor`属性不再指向`Person函数`，前面说过，每创建一个函数，就会同时创建它的原型对象`prototype对象`，而这个对象也会自动获取`constructor属性`。这方法的`constructor`属性指向新对象的`constructor属性，指向Object构造函数`，通过`constructor`属性无法确定对象的类型
+
+###### 原型的动态性
+
+> 实例获取原型对象上的属性和方法的时候，是一次查找过程；所以在原型对象上面的修改，都能够立即在实例上面反映出来。即使是先创建实例后修改原型对象也是一样的。
+
+- 实例和原型之间的松散链接关系，连接是一个指针。
+- 调用构造函数的时候，会为实例添加一个指向最初原型的指针`[[protorype]]`，要是把原型修改为另外一个对象就切断了实例与原型对象的最初的连接。
+- 实例中的指针仅仅指向原型，而不是构造函数
+
+###### 原生对象的原型
+> 通过原生对象的原型，不仅可以取得所有默认方法的引用，而且也可以定义新的方法。可以向自定义对象的原型引用修改原生对象的原型，可以随时添加方法
+
+```
+Array.prototype找到sort（）方法
+String.prototype找到substring（）方法
+
+为基本的包装类型String添加自定义方法
+
+String.prototype.start=function(text){
+     return this.indexOf(text) == 0; // 传入的字符串位于一个字符串的开始 返回true
+ };
+
+var msg='icess un';
+console.log(msg.start('icess')); // true
+```
+
+
+###### 原型对象的问题
 
 <div id="music163player">
 
