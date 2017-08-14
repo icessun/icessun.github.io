@@ -13,6 +13,7 @@ photos:
  - https://img1.doubanio.com/lpic/s10339418.jpg
  - https://img1.doubanio.com/lpic/s28718398.jpg
  - https://img3.doubanio.com/lpic/s28934544.jpg
+ - https://img3.doubanio.com/lpic/s2921314.jpg
 ---
 # 读过的书籍:
 > 2016,6,8
@@ -25,3 +26,4 @@ photos:
 - 偷影子的人
 - 浪潮之巅（第三版）（上下册）
 - 把時間當作朋友
+- CSS权威指南（第三版）
