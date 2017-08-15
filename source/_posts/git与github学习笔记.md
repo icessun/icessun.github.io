@@ -9,7 +9,7 @@ top: 5
 password:
 categories: 读书笔记
 ---
-![工作流图](http://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![工作流图](https://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 <!-- more -->
 ## 认识`Git`
@@ -20,7 +20,7 @@ categories: 读书笔记
 #### 直接记录快照，而非差异比较
 > 关心文件数据的整体是否发生变化，而非文件内容的具体差异；每一次提交更新，会对所有的文件作一快照，保存一个指向快照的索引，要是文件没有变化，不会再次保存，只是对上次保存的快照作一链接。
 
-![更新的文件快照](http://upload-images.jianshu.io/upload_images/1811036-37d61b88c4e7ea67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![更新的文件快照](https://upload-images.jianshu.io/upload_images/1811036-37d61b88c4e7ea67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 几乎都是在本地操作
 >  `Git`在本地磁盘上就保存着所有当前项目的历史更新，所有保存在 `Git` 数据库中的东西都是用哈希值(`SHA-1` 校验和)来作索引的，而不是靠文件名。在保存到  `Git` 之前，所有数据都要进行内容的校验和（checksum）计算，并将此结果作为数据的唯一标识和索引。
@@ -137,7 +137,7 @@ $ git reset --hard HEAD^
   - 在工作区里面隐藏了一个`.git`文件，这个是版本库
   - 版本库里面有暂存区`stage`，还有自动创建的第一个分支`master`，以及指向这个分支的指针`HEAD`
      
-![git add 工作](http://upload-images.jianshu.io/upload_images/1811036-6cb8ec5cf370a38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![git add 工作](https://upload-images.jianshu.io/upload_images/1811036-6cb8ec5cf370a38b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   - 前面说道通过`add 和 commit -m`把文件添加到版本库里面
   
 ```
@@ -145,7 +145,7 @@ $ git reset --hard HEAD^
  $ git commit -m // 把暂存区的内容提交到当前的分支（master），没有创建其他分支的情况下
 ```
 
-![git commit 工作](http://upload-images.jianshu.io/upload_images/1811036-c1ab7fa3fdc5a116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![git commit 工作](https://upload-images.jianshu.io/upload_images/1811036-c1ab7fa3fdc5a116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - 如果不`add`到暂存区，那就不会加入到`commit`中
 - `Git`管理的是修改，而不是文件；也就是说，每一次修改的时候，都要先`add`，然后在`commit`
@@ -217,24 +217,24 @@ $ git reset --hard HEAD^
   $ git branch --no-merged // 查看尚未合并的工作
 ```
 
-![创建分支testing](http://upload-images.jianshu.io/upload_images/1811036-cf10ad8782bbf5dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![创建分支testing](https://upload-images.jianshu.io/upload_images/1811036-cf10ad8782bbf5dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 `HEAD`指向当前工作的分支，也可以说是当前分支的别名，`HEAD`会随着当前工作分支的变化而变化，每提交一次，`HEAD`向前走动一次
 
-![切换到新建的分支上面](http://upload-images.jianshu.io/upload_images/1811036-c7cbd04c0d0c6675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![切换到新建的分支上面](https://upload-images.jianshu.io/upload_images/1811036-c7cbd04c0d0c6675.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 在当前新建的分支上面提交后，会向前移动了一格，而`master`分支仍然指向原先 `git checkout `时所在的 `commit` 对象。
 
-![在新建的分支上面提交](http://upload-images.jianshu.io/upload_images/1811036-d8be59b377236c97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![在新建的分支上面提交](https://upload-images.jianshu.io/upload_images/1811036-d8be59b377236c97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
-![切换到主分支上面](http://upload-images.jianshu.io/upload_images/1811036-f772fd796b75f803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![切换到主分支上面](https://upload-images.jianshu.io/upload_images/1811036-f772fd796b75f803.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 在当前分支上面再次提交，项目提交历史产生了分叉；因为刚才我们创建了一个分支，转换到其中进行了一些工作，然后又回到原来的主分支进行了另外一些工作。这些改变分别孤立在不同的分支里：我们可以在不同分支里反复切换，并在时机成熟时把它们合并到一起。
 
 
-![项目提交历史出现分叉](http://upload-images.jianshu.io/upload_images/1811036-a2184c59fda15d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![项目提交历史出现分叉](https://upload-images.jianshu.io/upload_images/1811036-a2184c59fda15d32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 - 查看当前的分支：`$ git branch`，当前的分支会出现一个`*`号
@@ -242,10 +242,10 @@ $ git reset --hard HEAD^
 
 由于当前 master 分支所指向的提交对象`（C4）`并不是 `iss53 `分支的直接祖先，Git 不得不进行一些额外处理。就此例而言，Git 会用两个分支的末端`（C4 和 C5）`以及它们的共同祖先`（C2）`进行一次简单的三方合并计算。用红框标出了`Git`用于合并的三个提交对象：
 
-![分支的合并](http://upload-images.jianshu.io/upload_images/1811036-a895f2357b36eac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![分支的合并](https://upload-images.jianshu.io/upload_images/1811036-a895f2357b36eac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![合并后](http://upload-images.jianshu.io/upload_images/1811036-7355bcfa08d7aa04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![合并后](https://upload-images.jianshu.io/upload_images/1811036-7355bcfa08d7aa04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 合并出现冲突
 
@@ -299,7 +299,7 @@ $ git config --global alias.last 'log -1 HEAD' // 要看最后一次的提交信
 现在，如果要输入 `git commit`只需键入 `git ci` 即可
 
 
-> 参考资料[廖雪峰网站git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> 参考资料[廖雪峰网站git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 [git pro](http://iissnan.com/progit/html/zh/ch2_5.html)
 
 <div id="music163player">
