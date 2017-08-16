@@ -3,6 +3,51 @@
   
     
     <entry>
+      <title><![CDATA[screenX / Y，clientX / Y和pageX / Y之间有什么区别?]]></title>
+      <url>/screenX-Y%EF%BC%8CclientX-Y%E5%92%8CpageX-Y%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB.html</url>
+      <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-623f95e3ed6518a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图|网络"></p>
+<a id="more"></a>
+<h3 id="offsetX，offsetY"><a href="#offsetX，offsetY" class="headerlink" title="offsetX，offsetY"></a>offsetX，offsetY</h3><blockquote>
+<p><code>IE浏览器</code>特有的事件属性<br>鼠标点击的位置相当于<code>事件源元素</code>的位置坐标，以元素盒子模型的内容区域的左上角为参考点</p>
+</blockquote>
+<h3 id="clientX，clientY"><a href="#clientX，clientY" class="headerlink" title="clientX，clientY"></a>clientX，clientY</h3><blockquote>
+<p>设置或获取鼠标指针位置相对于<code>浏览器视口（内容区域的左上角）</code>的坐标，与浏览器是否有滚动条无关<br>相对于页面的可见部分的左上角，通过浏览器窗口“看到”。<br>相对于<code>viewport</code>CSS像素的坐标。</p>
+</blockquote>
+<h3 id="screenX，screenY"><a href="#screenX，screenY" class="headerlink" title="screenX，screenY"></a>screenX，screenY</h3><blockquote>
+<p>设置或获取获取鼠标指针位置相对于<code>物理屏幕的左上角</code>的坐标，当改变屏幕的<code>分辨率</code>的时候，坐标会随之改变<br>相对于<code>screen</code>设备像素的坐标。</p>
+</blockquote>
+<ul>
+<li>对于这个属性<code>probably never need</code></li>
+</ul>
+<h3 id="pageX，pageY"><a href="#pageX，pageY" class="headerlink" title="pageX，pageY"></a>pageX，pageY</h3><blockquote>
+<p>相对于浏览器中完<code>全呈现的内容区域</code>的左上角，此参考点位于左上方的网址栏和后退按钮下方。如果在页面中嵌入可嵌入的可滚动页面，并且用户移动滚动条，则可以实际改变位置。<br>坐标相对于整个渲染页面的左上角（包括滚动隐藏的部分）<br>相对于<code>&lt;html&gt;</code>CSS像素中元素的坐标。</p>
+</blockquote>
+<ul>
+<li>pageX与clientX的区别</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-510a2fbcd5bb2d17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pageY和clientY的差异，图来自网络"></p>
+<p>也就是说，当浏览器没有滚动条的时候，pageX和clientX是一样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(</div><div class="line">    <span class="string">'page: '</span> + e.pageX + <span class="string">','</span> + e.pageY,</div><div class="line">    <span class="string">'client: '</span> + e.clientX + <span class="string">','</span> + e.clientY,</div><div class="line">    <span class="string">'screen: '</span> + e.screenX + <span class="string">','</span> + e.screenY)</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y?rq=1" target="_blank" rel="external">参考资料1</a><br><a href="https://www.quirksmode.org/dom/w3c_cssom.html#t03" target="_blank" rel="external">参考资料2</a></p>
+<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
+]]></content>
+      
+        <categories>
+            
+            <category> 读书笔记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[游记-香港]]></title>
       <url>/%E6%B8%B8%E8%AE%B0-%E9%A6%99%E6%B8%AF.html</url>
       <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-5111813fbf88752d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="维港夜景"></p>
