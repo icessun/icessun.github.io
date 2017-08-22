@@ -13,7 +13,6 @@ categories: 读书笔记
 
 <!-- more -->
 
-
 ### 对象
 #### 属性类型
  - 数据属性：包含一个数据值的位置，可以读取和写入
@@ -173,9 +172,200 @@ console.log(msg.start('icess')); // true
 
 
 ###### 原型对象的问题
+- 原型模型省略了为构造函数传递初始化参数的环节，所有实例默认的获取相同的属性值。
+- 原型中的属性是被很多实例共享的，对于函数来说是方便的，对于包含基本值的属性，给实例添加一个同名的属性，就可以隐藏原型上面的属性。但是对`引用类型的属性值`来说不行，修改了会在其他的实例里面反映出来。
 
-<div id="music163player">
 
-   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
+##### 组合使用构造函数模式和原型模式  (重点)
 
-</div>
+> 创建自定义类型的最常见的方式；构造模式用于定义实例属性，原型模式用于定义方法和共享的属性。每一个实例都有一份实例属性的副本，并且同时共享着对方法的引用，最大限度节省内存，还支持向构造函数传递参数。
+
+- 重写上面的例子
+
+```
+// 构造函数  定义实例的属性
+function Person(name,age,job){
+   this.name=name;
+   this.age=age;
+   this.job=job;
+   this.friends=['icessun1','icessun2']; // 引用类型
+ }
+
+// 原型对象  定义共享的方法 constructor属性
+
+Person.prototype={
+    constructor:Person, 
+    sayName:function(){
+       console.log(this.name);
+     }
+ }
+
+var person1=new Person('icessun',18,'engineer');
+var person2=new Person('icessun2',19,'engineer');
+
+person1.friends.push('ben'); // 引用的不同的数组
+
+console.log(person1.friends); // icessun1 icessun2 ben
+console.log(person2.friends); // icessun1 icessun2
+
+console.log(person1.friends === person2.friends); // false
+console.log(person1.sayName === person2.sayName);  // true
+```
+
+##### 动态原型模式
+> 把所有的信息都封装在构造函数中，通过在构造函数中初始化原型，保持了同时使用构造函数和原型的优点。可以通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。
+
+```
+ // 构造函数  
+function Person(name,age,job){
+   this.name=name;
+   this.age=age;
+   this.job=job;
+   this.friends=['icessun1','icessun2']; // 引用类型
+
+  // 方法  IF 检查的可以是初始化之后应该存在的任何属性和方法
+   
+   if(typeof this.sayName != 'function'){
+       Person.prototype.sayName=function(){
+            console.log(this.name);
+        };
+    }
+   
+ }
+
+  var person1=new Person('icessun',18,'engineer');
+  person1.sayName();
+```
+只有在`sayName()方法不存在的时候`，才会将这个方法添加到原型上，只会在初次调用构造函数的时候才会执行。`这里对原型的修改，会立即在所有实例中得到反映。`，这就导致不能使用字面量重写原型，因为会切断现有实例和新原型之间的联系。可以使用instanceof操作符来确定它的类型。
+
+##### 寄生构造函数模式 （重点）
+> 基本思想：创建一个函数，该函数的作用仅仅是封装创建对象的代码，然后在返回新创建的对象。为对象创建构造函数。比如`想创建一个具有额外方法的数组`。
+> 返回的对象与构造函数或者构造函数的原型属性之间没有关系；构造函数返回的对象与在构造函数外部创建的对象实例没有什么不同，是一样的，不能使用instanceof来确定对象类型。
+
+```
+// 这个函数创建一个新的对象 并且初始化了对象 返回了这个对象
+function Person(name,age,job){
+    var o =new Object();
+    o.name=name;
+    o.age=age;
+    o.job=job;
+    o.sayName=function(){
+        console.log(this.name);
+     };
+     return o;
+ }
+
+var person=new Person('icessun',18,'Engineer');
+person.sayName(); // 'icessun'
+```
+除了使用new操作符并且把包装函数叫做构造函数之外，这个模式和工厂模式是一模一样的。构造函数在不返回值的情况下，默认会返回新对象的实例；但是返回值的话，可以重写调用构造函数时返回的值。
+
+```
+ function MyArray(){
+     // 创建数组对象
+     var values=new Array();
+     // 添加值，初始化数组的值  接收构造函数收到的所有参数
+     values.push.apply(values,arguments);
+
+     // 添加方法
+     values.toJoin=function(){
+         return this.join('|');
+      };
+    
+     // 返回值
+     return values;
+  }
+  var colors=new MyArray('red','blue','green');
+  console.log(colors.toJoin());  // 'red|bule|green'
+```
+
+### 继承
+> `ECMAScript`只支持实现继承，主要依靠原型链来实现继承
+
+#### 原型链
+> `基本思想`： 利用原型让一个引用类型继承另外一个引用类型的属性和方法。
+
+- 原型与实例的关系
+> 每一个构造函数都有一个原型对象`prototype`，原型对象都包含一个指向构造函数的指针`constructor`，而实例都包含一个指向原型对象的内部指针`__proto__`
+
+- 原型链基本概念
+> 让一个原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应的，另一个原型中也包含一个指向另一个构造函数的指针，如此，层层递进，就实现了实例与原型的链条。
+
+```
+// 一个属性和方法
+function SuperType(){
+    this.property=true;
+ }
+
+SuperType.prototype.getSuperValue=function(){
+     return this.property;
+ };
+ 
+// 一个属性和方法
+function SubType(){
+     this.subproperty=false;
+ }
+
+// 原型链继承
+// 继承 SuperType  创建SuperType的实例，将其赋给SubType.prototype实现继承
+SubType.prototype=new SuperType();
+
+SubType.prototype.getSubValue=function(){
+    return this.subproperty;
+ };
+
+var instance =new SubType();
+console.log(instance.getSuperValue());  // true
+```
+这段代码继承实现的本质是`重写原型对象`，使其为一个新类型的实例。原来存在`SuperType `的实例中的所有方法和属性，现在都存在`SubType.prototype`中了。所以这个重写的原型对象，不但有指向`SuperType `的实例中的所有方法和属性的指针，还有一个指向`SuperType `的原型指针`__proto__`.
+
+
+![实例，构造函数，原型之间的关系](http://upload-images.jianshu.io/upload_images/1811036-4f8c39bc25cb69d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+- 默认的原型
+> 所有函数的默认原型都是`Object`的实例，因此默认的原型都包含一个内部指针，指向`Object.prototype`，也就是自定义类型都会继承`toString(),valueOf()`等默认方法的根本原因。
+
+![上面例子的完整原型链图](http://upload-images.jianshu.io/upload_images/1811036-9a30cd0de4551e3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 确定原型和实例的关系
+  - `instanceof`操作符
+
+  > 主要这个操作符测试的实例与原型链出现过的构造函数，就返回`true`
+
+  ```
+  console.log(instance  instanceof  SubType);  // true
+  ```
+
+  - `isPrototype()`方法
+ 
+   > 只要原型链出现的原型，都可以说是该原型链所派生的实例的原型，返回`true` 
+ 
+    ```
+     console.log(SubType.prototype.isProtype(instance));  // true
+    ```
+
+- 子类重写父类里面的方法，是在原型上面修改的，这段代码一定要放在替换原型的语句后面。
+- 通过原型链实现的继承，不能使用`对象字面量创建原型方法`，因为会重写原型链
+
+```
+// 原型链继承
+SubType.prototype=new SuperType();
+
+// 对象字面量创建原型方法 会导致上一行代码无效 
+SubType.prototype={
+   getSubValue: function(){
+       return this.subproperty;
+    },
+    someOtherMathod:function(){
+        return false;
+     }
+ };
+
+ var instance=new SubType();
+ console.log(instance.getSuperValue()); // error!
+```
+因为后面的字面量方式的代码使得原型包含一个`Object`	实例，不是`SuperType`实例。
+
+ - 原型链的问题
+ > 引用类型的问题，引用类型的原型属性会被所有实例共享，也就为什么要在构造函数里面定义属性的原因。通过原型来实现继承的时候，原型实际上会变成另一个类型的实例，故原来的实例属性也就顺理成章的变成现在的原型属性了；还有就是在创建子类型的实例时候，不能向超类的构造函数中传递参数。
