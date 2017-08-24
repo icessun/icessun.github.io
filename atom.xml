@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-08-16T06:31:36.068Z</updated>
+  <updated>2017-08-24T09:19:11.203Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Canvas解读</title>
+    <link href="http://icessun.github.io/Canvas%E8%A7%A3%E8%AF%BB.html"/>
+    <id>http://icessun.github.io/Canvas解读.html</id>
+    <published>2017-08-24T09:17:51.000Z</published>
+    <updated>2017-08-24T09:19:11.203Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p><code>HTML5</code>新增的元素，可以在页面上使用<code>JavaScript</code>来控制，画出图形。</p>
+</blockquote>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>首先要创建一个画布</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 宽高是属性，不要设置在style中，否者会发生变形  canvas闭合标签 </span></div><div class="line">&lt;<span class="selector-tag">canvas</span> id=<span class="string">'myCanvas'</span> <span class="attribute">width</span>=<span class="string">'800'</span> height=<span class="string">'800'</span>&gt;当浏览器不支持Canvas的时候，写入的文字&lt;/canvas&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>然后获取渲染的上下文 </p>
+<ul>
+<li>无论是绘制那种图形，都要经过这步；每一个画布都有一个渲染的上下文对象，使用<code>getContext()</code>方法获取，传入的参数<code>2d/webgl</code>：前者表示是平面图案，后者是立体图案<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// js代码</span></div><div class="line"><span class="keyword">var</span> myCanvas=<span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>);</div><div class="line"><span class="keyword">if</span>(myCanvas.getContext)&#123;</div><div class="line">   <span class="keyword">var</span> ctx=myCanvas.getContext(<span class="string">'2d'</span>);</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>最后开始绘制</p>
+<ul>
+<li>操作我们获取的渲染上下文这只画笔，由点到线再到面<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"> ctx.benginPath(); <span class="comment">// 开始绘制路径，拿起了笔了</span></div><div class="line"> ctx.moveTo(<span class="number">20</span>,<span class="number">20</span>); <span class="comment">// 设置绘制路径的起点，相当于画布的坐标（20，20）</span></div><div class="line"> ctx.lineTo(<span class="number">200</span>,<span class="number">20</span>); <span class="comment">// 绘制了一条直线，到坐标（200，20）的直线</span></div><div class="line"> ctx.lineWidth=<span class="number">1.0</span>; <span class="comment">// 设置线宽</span></div><div class="line"> ctx.lineCap=<span class="string">"button"</span>; <span class="comment">//设置端点样式:butt(默认),round,square</span></div><div class="line"> ctx.lineJoin=<span class="string">"miter"</span>;  <span class="comment">//设置连接样式:miter(默认),bevel,round</span></div><div class="line"> ctx.strokeStyle=<span class="string">"#ff0000"</span>; <span class="comment">// 设置线的颜色</span></div><div class="line"> ctx.stroke();  <span class="comment">// 进行线的着色，这时整条线才变得可见</span></div><div class="line"> ctx.closePath(); <span class="comment">//自动绘制一条当前点到起点的直线，形成一个封闭图形</span></div><div class="line"> </div><div class="line"><span class="comment">//填充</span></div><div class="line">ctx.fillStyle='red'; <span class="comment">// 通过fillStyle来改变填充颜色</span></div><div class="line">ctx.fill(); <span class="comment">// 填充</span></div><div class="line"></div><div class="line"><span class="comment">// 先闭合了，再填充</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>beginPath</code>方法表示开始绘制路径，<code>moveTo(x, y)</code>方法设置线段的起点，<code>lineTo(x, y)</code>方法设置线段的终点，<code>stroke</code>方法用来给透明的线段着色；否则，在画布里面看不到东西。</p>
+<h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ctx.fillStyle = 'yellow'; <span class="comment">// 给矩形填充颜色，默认是黑色</span></div><div class="line">ctx.fillRect(<span class="number">50</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><code>fillRect(X,Y,width,height)</code>里面的四个参数表示：矩形距离画布的位置坐标(x,y)，矩形自己的宽度和高度(width,height)，其绘制的是一个实心的图形；<br>一定是先填充颜色，在绘制矩形，要不然无法给矩形填充颜色。</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.strokeRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">200</span>,<span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><code>strokeRect()</code>方法与上一个类似，但是是绘制空心矩形。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.clearRect(<span class="number">100</span>,<span class="number">50</span>,<span class="number">50</span>,<span class="number">50</span>);  <span class="comment">// 清除某个矩形区域的内容</span></div></pre></td></tr></table></figure></p>
+<h3 id="绘制弧形"><a href="#绘制弧形" class="headerlink" title="绘制弧形"></a>绘制弧形</h3><blockquote>
+<p>通过这个方法，可以绘制圆</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ctx</span><span class="selector-class">.arc</span>(<span class="selector-tag">x</span>, <span class="selector-tag">y</span>, <span class="selector-tag">radius</span>, <span class="selector-tag">startAngle</span>, <span class="selector-tag">endAngle</span>, <span class="selector-tag">anticlockwise</span>);</div></pre></td></tr></table></figure>
+<p>圆心坐标（x，y）相当于画布的坐标；半径:radius；扇形的起始角度和终止角度(startAngle, endAngle,弧度为单位)，是否逆时针：anticlockwise，（true:逆时针；false：顺时针）</p>
+<ul>
+<li><p>绘制实心圆</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.arc(<span class="number">60</span>，<span class="number">60</span>，<span class="number">50</span>，<span class="number">0</span>，Math.<span class="literal">PI</span>*<span class="number">2</span>,true);</div><div class="line">ctx.fillStyle=<span class="string">"#000"</span>;</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+</li>
+<li><p>绘制空心圆</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath(); </div><div class="line">ctx.arc(<span class="number">60</span>, <span class="number">60</span>, <span class="number">50</span>, <span class="number">0</span>, Math.<span class="literal">PI</span>*<span class="number">2</span>, true); </div><div class="line">ctx.lineWidth = <span class="number">1.0</span>; </div><div class="line">ctx.strokeStyle = <span class="string">"#000"</span>; </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
+]]></content>
+    
+    <summary type="html">
+    
+      canvas
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://icessun.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="canvas" scheme="http://icessun.github.io/tags/canvas/"/>
+    
+  </entry>
   
   <entry>
     <title>screenX / Y，clientX / Y和pageX / Y之间有什么区别?</title>
