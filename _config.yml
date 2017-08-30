@@ -100,7 +100,7 @@ plugins:
    hexo-generate-feed
 
 
-copyAssets: FIE-2017
+copyAssets: FIE2017
 
 # 头像
 avatar: /images/avatar.png
