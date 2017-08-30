@@ -28,7 +28,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: [baidu_verify_j9xttrBK2Z.html,README.md,googleb9abb2c2144ad4c1.html]
+skip_render: [baidu_verify_j9xttrBK2Z.html,README.md,googleb9abb2c2144ad4c1.html,FIE2017]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -98,6 +98,9 @@ plugins:
    hexo-generator-sitemap
    hexo-generator-baidu-sitemap
    hexo-generate-feed
+
+
+copyAssets: FIE-2017
 
 # 头像
 avatar: /images/avatar.png
