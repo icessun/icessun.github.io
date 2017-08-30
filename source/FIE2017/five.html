@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-five</title>
+    <style>
+        .show {
+            width: 500px;
+            background-color: #cccccc;
+            margin-top: 20px;
+
+        }
+
+        .showData {
+            background-color: #000;
+            color: #fff;
+            margin: 5px;
+            padding: 2px;
+            width: 20px;
+            cursor: pointer;
+            vertical-align: bottom;
+            /*text-align: end;*/
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <input type="text" name="number" placeholder="please enter numbers" id="btn-input">
+    <input type="button" value="左侧入" id="btn-1">
+    <input type="button" value="右侧入" id="btn-2">
+    <input type="button" value="左侧出" id="btn-3">
+    <input type="button" value="右侧出" id="btn-4">
+    <input type="button" value="排序" id="btn-5">
+</div>
+
+<div class="show">
+
+</div>
+<script>
+    var showData = document.querySelector(".show");
+    var btnInput = document.getElementById("btn-input");
+    var btnLeftIn = document.getElementById("btn-1");
+    var btnLeftOut = document.getElementById("btn-3");
+    var btnRightIn = document.getElementById("btn-2");
+    var btnRightOut = document.getElementById("btn-4");
+    var btnSort = document.getElementById("btn-5");
+    var btnSpan = "";
+    //     console.log(btnInput.value);
+
+
+    btnLeftIn.onclick = function () {
+        if (btnInput.value == '') {
+            alert("pleas enter numbers,you just click");
+        } else if (isNaN(btnInput.value)) {
+            alert("pleas enter numbers");
+            btnInput.value = "";
+        } else if (btnInput.value < 10 || btnInput.value > 100) {
+            alert("please enter numbers form 10 to 100");
+            btnInput.value = "";
+        } else {
+            var showDataS = document.createElement("span");
+            showDataS.className = "showData";
+            showDataS.style.display = "inline-block";
+            showDataS.style.height = btnInput.value + "px";
+//            showDataS.innerHTML=btnInput.value;
+
+            if (!showData.children.length) {
+                showData.appendChild(showDataS);
+
+                btnInput.value = "";
+            } else {
+                // query showData children  push Array
+                showData.insertBefore(showDataS, showData.children[0]);
+                btnInput.value = "";
+            }
+        }
+    }
+
+    btnRightIn.onclick = function () {
+        if (btnInput.value == '') {
+            alert("pleas enter numbers,you just click");
+        } else if (isNaN(btnInput.value)) {
+            alert("pleas enter numbers");
+            btnInput.value = "";
+        } else if (btnInput.value < 10 || btnInput.value > 100) {
+            alert("please enter numbers form 10 to 100");
+            btnInput.value = "";
+        } else {
+            var showDataS = document.createElement("span");
+            showDataS.className = "showData";
+//            showDataS.innerHTML=btnInput.value;
+            showDataS.style.display = "inline-block";
+            showDataS.style.height = btnInput.value + "px";
+            showData.appendChild(showDataS);
+            btnInput.value = "";
+        }
+    }
+
+    btnLeftOut.onclick = function () {
+
+        if (showData.children.length) {
+            alert("从左边移除的数据：" + showData.children[0].innerText);
+            showData.removeChild(showData.children[0]);
+        } else {
+            alert("pleas enter numbers,then removed that")
+        }
+    }
+    btnRightOut.onclick = function () {
+
+        if (showData.children.length) {
+            alert("从右边移除的数据：" + showData.children[showData.children.length - 1].innerText);
+            showData.removeChild(showData.children[showData.children.length - 1]);
+        } else {
+            alert("pleas enter numbers,then removed that")
+        }
+    }
+
+    btnSort.onclick = function () {
+        sortData();
+    }
+
+    function sortData() {
+        btnSpan = document.querySelectorAll("span");
+        console.log("111")
+        var arrHright = [];
+        for (var i = 0; i < btnSpan.length; i++) {
+            arrHright.push(parseFloat(btnSpan[i].style.height));
+        }
+        arrHright.sort(function (a, b) {
+            return a - b;
+        })
+//    console.log(arrHright)
+        for (var j = 0; j < arrHright.length; j++) {
+            btnSpan[j].style.height = arrHright[j] + "px";
+            showData.appendChild(btnSpan[j]);
+        }
+
+    }
+</script>
+</body>
+</html>
