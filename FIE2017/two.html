@@ -122,16 +122,17 @@
 
 
 
-<meta name="description" content="icessun,blog,web,life">
+<meta name="description" content="js-two    污染城市列表               var aqiData = [         [&quot;北京&quot;, 90],         [&quot;上海&quot;, 50],         [&quot;福州&quot;, 10],         [&quot;广州&quot;, 50],         [&quot;深圳&quot;,66],         [&quot;成都&quot;, 90],         [&quot;西安&quot;, 100]">
 <meta property="og:type" content="website">
 <meta property="og:title" content="icessun&#39;s Blog">
-<meta property="og:url" content="http://icessun.github.io/categories/travel/index.html">
+<meta property="og:url" content="http://icessun.github.io/FIE2017/two.html">
 <meta property="og:site_name" content="icessun&#39;s Blog">
-<meta property="og:description" content="icessun,blog,web,life">
+<meta property="og:description" content="js-two    污染城市列表               var aqiData = [         [&quot;北京&quot;, 90],         [&quot;上海&quot;, 50],         [&quot;福州&quot;, 10],         [&quot;广州&quot;, 50],         [&quot;深圳&quot;,66],         [&quot;成都&quot;, 90],         [&quot;西安&quot;, 100]">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-25T08:30:03.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="icessun&#39;s Blog">
-<meta name="twitter:description" content="icessun,blog,web,life">
+<meta name="twitter:description" content="js-two    污染城市列表               var aqiData = [         [&quot;北京&quot;, 90],         [&quot;上海&quot;, 50],         [&quot;福州&quot;, 10],         [&quot;广州&quot;, 50],         [&quot;深圳&quot;,66],         [&quot;成都&quot;, 90],         [&quot;西安&quot;, 100]">
 
 
 
@@ -159,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://icessun.github.io/categories/travel/"/>
+  <link rel="canonical" href="http://icessun.github.io/FIE2017/two.html"/>
 
 
 
 
 
-  <title>分类: travel | icessun's Blog</title>
+  <title> | icessun's Blog</title>
   
 
 
@@ -209,7 +210,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -357,45 +358,89 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>travel<small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline"></h2>
+
+
+
+</header>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/游记-香港.html" itemprop="url">
-              
-                <span itemprop="name">游记-香港</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-10T11:27:11+08:00"
-              content="2017-08-10" >
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
     
-  </section>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-two</title>
+</head>
+<body>
 
-  
+<h3>污染城市列表</h3>
+<ul id="aqi-list">
+    <!--
+        <li>第一名：福州（样例），10</li>
+          <li>第二名：福州（样例），10</li> -->
+</ul>
 
+<script type="text/javascript">
+
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 10],
+        ["广州", 50],
+        ["深圳",66],
+        ["成都", 90],
+        ["西安", 100]
+    ];
+
+    (function () {
+
+        /*
+        在注释下方编写代码
+        遍历读取aqiData中各个城市的数据
+        将空气质量指数大于60的城市显示到aqi-list的列表中
+        */
+ var list=document.getElementById("aqi-list");
+ var listString=[];
+ var listNode="";
+      for(var i=0;i<aqiData.length;i++){
+          if(aqiData[i][1]>60){
+              listString.push(aqiData[i]);
+          }
+      }
+//      for(var j=0;j<listString.length;j++){
+//          if(listString[j][1]<listString[j+1][1]){
+//
+//          }
+//      }
+// 数组排序
+        listString.sort(function (a,b) {
+           return  b[1]-a[1]; // 从大到小
+        });
+        for(var j=0;j<listString.length;j++){
+            // 字符串拼接
+//            listNode+="<li>第"+(j+1)+"名："+listString[j][0]+"  ,空气质量为："+listString[j][1]+"</li>";
+
+            // 动态创建元素 li
+            var l=document.createElement("li");
+            l.innerHTML="第"+(j+1)+"名："+listString[j][0]+"  ,空气质量为："+listString[j][1];
+            list.appendChild(l);
+            console.log(l);
+        }
+//        var num = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+//       list.innerHTML=listNode;
+//       list.appendChild(listNode)
+//    console.log(listString)
+    })();
+
+</script>
+</body>
+</html>
+    
+  </div>
 
 
           </div>
@@ -403,6 +448,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -423,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -567,6 +625,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">污染城市列表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

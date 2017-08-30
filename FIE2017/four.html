@@ -122,16 +122,17 @@
 
 
 
-<meta name="description" content="icessun,blog,web,life">
+<meta name="description" content="js-four              .show {             width: 500px;             height: 100px;             background-color: #cccccc;             margin-top: 20px;             padding: 5px;          }">
 <meta property="og:type" content="website">
 <meta property="og:title" content="icessun&#39;s Blog">
-<meta property="og:url" content="http://icessun.github.io/categories/travel/index.html">
+<meta property="og:url" content="http://icessun.github.io/FIE2017/four.html">
 <meta property="og:site_name" content="icessun&#39;s Blog">
-<meta property="og:description" content="icessun,blog,web,life">
+<meta property="og:description" content="js-four              .show {             width: 500px;             height: 100px;             background-color: #cccccc;             margin-top: 20px;             padding: 5px;          }">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-30T07:55:40.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="icessun&#39;s Blog">
-<meta name="twitter:description" content="icessun,blog,web,life">
+<meta name="twitter:description" content="js-four              .show {             width: 500px;             height: 100px;             background-color: #cccccc;             margin-top: 20px;             padding: 5px;          }">
 
 
 
@@ -159,13 +160,13 @@
 
 
 
-  <link rel="canonical" href="http://icessun.github.io/categories/travel/"/>
+  <link rel="canonical" href="http://icessun.github.io/FIE2017/four.html"/>
 
 
 
 
 
-  <title>分类: travel | icessun's Blog</title>
+  <title> | icessun's Blog</title>
   
 
 
@@ -209,7 +210,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -357,45 +358,145 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>travel<small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+  <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline"></h2>
+
+
+
+</header>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/游记-香港.html" itemprop="url">
-              
-                <span itemprop="name">游记-香港</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-08-10T11:27:11+08:00"
-              content="2017-08-10" >
-          08-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
     
-  </section>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js-four</title>
+    <style>
+        .show {
+            width: 500px;
+            height: 100px;
+            background-color: #cccccc;
+            margin-top: 20px;
+            padding: 5px;
 
-  
+        }
 
+        .showData {
+            background-color: #000;
+            color: #fff;
+            margin: 5px;
+            cursor: pointer;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <input type="text" name="number" placeholder="please enter numbers" id="btn-input">
+    <input type="button" value="左侧入" id="btn-1">
+    <input type="button" value="右侧入" id="btn-2">
+    <input type="button" value="左侧出" id="btn-3">
+    <input type="button" value="右侧出" id="btn-4">
+</div>
+
+<div class="show">
+
+</div>
+<script>
+    var showData = document.querySelector(".show");
+    var btnInput = document.getElementById("btn-input");
+    var btnLeftIn = document.getElementById("btn-1");
+    var btnLeftOut = document.getElementById("btn-3");
+    var btnRightIn = document.getElementById("btn-2");
+    var btnRightOut = document.getElementById("btn-4");
+    var btnSpan = "";
+
+
+    //     console.log(btnInput.value);
+
+
+    btnLeftIn.onclick = function () {
+        if (btnInput.value == '') {
+            alert("pleas enter numbers,you just click");
+        } else if (isNaN(btnInput.value)) {
+            alert("pleas enter numbers");
+            btnInput.value = "";
+        } else {
+
+            var showDataS = document.createElement("span");
+            showDataS.className = "showData";
+            showDataS.innerHTML = btnInput.value;
+
+            if (!showData.children.length) {
+                showData.appendChild(showDataS);
+                btnInput.value = "";
+            } else {
+                // query showData children  push Array
+                showData.insertBefore(showDataS, showData.children[0]);
+                btnInput.value = "";
+            }
+
+            clickSpan();
+        }
+    }
+
+    btnRightIn.onclick = function () {
+        if (btnInput.value == '') {
+            alert("pleas enter numbers,you just click");
+        } else if (isNaN(btnInput.value)) {
+            alert("pleas enter numbers");
+            btnInput.value = "";
+        } else {
+            var showDataS = document.createElement("span");
+            showDataS.className = "showData";
+            showDataS.innerHTML = btnInput.value;
+            showData.appendChild(showDataS);
+            btnInput.value = "";
+        }
+
+        clickSpan();
+    }
+
+    btnLeftOut.onclick = function () {
+
+        if (showData.children.length) {
+            alert("从左边移除的数据：" + showData.children[0].innerText);
+            showData.removeChild(showData.children[0]);
+        } else {
+            alert("pleas enter numbers,then removed that")
+        }
+    }
+    btnRightOut.onclick = function () {
+
+        if (showData.children.length) {
+            alert("从右边移除的数据：" + showData.children[showData.children.length - 1].innerText);
+            showData.removeChild(showData.children[showData.children.length - 1]);
+        } else {
+            alert("pleas enter numbers,then removed that")
+        }
+    }
+
+    // 点击删除数据
+    function clickSpan() {
+        btnSpan = document.querySelectorAll("span");
+        for (var i = 0; i < btnSpan.length; i++) {
+            (function (index) {
+                btnSpan[index].onclick = function () {
+                    showData.removeChild(showData.children[index]);
+                }
+            })(i);
+        }
+    }
+
+</script>
+</body>
+</html>
+    
+  </div>
 
 
           </div>
@@ -403,6 +504,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
