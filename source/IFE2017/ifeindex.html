@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>icessun-demo</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/ifeindex.css">
+</head>
+<body>
+<div class="wrap">
+    <div class="boxInner">
+        <img src="img/banner1.jpg" alt="">
+        <img src="img/banner2.jpg" alt="">
+        <img src="img/banner3.jpg" alt="">
+        <img src="img/banner4.jpg" alt="">
+    </div>
+    <!--焦点-->
+    <ul>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!--左右切换-->
+    <a href="javascript:;" class="left"></a>
+    <a href="javascript:;" class="right"></a>
+</div>
+
+<!--tab栏切换-->
+<div class="tab-wrap" id="tab-wrap">
+    <ul>
+        <li class="active">IFE2017</li>
+        <li>FCC</li>
+        <li>JS30</li>
+    </ul>
+    <div class="show">
+        <a href="https://icessun.github.io/IFE2017/one.html">任务一：零基础JavaScript编码（一）</a>
+        <a href="https://icessun.github.io/IFE2017/two.html">任务二：零基础JavaScript编码（二）</a>
+        <a href="https://icessun.github.io/IFE2017/three.html">任务三：零基础JavaScript编码（三）</a>
+        <a href="https://icessun.github.io/IFE2017/four.html">任务四：基础JavaScript练习（一）</a>
+        <a href="https://icessun.github.io/IFE2017/five.html">任务五：基础JavaScript练习（二）</a>
+        <a href="https://icessun.github.io/IFE2017/six.html">任务六：基础JavaScript练习（三）</a>
+
+    </div>
+    <div>
+        FCC
+    </div>
+    <div>
+        JS30
+    </div>
+</div>
+
+<!--联系方式-->
+<div class="conn">
+    <a href="">
+        <span data-content="604421385@qq.com">联系方式</span>
+    </a>
+    <a href="">
+        <span data-content="简历">雇佣我</span>
+    </a>
+    <a href="">
+        <span data-content="微博">icessun</span>
+    </a>
+</div>
+
+<!--立方体-->
+<div class="three3D">
+    <div>第1面</div>
+    <div>第2面</div>
+    <div>第3面</div>
+    <div>第4面</div>
+    <div>第5面</div>
+    <div>第6面</div>
+</div>
+
+
+<script src="js/utils.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/banner.js"></script>
+<script src="js/tab.js"></script>
+<script>
+    var three3d=document.getElementsByClassName("three3D");
+    // to do
+//    setInterval(function () {
+//
+//        three3d[0].style.transform="rotateX(360deg) rotateY(360deg)";
+//        console.log(111)
+//    },200)
+</script>
+</body>
+</html>
