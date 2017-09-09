@@ -1,0 +1,678 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>javaScript</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a name="5qs5ql9ijiecb3mmafaj30tm51">javaScript</a>
+</h1>
+<div align="center" class="globalOverview">
+<img src="javaScript_files/images/javaScript.jpg"></div>
+<h2 class="topic">
+<a name="02ulr3mmv3ft19srmk7rjbjloa">语法</a>
+</h2>
+<h3 class="topic">
+<a name="0mu6t357jiicio4kubv0n69sos">&nbsp;区分大小写</a>
+</h3>
+<h3 class="topic">
+<a name="5n5i21l13do0pel67qremo83bh">&nbsp;变量没有类型，可以保存任何数据类型  var</a>
+</h3>
+<h3 class="topic">
+<a name="3pn2bvvdluneg3epr1ujm7un4u">&nbsp;&nbsp;省略var声明的变量都是全局变量</a>
+</h3>
+<h3 class="topic">
+<a name="7dfnpatr484nqv3apokpj3pe90">&nbsp;数据类型</a>
+</h3>
+<h3 class="topic">
+<a name="573d452f2mbh5d9a73p49d4vvv">&nbsp;&nbsp;简单数据类型</a>
+</h3>
+<h3 class="topic">
+<a name="5lfeq7eumdbo727n88vdrrulg4">&nbsp;&nbsp;&nbsp;Undefined</a>
+</h3>
+<h3 class="topic">
+<a name="5eik8h6lhssf2p8pijl7qr15fh">&nbsp;&nbsp;&nbsp;&nbsp;只有一个特殊的值，undefined</a>
+</h3>
+<h3 class="topic">
+<a name="21qccee2eupa7is936jsvvttl6">&nbsp;&nbsp;&nbsp;&nbsp;声明一个变量，没有赋值</a>
+</h3>
+<h3 class="topic">
+<a name="0chen7ari7j1i7ba8290itliih">&nbsp;&nbsp;&nbsp;Null</a>
+</h3>
+<h3 class="topic">
+<a name="5s9aov5p532b98cdgevfe4a54v">&nbsp;&nbsp;&nbsp;&nbsp;空的指针对象</a>
+</h3>
+<h3 class="topic">
+<a name="28nqvp5kq09jp1od02oq1ocaqh">&nbsp;&nbsp;&nbsp;&nbsp;如果定义的变量将来准备用于保存对象</a>
+</h3>
+<h3 class="topic">
+<a name="1tnak73op9krob35ggci7sk14i">&nbsp;&nbsp;&nbsp;&nbsp;undefined是从null里面派生出来的，所以：undefined==null返回ture，但是===返回false</a>
+</h3>
+<h3 class="topic">
+<a name="7rk6ggpff1vh743o30kv744j28">&nbsp;&nbsp;&nbsp;Boolean</a>
+</h3>
+<h3 class="topic">
+<a name="1917v5sm6n2nstn06gl7l0eqop">&nbsp;&nbsp;&nbsp;&nbsp;Boolean()</a>
+</h3>
+<h3 class="topic">
+<a name="056nu1klniolg209re8mfnrn58">&nbsp;&nbsp;&nbsp;&nbsp;除0之外的数字，转换为布尔都是true</a>
+</h3>
+<h3 class="topic">
+<a name="7816666n0gjug8opehiv9s5g3f">&nbsp;&nbsp;&nbsp;&nbsp;除"" （空字符串）之外的所有字符，转为布尔都是true</a>
+</h3>
+<h3 class="topic">
+<a name="5vc9osgv07evpmb7ti6gapqorn">&nbsp;&nbsp;&nbsp;&nbsp;null和undefined转为布尔都是false</a>
+</h3>
+<h3 class="topic">
+<a name="758easmkjm0hpfnd27f850f9j0">&nbsp;&nbsp;&nbsp;Number</a>
+</h3>
+<h3 class="topic">
+<a name="455qnrlq4uotbo4pfqtv0vnljk">&nbsp;&nbsp;&nbsp;&nbsp;整数和浮点数</a>
+</h3>
+<h3 class="topic">
+<a name="40tmo8f3k98c1cia1og1q2l73r">&nbsp;&nbsp;&nbsp;&nbsp;NaN（非数值）特殊的值</a>
+</h3>
+<h3 class="topic">
+<a name="7v9qd1kmrvv8ba67qt3m9313f0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任何涉及到NaN的操作都返回NaN</a>
+</h3>
+<h3 class="topic">
+<a name="7cl0kmdsdrtmajeh1hg4i3ugos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NaN和任何都不相等，包括其本身</a>
+</h3>
+<h3 class="topic">
+<a name="04mlgccuqhdpcg22gugat4eahb">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isNaN() 检测参数是否是非数值</a>
+</h3>
+<h3 class="topic">
+<a name="1g8o4j1qfa7kcuhttsj284e70l">&nbsp;&nbsp;&nbsp;&nbsp;数值转换方法</a>
+</h3>
+<h3 class="topic">
+<a name="1097m89ptof1iiphc8o5jdlirt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Number（） 强制 用于任何数据类型</a>
+</h3>
+<h3 class="topic">
+<a name="4obrldjmudmc1o7o0uughpsk9a">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseInt（）</a>
+</h3>
+<h3 class="topic">
+<a name="4te5gj75o0e4cfr795vn80hv4v">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会忽略字符串前面的空格，直至找到第一个非空格的字符</a>
+</h3>
+<h3 class="topic">
+<a name="24uffjov74ddno4tqe1upms70e">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	转换空字符串为NaN</a>
+</h3>
+<h3 class="topic">
+<a name="2ko1hhregcv8bmkdeiunr42hrc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以接收第二个参数，表示转换时按照多少进制转换</a>
+</h3>
+<h3 class="topic">
+<a name="2n99kiarhc7q3r8s7foersprs4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parseFloat（）</a>
+</h3>
+<h3 class="topic">
+<a name="7pfr67unpq2oo0joicmku15rr9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除第一个小数点有效，其他小数点无效</a>
+</h3>
+<h3 class="topic">
+<a name="365l4js5lqmbh5s1pdnqe65g93">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;会忽略前导的0</a>
+</h3>
+<h3 class="topic">
+<a name="10ir77us8iddm9ipueua6s05b6">&nbsp;&nbsp;&nbsp;String</a>
+</h3>
+<h3 class="topic">
+<a name="2ka8c1dd1cls87v79pcuut4ur4">&nbsp;&nbsp;&nbsp;&nbsp;转换字符串的方法</a>
+</h3>
+<h3 class="topic">
+<a name="22kmgahbbodr0n5cov9t266odf">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str.toString（）</a>
+</h3>
+<h3 class="topic">
+<a name="5ujsagj508gggacj59jugrhm8r">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回str的一个副本</a>
+</h3>
+<h3 class="topic">
+<a name="63tsv155ub58ijt51ltcdmsnh4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str可以是number，Boolean，对象，字符串</a>
+</h3>
+<h3 class="topic">
+<a name="3bo1olsr0tb7cotk0sloitmkk1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在不知道要转换的值是否是null或者number时，可以使用String()函数，可以将任何类型的值转为字符串</a>
+</h3>
+<h3 class="topic">
+<a name="73qtupst825olatl6gpe1eape0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String（str）</a>
+</h3>
+<h3 class="topic">
+<a name="7qavapepj8om9ttu64c5tuaocq">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;强制转为字符串，类似于Number()</a>
+</h3>
+<h3 class="topic">
+<a name="6kfsee4l829n9ah6u39mt61i23">&nbsp;&nbsp;复杂数据类型</a>
+</h3>
+<h3 class="topic">
+<a name="2fs54u553ii1tqg5g4mukrqgg3">&nbsp;&nbsp;&nbsp;Object对象数据联系</a>
+</h3>
+<h3 class="topic">
+<a name="5bg265geciip7702ojlu8oijsk">&nbsp;&nbsp;typeof</a>
+</h3>
+<h3 class="topic">
+<a name="1auv4k2d95u5rv4tcm2ptf1jjs">&nbsp;&nbsp;&nbsp;typeof  变量/(变量)</a>
+</h3>
+<h3 class="topic">
+<a name="4thhjjd10f0qbvcu5s1jvv2mmc">&nbsp;&nbsp;&nbsp;返回string类型</a>
+</h3>
+<h3 class="topic">
+<a name="46q9cedbti8mcs7dem5sko835v">&nbsp;操作符</a>
+</h3>
+<h3 class="topic">
+<a name="3eobneu7mtbu1upt2k513ftjje">&nbsp;&nbsp;算术操作符</a>
+</h3>
+<h3 class="topic">
+<a name="2s0eencalopc7gc2stc8c8177v">&nbsp;&nbsp;&nbsp;++a 先a加，加后的a值在运算</a>
+</h3>
+<h3 class="topic">
+<a name="1amn0btnkd9bgtqalb3api7l53">&nbsp;&nbsp;&nbsp;a++  a先运算，在a递增</a>
+</h3>
+<h3 class="topic">
+<a name="7f1k8gtfa27m6rvfqk4fcvue8c">&nbsp;&nbsp;赋值操作符</a>
+</h3>
+<h3 class="topic">
+<a name="6nerh6kfa8d4lketik1eul07dp">&nbsp;&nbsp;比较操作符</a>
+</h3>
+<h3 class="topic">
+<a name="4h84fq6btr7ljnjmmd5po73vdv">&nbsp;&nbsp;三元操作符</a>
+</h3>
+<h3 class="topic">
+<a name="567nti6j6n8qd38il19t9to1ve">&nbsp;&nbsp;逻辑操作符</a>
+</h3>
+<h3 class="topic">
+<a name="456s3kigcloe1frm7pf6pmnde6">&nbsp;流程控制语句</a>
+</h3>
+<h3 class="topic">
+<a name="0qtp3pbl7l0r9g4cqs2hkd9smq">&nbsp;&nbsp;prompt（） 弹出输入框  点击确认，返回输入的内容 点击取消 返回null</a>
+</h3>
+<h3 class="topic">
+<a name="6jkr3tq7qp9jrba83obnbgec1n">&nbsp;&nbsp;获取日期的方法</a>
+</h3>
+<h3 class="topic">
+<a name="5on7qmj6uf5re1vi792atdpog8">&nbsp;&nbsp;&nbsp;new Date（）.getDay() 获取星期  返回：number（0-6）</a>
+</h3>
+<h3 class="topic">
+<a name="7h83t8u3714envqu0hr38gqs4p">&nbsp;&nbsp;switch：多条件判断</a>
+</h3>
+<h3 class="topic">
+<a name="4f4b0vnhi7fmc64gnhms0ousej">&nbsp;&nbsp;document.write() 向浏览器输出</a>
+</h3>
+<h3 class="topic">
+<a name="50k3rgpcip2r8i3mjq62s0rjt3">&nbsp;&nbsp;循环语句</a>
+</h3>
+<h3 class="topic">
+<a name="3f5ejbq7jfduc3k8vugh7agf8o">&nbsp;&nbsp;&nbsp;for</a>
+</h3>
+<h3 class="topic">
+<a name="3ijuml46evnkso9rn3nrtepues">&nbsp;&nbsp;&nbsp;do-while</a>
+</h3>
+<h3 class="topic">
+<a name="0vv5s3kjss589dtsnveiqqosae">&nbsp;&nbsp;&nbsp;循环嵌套</a>
+</h3>
+<h3 class="topic">
+<a name="5nv66chq1fklehe6ctrbru6ol3">&nbsp;&nbsp;&nbsp;&nbsp;外层为假的时候，内层不执行</a>
+</h3>
+<h3 class="topic">
+<a name="488fg06o05jab7p2ppj5a7fl9i">&nbsp;&nbsp;&nbsp;&nbsp;先执行外层再执行内层，直到内层为假的时候在执行外层</a>
+</h3>
+<h3 class="topic">
+<a name="56ckqqohns31a0l5p5tivg5f59">&nbsp;&nbsp;&nbsp;while</a>
+</h3>
+<h3 class="topic">
+<a name="5o8d6v8ti9mqrujkm2p72hv760">&nbsp;&nbsp;&nbsp;break  立即退出循环 ，循环不执行   continue  结束本次循环，继续下次循环</a>
+</h3>
+<h2 class="topic">
+<a name="3a0ogad54s2fjfq8phbas8vcgm">DOM</a>
+</h2>
+<h3 class="topic">
+<a name="1926p3t9e330lt9rug7dof8uqu">&nbsp;查找方法</a>
+</h3>
+<h3 class="topic">
+<a name="5d1n965erg68mnavmq4aagt5bh">&nbsp;&nbsp;doucment.getElementById("id名")</a>
+</h3>
+<h3 class="topic">
+<a name="41u5dpi425ltf89qh4fojuclcn">&nbsp;&nbsp;document.getElementsByTagName("标签名")</a>
+</h3>
+<h3 class="topic">
+<a name="5o396j2sfcicv7o0srj3th1voa">&nbsp;设置样式</a>
+</h3>
+<h3 class="topic">
+<a name="5o00gqdq3uekufj5iej1g5jt1m">&nbsp;&nbsp;ele.style.styleName=styleValue</a>
+</h3>
+<h3 class="topic">
+<a name="4duclbntdfqvd1m2n2cf7ahtfe">&nbsp;ele.innerHTML</a>
+</h3>
+<h3 class="topic">
+<a name="57ua1pe5lp0osc7aafo60flfog">&nbsp;&nbsp;返回ele元素开始与结束标签之间的文本和HTML内容</a>
+</h3>
+<h3 class="topic">
+<a name="3q6lrcf0kq4mmg5bb8h7esjuh3">&nbsp;className</a>
+</h3>
+<h3 class="topic">
+<a name="45ulv332g24c6scafpi02l5a71">&nbsp;&nbsp;返回ele元素的class属性</a>
+</h3>
+<h3 class="topic">
+<a name="6726kb33jlavrqkpvrupuolchq">&nbsp;操作属性</a>
+</h3>
+<h3 class="topic">
+<a name="7d1jsinfjgb9a86902n9m2qveb">&nbsp;&nbsp;getAttribute（&ldquo;html的属性值&rdquo;）</a>
+</h3>
+<h3 class="topic">
+<a name="4elndtra2hmavcmkqd1cgal0f8">&nbsp;&nbsp;setAttribute（&ldquo;属性值&rdquo;，&ldquo;value&rdquo;）</a>
+</h3>
+<h3 class="topic">
+<a name="46d5b98ap5jcf0fhc6v7bjnvbn">&nbsp;&nbsp;removeAttribute（&ldquo;属性值&rdquo;）</a>
+</h3>
+<h3 class="topic">
+<a name="10msmorcqonjmkli38ko5sm3n1">&nbsp;事件</a>
+</h3>
+<h3 class="topic">
+<a name="4r1tjerhdrmbquo215hk8t8m7i">&nbsp;&nbsp;HTML事件</a>
+</h3>
+<h3 class="topic">
+<a name="3j6hj5ou3q42jfc2etarrpfk7m">&nbsp;&nbsp;this指向</a>
+</h3>
+<h3 class="topic">
+<a name="2kn1qhsd0hbgsmcsumc1do17o5">&nbsp;&nbsp;&nbsp;在事件触发函数里面，this是对该DOM对象的引用</a>
+</h3>
+<h3 class="topic">
+<a name="28krj8qs92cjbk7hcillaqndem">&nbsp;&nbsp;DOM0级事件</a>
+</h3>
+<h3 class="topic">
+<a name="043713fbd2lcs7t54co7slv6lt">&nbsp;&nbsp;事件类型</a>
+</h3>
+<h3 class="topic">
+<a name="5pq7nd7tm1ibode7saegqqrhm2">&nbsp;&nbsp;&nbsp;鼠标事件</a>
+</h3>
+<h3 class="topic">
+<a name="3iqapive35eieje0eno0nvtu41">&nbsp;&nbsp;&nbsp;键盘事件</a>
+</h3>
+<h2 class="topic">
+<a name="57mgufhi3d9pim93p8kjhgv40c">内置对象</a>
+</h2>
+<h3 class="topic">
+<a name="0lrpl3i7h7ffn5hslnrr0v5vtq">&nbsp;Array</a>
+</h3>
+<h3 class="topic">
+<a name="21janjhk3n5t20kihqr68nbs1j">&nbsp;&nbsp;1 new Array（）  2 [字面量方式]</a>
+</h3>
+<h3 class="topic">
+<a name="2muquo4ce9dkifqt7ef1b49ab6">&nbsp;&nbsp;把一个值通过length插入在数组的末尾，会重新计算数组的长度</a>
+</h3>
+<h3 class="topic">
+<a name="2bcnq8vug026jijue2h8na39ri">&nbsp;&nbsp;数组的栈方法</a>
+</h3>
+<h3 class="topic">
+<a name="003mn6l44024n5hcb5j6peb8f4">&nbsp;&nbsp;&nbsp;push()</a>
+</h3>
+<h3 class="topic">
+<a name="6vi0rhr2elitc0cfbtnlsu2s8n">&nbsp;&nbsp;&nbsp;pop()</a>
+</h3>
+<h3 class="topic">
+<a name="3kmdve1libbq8vuqfkvgrsl6tl">&nbsp;&nbsp;&nbsp;shift()</a>
+</h3>
+<h3 class="topic">
+<a name="4cgtlln3ap9g939nplf9d638p3">&nbsp;&nbsp;&nbsp;unshift()</a>
+</h3>
+<h3 class="topic">
+<a name="5b6pfve9vmhtimooq5fbegehsm">&nbsp;&nbsp;转换方法</a>
+</h3>
+<h3 class="topic">
+<a name="2sde8rjmilktifq7achc20p8jf">&nbsp;&nbsp;&nbsp;join（[分隔符]默认是逗号），数组转字符串</a>
+</h3>
+<h3 class="topic">
+<a name="26if4ac0spgfm9k4bk89r3go96">&nbsp;&nbsp;&nbsp;重排序方法：reverse（）</a>
+</h3>
+<h3 class="topic">
+<a name="5a60tja3apuf5leu3t86s18h78">&nbsp;&nbsp;&nbsp;数组的排序方法：sort（）</a>
+</h3>
+<h3 class="topic">
+<a name="6c6kuu7lja43vgbt0rptd8rc5r">&nbsp;&nbsp;&nbsp;&nbsp;即使数组中的每一项都是数值，sort（）比较的也是字符串</a>
+</h3>
+<h3 class="topic">
+<a name="2evgt0gi90a4bt8ig54o7smnc2">&nbsp;&nbsp;&nbsp;&nbsp;可以接收一个比较函数作为参数</a>
+</h3>
+<h3 class="topic">
+<a name="7bm8q3gtcigs9j05krnvnd9blp">&nbsp;&nbsp;&nbsp;&nbsp;如果不使用参数，那么会按照字符编码（unicode编码）的顺序进行比较；将数组里面的项转为字符串</a>
+</h3>
+<h3 class="topic">
+<a name="68509fs7i9s6i2nsp8aju9l0gc">&nbsp;&nbsp;concat（arr1，arr2，arr3，....）：用于连接两个或者多个数组  返回连接好的数组</a>
+</h3>
+<h3 class="topic">
+<a name="6c2a4i0ge4raog0n2n4e6qht1m">&nbsp;&nbsp;slice（start，end）：从已有的数组中返回选定的元素 ，返回截取的数组</a>
+</h3>
+<h3 class="topic">
+<a name="1sa128t2foq489re3aakn4of7f">&nbsp;&nbsp;&nbsp;start（必须）：从数组的那个地方选取，如果是负数，就数组长度加上负数，就是开始位置</a>
+</h3>
+<h3 class="topic">
+<a name="1rv6ibcdd8mnp7h5bot8rhrtgb">&nbsp;&nbsp;&nbsp;end（可选）：从何处结束选取，是数组的下标</a>
+</h3>
+<h3 class="topic">
+<a name="262e89ojjg9112076m0m2dj331">&nbsp;&nbsp;面试题</a>
+</h3>
+<h3 class="topic">
+<a name="4ni4gukv4lonmgl7aa8odcatih">&nbsp;&nbsp;&nbsp;拷贝数组的方法</a>
+</h3>
+<h3 class="topic">
+<a name="1gsr11fd5gmhaetfdk2lg4dfua">&nbsp;&nbsp;&nbsp;封装一个indexOf方法</a>
+</h3>
+<h3 class="topic">
+<a name="7fhg2dlut5c2j8eqn0nk83qhga">&nbsp;&nbsp;数组功能最强大的方法：splice（）</a>
+</h3>
+<h3 class="topic">
+<a name="346d9mu2ftodl5elqflbna40cr">&nbsp;&nbsp;&nbsp;删除数组项</a>
+</h3>
+<h3 class="topic">
+<a name="555ov8g434j48klurkqannk01n">&nbsp;&nbsp;&nbsp;&nbsp;splice（index，count）</a>
+</h3>
+<h3 class="topic">
+<a name="4kibf6j9fu0spqkttltnfpce4s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count设置为0：表示不删除  不设置count：表示从index开始删除全部</a>
+</h3>
+<h3 class="topic">
+<a name="4o0oqhu8rp60lfle08chrl0gv7">&nbsp;&nbsp;&nbsp;&nbsp;删除从index处开始的0个或者多个元素，返回被删除的数组项</a>
+</h3>
+<h3 class="topic">
+<a name="1e8tvcjdd2njrc4hh8p9l6s5o9">&nbsp;&nbsp;&nbsp;插入数组项</a>
+</h3>
+<h3 class="topic">
+<a name="693k0fk2d20at1ksmckqlmn9rt">&nbsp;&nbsp;&nbsp;&nbsp;splice（index，0，item1，item2，....）</a>
+</h3>
+<h3 class="topic">
+<a name="48pdjunlus10s9jns8rre7ba6b">&nbsp;&nbsp;&nbsp;&nbsp;在index位置开始插入，0，表示要删除的项，item1-n表示要插入的项  返回空数组，原数组改变</a>
+</h3>
+<h3 class="topic">
+<a name="342at9j5v3u19180d86t2n0smi">&nbsp;&nbsp;&nbsp;替换数组项</a>
+</h3>
+<h3 class="topic">
+<a name="2gic228ivo9skceb320s7adrn5">&nbsp;&nbsp;&nbsp;&nbsp;splice（idnex，count，item1，......）</a>
+</h3>
+<h3 class="topic">
+<a name="2hfejj3dvj0n4hf5bq3mb2kar4">&nbsp;&nbsp;&nbsp;&nbsp;count:：表示删除的项，然后插入，返回被删除的项，原数组改变</a>
+</h3>
+<h3 class="topic">
+<a name="32cl7r9o3isjubfaupe4b5dspt">&nbsp;&nbsp;位置的方法</a>
+</h3>
+<h3 class="topic">
+<a name="5jvsjjbc8glpu104m6ru9s4kct">&nbsp;&nbsp;&nbsp;idnexOf（）</a>
+</h3>
+<h3 class="topic">
+<a name="2fk8gsrnokd3c29kaihn4bqdgm">&nbsp;&nbsp;&nbsp;&nbsp;indexOf（searchvalue，startIndex）</a>
+</h3>
+<h3 class="topic">
+<a name="1dvbv0d6ffib9hb0detffaoqcn">&nbsp;&nbsp;&nbsp;&nbsp;从数组的开头（位置0）开始向后查找  searchvalue（必须），要查找的项，startIndex（可选）起点索引的位置，返回查找的项在数组里面出现的位置，没有返回-1</a>
+</h3>
+<h3 class="topic">
+<a name="2e4dndusoaf83c51vmcdgklc61">&nbsp;&nbsp;&nbsp;lastIndexOf（）</a>
+</h3>
+<h3 class="topic">
+<a name="5h14rltqh97ku053ak7rv8d22u">&nbsp;&nbsp;&nbsp;&nbsp;lastIndexOf（searchvalue，startIndex）</a>
+</h3>
+<h3 class="topic">
+<a name="6bcbqlnobjktir195tsrblorfc">&nbsp;&nbsp;&nbsp;&nbsp;从数组的末尾开始查找，也是第一次出现的位置，比较的时候是全等比较===</a>
+</h3>
+<h3 class="topic">
+<a name="34det3oq1tvcddf9l4qf0tpo7r">&nbsp;String</a>
+</h3>
+<h3 class="topic">
+<a name="2vusia1spp11o752u086s75a8i">&nbsp;&nbsp;charAt（） 和 charCodeAt（）</a>
+</h3>
+<h3 class="topic">
+<a name="03q7cdpid2op7ijt9d2lf0bmsd">&nbsp;&nbsp;indexOf （）和 lastIndexOf（）</a>
+</h3>
+<h3 class="topic">
+<a name="4lg8qp5d44aq7tvvb3lfm7f20d">&nbsp;&nbsp;截取</a>
+</h3>
+<h3 class="topic">
+<a name="2dkp0co205uu9jiqd6fo6r0ef7">&nbsp;&nbsp;&nbsp;slice（）</a>
+</h3>
+<h3 class="topic">
+<a name="3vaatgd93fnm2s0851f9fppqel">&nbsp;&nbsp;&nbsp;substring（）</a>
+</h3>
+<h3 class="topic">
+<a name="2ve2ep6hl52trng0l9ad46emkp">&nbsp;&nbsp;&nbsp;substr（）</a>
+</h3>
+<h3 class="topic">
+<a name="3ku367a1k3qj0ss34k2eceoeqm">&nbsp;&nbsp;&nbsp;练习：封装一个函数，获取参数的后缀名，如abc.txt  返回txt</a>
+</h3>
+<h3 class="topic">
+<a name="1dihoejje1ah3ovfrf1k0toqcf">&nbsp;&nbsp;split（分隔符）</a>
+</h3>
+<h3 class="topic">
+<a name="212hk2r4lu9fsan5lcb592t6aj">&nbsp;&nbsp;replace（regexp/substr，replacment）</a>
+</h3>
+<h3 class="topic">
+<a name="6htf2q65m67kaaf4u11cp49m6c">&nbsp;&nbsp;大小写转换</a>
+</h3>
+<h3 class="topic">
+<a name="6fu3r3qlgi8uuki6co0sk6p25t">&nbsp;&nbsp;&nbsp;toUpperCase（）</a>
+</h3>
+<h3 class="topic">
+<a name="3c8c4lqclr4gkm3nhs1paohsf3">&nbsp;&nbsp;&nbsp;toLowerCase（）</a>
+</h3>
+<h3 class="topic">
+<a name="4mi8glkof2ln8lhc0fa7cov3t1">&nbsp;Math</a>
+</h3>
+<h3 class="topic">
+<a name="5vql55e2rm3vln4d1bar9hhfqm">&nbsp;&nbsp;min（）</a>
+</h3>
+<h3 class="topic">
+<a name="3nc88clgmai8a5cc1gl1i4vv5e">&nbsp;&nbsp;max（）</a>
+</h3>
+<h3 class="topic">
+<a name="0ejra7jet8io28gitddfgb79em">&nbsp;&nbsp;ceil（num） 向上取整  大于num的最小整数</a>
+</h3>
+<h3 class="topic">
+<a name="765c3kmlkouva2ht7ht3nom406">&nbsp;&nbsp;floor（num）向下取整  num的整数部分</a>
+</h3>
+<h3 class="topic">
+<a name="7l0gcjoti3g4v9ii79tq1chnfn">&nbsp;&nbsp;round（）  四舍五入  最接近的整数</a>
+</h3>
+<h3 class="topic">
+<a name="3gv6o8u6r7q5jl6khkccaokrv8">&nbsp;&nbsp;abs（） 绝对值</a>
+</h3>
+<h3 class="topic">
+<a name="6hdltq9arpaaiong9frc0lmulo">&nbsp;&nbsp;random（） 生成大于等于 0到1之间的随机数</a>
+</h3>
+<h3 class="topic">
+<a name="58i3b699k6419q08446sjbh2r6">&nbsp;Date</a>
+</h3>
+<h3 class="topic">
+<a name="337uuj86o997v4tmlvu30jj7tt">&nbsp;&nbsp;创建一个日期对象 new Date（） 不传参 默认返回当前的时间</a>
+</h3>
+<h3 class="topic">
+<a name="6uektnk4afu4u06753494t84i9">&nbsp;&nbsp;获取年月日分秒和星期</a>
+</h3>
+<h2 class="topic">
+<a name="3h3plmu3j5ealfih4dhppt9jaa">BOM</a>
+</h2>
+<h3 class="topic">
+<a name="25hhe9ff8ktelsodfgna5c7237">&nbsp;核心：window对象</a>
+</h3>
+<h3 class="topic">
+<a name="5v9bml7j33qthot60tfbbnmeqo">&nbsp;&nbsp;js访问浏览器窗口的一个接口，又是全局对象</a>
+</h3>
+<h3 class="topic">
+<a name="2g6ujrlo70k2ghn0s8l8huanp6">&nbsp;&nbsp;所有的全局变量和全局方法都归纳到window上</a>
+</h3>
+<h3 class="topic">
+<a name="6s83ieciu1oevc4li1ejquch0d">&nbsp;&nbsp;定时器</a>
+</h3>
+<h3 class="topic">
+<a name="2ooqthk4ghmr6m553sj346oqb2">&nbsp;&nbsp;&nbsp;超时调用</a>
+</h3>
+<h3 class="topic">
+<a name="14nud3r2t12siffeva6p7c6hmt">&nbsp;&nbsp;&nbsp;&nbsp;setTimeout（code，time）</a>
+</h3>
+<h3 class="topic">
+<a name="53c8rl80mabtb4r1evcigd2rtf">&nbsp;&nbsp;&nbsp;&nbsp;在指定的毫秒数后调用函数或者表达式，可以让code再次调用setTimeout来执行多次</a>
+</h3>
+<h3 class="topic">
+<a name="4ct5i0nso7g96egmvil1qgc42b">&nbsp;&nbsp;&nbsp;&nbsp;clearTimeout（）</a>
+</h3>
+<h3 class="topic">
+<a name="13k4rgg1rld3v0c983gbcduqha">&nbsp;&nbsp;&nbsp;间歇调用</a>
+</h3>
+<h3 class="topic">
+<a name="4sbq4v3e4a9qrc1a9csisvpeq7">&nbsp;&nbsp;&nbsp;&nbsp;setInterval（code，time）</a>
+</h3>
+<h3 class="topic">
+<a name="15c1hb9848thakjudja63bjmme">&nbsp;&nbsp;&nbsp;&nbsp;每隔指定时间执行一次</a>
+</h3>
+<h3 class="topic">
+<a name="6uif453p88ft5n6trs66guoh9r">&nbsp;&nbsp;&nbsp;&nbsp;clearInterval（）</a>
+</h3>
+<h3 class="topic">
+<a name="7cdtjc7qrftk5afk1m9f1m9u50">&nbsp;location对象</a>
+</h3>
+<h3 class="topic">
+<a name="2kc1jovgfokakipm7tmgeptup4">&nbsp;&nbsp;与当前窗口加载的文档的有关信息，既是window属性，又是document的属性</a>
+</h3>
+<h3 class="topic">
+<a name="1cj6kgueg3fjpts9nffq0g7nbf">&nbsp;&nbsp;location.href</a>
+</h3>
+<h3 class="topic">
+<a name="0ougtined49f33236h2i3spkq4">&nbsp;&nbsp;&nbsp;返回当前加载页面的完整的URL</a>
+</h3>
+<h3 class="topic">
+<a name="1k144su31360no0au1iufo8k58">&nbsp;&nbsp;location.hash</a>
+</h3>
+<h3 class="topic">
+<a name="22htn5oqivuuk93q80ika93ips">&nbsp;&nbsp;&nbsp;返回URL中的hash（#号后跟零或多个字符），如果不包含，则返回空字符串</a>
+</h3>
+<h3 class="topic">
+<a name="0di2cdphossbjv5s1tjlvtgbua">&nbsp;&nbsp;location.host</a>
+</h3>
+<h3 class="topic">
+<a name="15cbqced9qf6a5o9jrtjs7h7nj">&nbsp;&nbsp;&nbsp;返回服务器名称和[端口号]</a>
+</h3>
+<h3 class="topic">
+<a name="0ckbqb5onptfkngf828ooad6jr">&nbsp;&nbsp;location.hostname</a>
+</h3>
+<h3 class="topic">
+<a name="7jh4o1b9a4333sfb69epck9eke">&nbsp;&nbsp;&nbsp;返回服务器名称，不带端口号</a>
+</h3>
+<h3 class="topic">
+<a name="7dc3dsma8pnv49724c6gaj7op1">&nbsp;&nbsp;location.pathname</a>
+</h3>
+<h3 class="topic">
+<a name="6mch5rr2kmrdr3gb6t7lok7th4">&nbsp;&nbsp;&nbsp;返回URL中的目录和文件名</a>
+</h3>
+<h3 class="topic">
+<a name="03bsnr90avcvan79aa0j22h558">&nbsp;&nbsp;location.replace（url）</a>
+</h3>
+<h3 class="topic">
+<a name="170urvp9s3a8vbstebiq5ruhp8">&nbsp;&nbsp;&nbsp;重新定向URL，不会出现在历史记录里面</a>
+</h3>
+<h3 class="topic">
+<a name="40fs7m5ikti274cv8j1rqc9gib">&nbsp;&nbsp;location.reload</a>
+</h3>
+<h3 class="topic">
+<a name="6pcd72hsthdrunnvntpv6h9n7r">&nbsp;&nbsp;&nbsp;重新加载当前显示页面，有可能从缓存中加载，传入参数true的时候，从服务器重新加载</a>
+</h3>
+<h3 class="topic">
+<a name="1m1at2lg72s22md6mgp1j61oak">&nbsp;&nbsp;location.search</a>
+</h3>
+<h3 class="topic">
+<a name="7c3r04s75ljp56e081a0s78so8">&nbsp;history对象</a>
+</h3>
+<h3 class="topic">
+<a name="5ienvuvv9onclik01ntobmstbh">&nbsp;&nbsp;保存用户在浏览器中访问页面的历史记录</a>
+</h3>
+<h3 class="topic">
+<a name="3c6bpmiq6evc328cb2nk8u9v3k">&nbsp;&nbsp;history.back（）</a>
+</h3>
+<h3 class="topic">
+<a name="7pkacof4v46nsok6j4qam0ht1n">&nbsp;&nbsp;&nbsp;回到历史记录的上一步</a>
+</h3>
+<h3 class="topic">
+<a name="5j3ru4l7uo120vqevs2g0l1i87">&nbsp;&nbsp;&nbsp;相当于history.go（-1）</a>
+</h3>
+<h3 class="topic">
+<a name="4evhru0f7kc00gpasmmcbgaugc">&nbsp;&nbsp;history.forward（）</a>
+</h3>
+<h3 class="topic">
+<a name="7ef0t2se3timd1masrfibftiou">&nbsp;&nbsp;&nbsp;回到历史记录的下一步</a>
+</h3>
+<h3 class="topic">
+<a name="2bg067dhhhmlj3fkp56onr7efe">&nbsp;&nbsp;&nbsp;相当于history.go（1）</a>
+</h3>
+<h3 class="topic">
+<a name="1gdra6fmbslvuc94t4gasohosk">&nbsp;&nbsp;history.go（-n）</a>
+</h3>
+<h3 class="topic">
+<a name="6othnj77nb9vaom3gkpqomkdeq">&nbsp;&nbsp;&nbsp;回到历史记录的前n步</a>
+</h3>
+<h3 class="topic">
+<a name="4cejlvgh0b85dnf8r760d9ftmr">&nbsp;&nbsp;history.go（n）</a>
+</h3>
+<h3 class="topic">
+<a name="4njlioe1je90bmnif21pupusrr">&nbsp;&nbsp;&nbsp;回到历史记录的后n步</a>
+</h3>
+<h3 class="topic">
+<a name="4nqhjd2tpjhd07032r1v5018is">&nbsp;screen对象</a>
+</h3>
+<h3 class="topic">
+<a name="4jcihfrg870hh737ck859fua3a">&nbsp;&nbsp;包含客户端显示屏的相关信息</a>
+</h3>
+<h3 class="topic">
+<a name="3e7q2jekvug5rl4qtdcu6b5v0i">&nbsp;&nbsp;screen.availWidth</a>
+</h3>
+<h3 class="topic">
+<a name="3l3nl0srhk9fdl3pkkkt7db8kc">&nbsp;&nbsp;&nbsp;返回可用的屏幕宽度</a>
+</h3>
+<h3 class="topic">
+<a name="0poqbchhksmtejkm6gvt4m8oq9">&nbsp;&nbsp;screen.availHeight</a>
+</h3>
+<h3 class="topic">
+<a name="0g3r4rcb6bv91nfc2lhf0aueq7">&nbsp;&nbsp;&nbsp;返回可用屏幕的高度</a>
+</h3>
+<h3 class="topic">
+<a name="6todn9o22qmru9os9q91mr4l2t">&nbsp;Navigator对象</a>
+</h3>
+<h3 class="topic">
+<a name="03joldlb46qr12tif5i5c60hks">&nbsp;&nbsp;UserAgent属性</a>
+</h3>
+<h3 class="topic">
+<a name="0iu51c7h4srgg0r0r4icmcqc4k">&nbsp;&nbsp;&nbsp;识别浏览器名称，版本，引擎和操作系统的内容</a>
+</h3>
+<h2 class="topic">
+<a name="13a6jdvs0asodeliq28gtcq1n8">组成</a>
+</h2>
+<h3 class="topic">
+<a name="3338l5s63tavslos0mhi5jfv84">&nbsp;ECMAScript（语法）</a>
+</h3>
+<h3 class="topic">
+<a name="43j9eqrncqab26mdhddflqss1t">&nbsp;DOM</a>
+</h3>
+<h3 class="topic">
+<a name="1a37l1g8776in6su9fbg3hau11">&nbsp;&nbsp;操作和访问网页内容的接口</a>
+</h3>
+<h3 class="topic">
+<a name="1j01c58m9jjlonvevo4jko8vfb">&nbsp;BOM</a>
+</h3>
+<h3 class="topic">
+<a name="6k4339vr37oa83kqfm9djcaa8e">&nbsp;&nbsp;浏览器交互的接口</a>
+</h3>
+<h2 class="topic">
+<a name="10flhkgkutpb2ema2u79o1tqrj">函数</a>
+</h2>
+<h3 class="topic">
+<a name="2el9hvqa4i4imhdlm1nig0jheh">&nbsp;return</a>
+</h3>
+<h3 class="topic">
+<a name="4mhhnfoqf6e3r4quiikm93bcl6">&nbsp;&nbsp;会在执行完return语句之后停止，并退出</a>
+</h3>
+<h3 class="topic">
+<a name="5nr46sneahltps2kremh37ms2j">&nbsp;&nbsp;可以不带返回值，用于提前退出函数</a>
+</h3>
+<h3 class="topic">
+<a name="1rd1caf13235v9u95c48b6v7qo">&nbsp;arguments</a>
+</h3>
+<h3 class="topic">
+<a name="62ur4gokf0cka35ulrpsi8be1v">&nbsp;&nbsp;与数组类似</a>
+</h3>
+<h3 class="topic">
+<a name="6a4op2dltmrb2106qqgbckareq">&nbsp;&nbsp;可以访问函数里面的参数</a>
+</h3>
+<h3 class="topic">
+<a name="5ak91684m639ej1ueo3mbqfa75">&nbsp;子主题 3</a>
+</h3>
+<h3 class="topic">
+<a name="2b8a1u3fap4p20g6osfe3bdtg4">&nbsp;子主题 4</a>
+</h3>
+</body>
+</html>
