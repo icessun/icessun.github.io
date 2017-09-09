@@ -209,8 +209,7 @@
 </ul>
 </li>
 </ul>
-<p>####创建对象</p>
-<blockquote>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><blockquote>
 <p>以前使用的创建对象的方法（直接new Object和字面量），有明显的缺点：会出现大量冗余的代码。</p>
 </blockquote>
 <h5 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h5><blockquote>
