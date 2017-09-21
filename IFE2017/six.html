@@ -31,6 +31,13 @@
         span {
             display: inline-block;
         }
+
+        .lineHeight{
+           color: #fff;
+            background-color: #01b171;
+            border-radius: 3px;
+            border: 1px solid #1f6c98;
+        }
     </style>
 </head>
 <body>
@@ -56,17 +63,21 @@
     var btnLeftOut = document.getElementById("btn-3");
     var btnRightIn = document.getElementById("btn-2");
     var btnRightOut = document.getElementById("btn-4");
+    var btnCheckData = document.getElementById("input-check");
+    var btnCheck = document.getElementById("btn-check");
     var btnSpan = "";
+    // 批量输入
+    var showDataA="";
 
-    btnLeftIn.onclick = function () {
-        if (btnInput.value == '') {
-            alert("pleas enter content,you just click");
-        } else {
-
+    function getDataLeft() {
+         showDataA = btnInput.value.split(/[,，.。、\s]/);
+        for (var i = 0; i < showDataA.length; i++) {
+            if (showDataA[i] == "") {
+                continue;
+            }
             var showDataS = document.createElement("span");
             showDataS.className = "showData";
-            showDataS.innerHTML = btnInput.value;
-
+            showDataS.innerHTML = showDataA[i];
             if (!showData.children.length) {
                 showData.appendChild(showDataS);
                 btnInput.value = "";
@@ -75,7 +86,30 @@
                 showData.insertBefore(showDataS, showData.children[0]);
                 btnInput.value = "";
             }
+        }
 
+    }
+
+    function getDataRight() {
+        showDataA = btnInput.value.split(/[,，.。、\s]/);
+        for (var i = 0; i < showDataA.length; i++) {
+            if (showDataA[i] == "") {
+                continue;
+            }
+            var showDataS = document.createElement("span");
+            showDataS.className = "showData";
+            showDataS.innerHTML = showDataA[i];
+            showData.appendChild(showDataS);
+            btnInput.value = "";
+        }
+
+    }
+
+    btnLeftIn.onclick = function () {
+        if (btnInput.value == '') {
+            alert("pleas enter content,you just click");
+        } else {
+            getDataLeft();
             clickSpan();
         }
     }
@@ -84,11 +118,8 @@
         if (btnInput.value == '') {
             alert("pleas enter content,you just click");
         } else {
-            var showDataS = document.createElement("span");
-            showDataS.className = "showData";
-            showDataS.innerHTML = btnInput.value;
-            showData.appendChild(showDataS);
-            btnInput.value = "";
+
+            getDataRight();
         }
 
         clickSpan();
@@ -125,14 +156,15 @@
             })(i);
         }
     }
-
-    //    获取textarea里面的数据，根据其分隔符拆分字符串
-    function getInputData() {
-        var textData = showData.innerHTML; //获取show里面的所有span标签和内容
-
-
+    
+    btnCheck.onclick=function () {
+        var checkData=btnCheckData.value;
     }
 
+    // 模糊查询
+    function queryData() {
+        
+    }
 
 </script>
 </body>
