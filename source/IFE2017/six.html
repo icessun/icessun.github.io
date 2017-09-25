@@ -69,6 +69,8 @@
     // 批量输入
     var showDataA="";
 
+    var showSpan=document.querySelectorAll(".showData");
+
     function getDataLeft() {
          showDataA = btnInput.value.split(/[,，.。、\s]/);
         for (var i = 0; i < showDataA.length; i++) {
@@ -159,11 +161,22 @@
     
     btnCheck.onclick=function () {
         var checkData=btnCheckData.value;
+         queryData(checkData);
     }
 
     // 模糊查询
-    function queryData() {
-        
+    function queryData(data) {
+        var nodes=showData.children;
+        console.log(nodes);
+        for(var i=0;i<nodes.length;i++){
+            if(nodes[i].innerText.indexOf(data)){
+                  nodes[i].setAttribute("className","lineHeight");
+            }else {
+                alert("没有查到数据")
+            }
+//            console.log(showSpan[att].innerText.indexOf(data))
+
+        }
     }
 
 </script>
