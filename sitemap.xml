@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://icessun.github.io/books/index.html</loc>
+    
+    <lastmod>2017-09-25T01:26:01.642Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://icessun.github.io/%E7%BA%AA%E5%BF%B5%E6%89%8B%E6%9C%BA%E5%8D%A1.html</loc>
     
     <lastmod>2017-09-21T01:48:10.676Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://icessun.github.io/Canvas%E8%A7%A3%E8%AF%BB.html</loc>
     
     <lastmod>2017-08-24T09:19:11.203Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://icessun.github.io/books/index.html</loc>
-    
-    <lastmod>2017-08-21T05:40:08.500Z</lastmod>
     
   </url>
   
