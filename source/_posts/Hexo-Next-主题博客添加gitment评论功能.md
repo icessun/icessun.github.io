@@ -167,6 +167,15 @@ type: "about"
 comments: false  // 加一个false
 ```
 
+- 对于新的文章，首先要使用github帐号登入，初始化评论
+
+
+![初始化评论](http://upload-images.jianshu.io/upload_images/1811036-8407c0cafc465e49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+这样就可以评论了
+
+
+
 参考：
 - https://meesong.github.io/StaticBlog/2017/NexT+Gitment/
 - https://zonghongyan.github.io/2017/06/29/201706292034/
