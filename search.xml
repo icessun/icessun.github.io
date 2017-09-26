@@ -6,6 +6,7 @@
       <title><![CDATA[Hexo Next 主题博客添加gitment评论功能]]></title>
       <url>/Hexo-Next-%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD.html</url>
       <content type="html"><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>随着国内主流了评论服务<code>多说，网易云跟帖</code>，停止服务，也折腾过<code>Disqus</code>，国内还不能访问，加载速度较慢；既然我是使用<code>github</code>搭建的网站，那么使用<code>github issues</code>作为评论的工具也是可以接受的，在网上找到工具：<code>gitment</code></p>
+<a id="more"></a>
 <p><a href="https://github.com/imsun" target="_blank" rel="external">作者原话</a>：</p>
 <blockquote>
 <p><a href="https://github.com/imsun/gitment" target="_blank" rel="external">Gitment</a> 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-09-26T07:40:52.544Z</updated>
+  <updated>2017-09-26T07:44:08.221Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://icessun.github.io/Hexo-Next-%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD.html"/>
     <id>http://icessun.github.io/Hexo-Next-主题博客添加gitment评论功能.html</id>
     <published>2017-09-26T07:37:30.000Z</published>
-    <updated>2017-09-26T07:40:52.544Z</updated>
+    <updated>2017-09-26T07:44:08.221Z</updated>
     
     <content type="html"><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>随着国内主流了评论服务<code>多说，网易云跟帖</code>，停止服务，也折腾过<code>Disqus</code>，国内还不能访问，加载速度较慢；既然我是使用<code>github</code>搭建的网站，那么使用<code>github issues</code>作为评论的工具也是可以接受的，在网上找到工具：<code>gitment</code></p>
+<a id="more"></a>
 <p><a href="https://github.com/imsun" target="_blank" rel="external">作者原话</a>：</p>
 <blockquote>
 <p><a href="https://github.com/imsun/gitment" target="_blank" rel="external">Gitment</a> 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
@@ -73,7 +74,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h3&gt;&lt;p&gt;随着国内主流了评论服务&lt;code&gt;多说，网易云跟帖&lt;/code&gt;，停止服务，也折腾过&lt;code&gt;Disqus&lt;/code&gt;，国内还不能访问，
+      &lt;h3 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h3&gt;&lt;p&gt;随着国内主流了评论服务&lt;code&gt;多说，网易云跟帖&lt;/code&gt;，停止服务，也折腾过&lt;code&gt;Disqus&lt;/code&gt;，国内还不能访问，加载速度较慢；既然我是使用&lt;code&gt;github&lt;/code&gt;搭建的网站，那么使用&lt;code&gt;github issues&lt;/code&gt;作为评论的工具也是可以接受的，在网上找到工具：&lt;code&gt;gitment&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
