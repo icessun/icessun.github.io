@@ -13,6 +13,9 @@ categories: 读书笔记
 ### 引言
 随着国内主流了评论服务`多说，网易云跟帖`，停止服务，也折腾过`Disqus`，国内还不能访问，加载速度较慢；既然我是使用`github`搭建的网站，那么使用`github issues`作为评论的工具也是可以接受的，在网上找到工具：`gitment`
 
+
+<!-- more -->
+
 [作者原话](https://github.com/imsun)：
 > [Gitment](https://github.com/imsun/gitment) 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。
 
