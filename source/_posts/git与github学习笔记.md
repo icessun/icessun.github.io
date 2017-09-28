@@ -302,8 +302,4 @@ $ git config --global alias.last 'log -1 HEAD' // 要看最后一次的提交信
 > 参考资料[廖雪峰网站git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 [git pro](http://iissnan.com/progit/html/zh/ch2_5.html)
 
-<div id="music163player">
 
-   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
-
-</div>

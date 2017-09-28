@@ -179,7 +179,4 @@ function changeColor(){
 一般来说：一旦数据不再使用，最好手动将其设置为`null`，来释放其引用，适合大多数的全局变量和全局对象的属性。局部变量会在离开执行环境的时候自动解除引用。解除引用，是让值脱离执行环境，等待垃圾回收运行将其回收。
 
 
-<div id="music163player">
-   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
 
-</div>

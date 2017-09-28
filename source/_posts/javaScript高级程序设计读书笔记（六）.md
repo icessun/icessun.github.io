@@ -371,8 +371,3 @@ SubType.prototype={
  > 引用类型的问题，引用类型的原型属性会被所有实例共享，也就为什么要在构造函数里面定义属性的原因。通过原型来实现继承的时候，原型实际上会变成另一个类型的实例，故原来的实例属性也就顺理成章的变成现在的原型属性了；还有就是在创建子类型的实例时候，不能向超类的构造函数中传递参数。
  
  
- 
-<div id="music163player">
-   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe>
-
-</div>
