@@ -161,7 +161,12 @@
     
     btnCheck.onclick=function () {
         var checkData=btnCheckData.value;
-         queryData(checkData);
+        if(! checkData){
+            queryData(checkData);
+        }else{
+            alert("pls ")
+        }
+
     }
 
     // 模糊查询

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-09-26T07:59:07.976Z</updated>
+  <updated>2017-09-28T02:18:19.350Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -16,11 +16,85 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>全屏滚动插件----fullPage的使用</title>
+    <link href="http://icessun.github.io/%E5%85%A8%E5%B1%8F%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6-fullPage%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
+    <id>http://icessun.github.io/全屏滚动插件-fullPage的使用.html</id>
+    <published>2017-09-28T02:04:02.000Z</published>
+    <updated>2017-09-28T02:18:19.350Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>fullPage.js 是一个基于 jQuery 的插件，它能够很方便、很轻松的制作出全屏网站</p>
+</blockquote>
+<h4 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h4><ul>
+<li>支持鼠标滚动</li>
+<li>支持前进后退和键盘控制</li>
+<li>多个回调函数</li>
+<li>支持手机、平板触摸事件</li>
+<li>支持 CSS3 动画</li>
+<li>支持窗口缩放</li>
+<li>窗口缩放时自动调整</li>
+<li>可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等</li>
+</ul>
+<h4 id="兼容性："><a href="#兼容性：" class="headerlink" title="兼容性："></a>兼容性：</h4><blockquote>
+<p>支持jquery 1.7+，浏览器支持IE8+，Chrome，Firefox，Opera，Safari。</p>
+</blockquote>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ul>
+<li><p>引入文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/jquery.fullPage.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- jquery.easings.min.js 用于 easing 参数，也可以使用完整的 jQuery UI 代替，如果不需要设置 easing 参数，可去掉改文件 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.easings.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 如果 scrollOverflow 设置为 true，则需要引入 jquery.slimscroll.min.js，一般情况下不需要 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.slimscroll.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.fullPage.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>HTML文件</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"fullpage"</span> <span class="built_in">class</span>=<span class="string">"fullpage"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">111</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">2222</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">3333</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">4444</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">5555</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">6666</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>每一屏是一个section，默认显示第一屏，要想指定显示那一屏，可以在对应的section加上class=“active”；如：<br><code>&lt;div class=&#39;section active&#39;&gt;第二屏&lt;/div&gt;</code><br>接着，要想在一屏里面在内嵌一个屏，也就是一屏里面再有好几屏在显示，可以在section中添加slide，如：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">id</span>=<span class="string">"fullpage"</span> <span class="built_in">class</span>=<span class="string">"fullpage"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">111</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"slide"</span>&gt;第二屏里面的第一屏&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"slide"</span>&gt;第二屏里面的第二屏&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"slide"</span>&gt;第二屏里面的第三屏&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"slide"</span>&gt;第二屏里面的第四屏&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">3333</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">4444</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">5555</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"section"</span>&gt;<span class="number">6666</span>&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>Javascript调用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">'#fullpage'</span>).fullpage(</div><div class="line">       <span class="comment">// 一些配置选项</span></div><div class="line">     );</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="导航菜单的使用"><a href="#导航菜单的使用" class="headerlink" title="导航菜单的使用"></a>导航菜单的使用</h4><blockquote>
+<p>页面滚动时，导航栏也自动定位到导航栏对应的标签；当点击标签，自动滚动到对应的页面</p>
+<ul>
+<li>顶部导航菜单<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">导航栏结构：</div><div class="line"></div><div class="line">&lt;<span class="selector-tag">ul</span> id=<span class="string">"menu"</span>&gt;</div><div class="line">   &lt;<span class="selector-tag">li</span> data-menuanchor=<span class="string">"firstPage"</span> class=<span class="string">"menuList"</span>&gt;&lt;<span class="selector-tag">a</span> href=<span class="string">"#firstPage"</span>&gt;首页&lt;/a&gt;&lt;/li&gt;</div><div class="line">   &lt;<span class="selector-tag">li</span> data-menuanchor=<span class="string">"secondPage"</span> class=<span class="string">"menuList"</span>&gt;&lt;<span class="selector-tag">a</span> href=<span class="string">"#secondPage"</span>&gt;作品&lt;/a&gt;&lt;/li&gt;</div><div class="line">   &lt;<span class="selector-tag">li</span> data-menuanchor=<span class="string">"thirdPage"</span> class=<span class="string">"menuList"</span>&gt;&lt;<span class="selector-tag">a</span> href=<span class="string">"#thirdPage"</span>&gt;技能&lt;/a&gt;&lt;/li&gt;</div><div class="line">   &lt;<span class="selector-tag">li</span> data-menuanchor=<span class="string">"fourthPage"</span>class=<span class="string">"menuList"</span>&gt;&lt;<span class="selector-tag">a</span> href=<span class="string">"#fourthPage"</span>&gt;联系方式&lt;/a&gt;&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line"></div><div class="line">配置顶部导航栏：(写在fullpage外面，footer写在fullpage里面)</div><div class="line"></div><div class="line">$(<span class="string">"#fullpage"</span>).fullpage(&#123;</div><div class="line">     <span class="selector-tag">menu</span>:true,  <span class="comment">// 绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动</span></div><div class="line">     anchors:[<span class="string">"firstPage"</span>,<span class="string">"secondPage"</span>,<span class="string">"thirdPage"</span>,<span class="string">"fourthPage"</span>], <span class="comment">// 定义锚链接 导航栏显示的标签</span></div><div class="line">    </div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p><code>data-menuanchor</code>是<code>fullpage</code>要求的，连接的<code>herf</code>属性与前面<code>data-menuanchor</code>的值一一对应，配置里面的<code>anchors</code>与<code>data-menuanchor</code>一样，类似与<code>a</code>连接的锚点功能；最好是给菜单设置一个ID名，因为是唯一的，其实设置class名也是一样的。</p>
+<ul>
+<li>侧边导航菜单<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">需要在js里面进行配置</div><div class="line">$(<span class="string">"#fullpage"</span>).fullpage(&#123;</div><div class="line"><span class="symbol">     navigation:</span>true,  <span class="comment">// 是否显示项目导航</span></div><div class="line"><span class="symbol">      navigationPosition:</span><span class="string">"right"</span>, <span class="comment">// 项目导航的位置，可选 left 或 right</span></div><div class="line"><span class="symbol">     navigationTooltips:</span>[<span class="string">"简介"</span>,<span class="string">"项目"</span>,<span class="string">"技能"</span>,<span class="string">"联系方式"</span>], <span class="comment">//项目导航的 tip</span></div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>由于默认的侧边栏导航栏的颜色是白色，其有一个配置颜色的属性，但是好像不起作用，故待解决：<code>navigationColor</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-753f4b80b7eca704.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="侧边导航栏"></p>
+<h4 id="自定义section的高度"><a href="#自定义section的高度" class="headerlink" title="自定义section的高度"></a>自定义<code>section</code>的高度</h4><blockquote>
+<p>也就是<code>footer</code>的定义</p>
+</blockquote>
+<p> 实现自定义高度的<code>section</code>，在需要的<code>section</code>里面添加<code>.fp-auto-height</code>类，就可以实现自定义高度，不算在<code>section</code>的高度里面。当你直接在<code>section</code>里面添加<code>.fp-auto-height</code>类时，通过对齐添加高度，会发现高度设置没有成功。查阅网上的资料，说是在其<code>section</code>里面在添加一个div元素，通过设置div的样式，来控制高度：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">div</span> class=<span class="string">"section fp-auto-height"</span>&gt;</div><div class="line">        &lt;footer&gt;</div><div class="line">            我是页脚</div><div class="line">        &lt;/footer&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line"></div><div class="line"><span class="selector-class">.fp-auto-height</span> footer&#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">400px</span>;    <span class="comment">// 成功</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="页脚和上一屏出现留白的问题"><a href="#页脚和上一屏出现留白的问题" class="headerlink" title="页脚和上一屏出现留白的问题"></a>页脚和上一屏出现留白的问题</h4><blockquote>
+<p>顶部导航覆盖页面内容的问题：<code>paddingTop</code></p>
+</blockquote>
+<p>由于设置了<code>paddingTop</code>，可以使得一屏之间的内容与顶部导航栏有距离，但是也会产生页脚和上一屏出现留白的问题；对于这个问题，首先会想到通过单独设置其最后一屏的样式，去掉其<code>paddingTop</code>，结果发现没有作用，再想是否是重叠样式的等级不够，使用<code>style样式</code>也无济于事。</p>
+<p>故想，fullpage为其section添加paddingTop是否使用的js去修改添加，尝试使用js去覆盖其原本的样式，单独给其添加paddingTop：<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 解决导航底部覆盖页面内容的问题</div><div class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)&#123;</div><div class="line">   $(<span class="string">".section"</span>).e<span class="string">q(i)</span>,css(&#123;</div><div class="line">        paddingTop:<span class="string">"100px"</span>,</div><div class="line">   &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      fullPage
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://icessun.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="fullPage" scheme="http://icessun.github.io/tags/fullPage/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo Next 主题博客添加gitment评论功能</title>
     <link href="http://icessun.github.io/Hexo-Next-%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0gitment%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD.html"/>
     <id>http://icessun.github.io/Hexo-Next-主题博客添加gitment评论功能.html</id>
     <published>2017-09-26T07:37:30.000Z</published>
-    <updated>2017-09-26T07:59:07.976Z</updated>
+    <updated>2017-09-28T02:19:31.129Z</updated>
     
     <content type="html"><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>随着国内主流了评论服务<code>多说，网易云跟帖</code>，停止服务，也折腾过<code>Disqus</code>，国内还不能访问，加载速度较慢；既然我是使用<code>github</code>搭建的网站，那么使用<code>github issues</code>作为评论的工具也是可以接受的，在网上找到工具：<code>gitment</code></p>
 <a id="more"></a>
@@ -74,7 +148,6 @@
 <li><a href="https://meesong.github.io/StaticBlog/2017/NexT+Gitment/" target="_blank" rel="external">https://meesong.github.io/StaticBlog/2017/NexT+Gitment/</a></li>
 <li><a href="https://zonghongyan.github.io/2017/06/29/201706292034/" target="_blank" rel="external">https://zonghongyan.github.io/2017/06/29/201706292034/</a></li>
 </ul>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -95,7 +168,7 @@
     <link href="http://icessun.github.io/%E7%BA%AA%E5%BF%B5%E6%89%8B%E6%9C%BA%E5%8D%A1.html"/>
     <id>http://icessun.github.io/纪念手机卡.html</id>
     <published>2017-09-09T00:30:17.000Z</published>
-    <updated>2017-09-21T01:48:10.676Z</updated>
+    <updated>2017-09-28T02:19:31.189Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-fcc55bbcfc01cc7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="念"></p>
 <blockquote>
@@ -115,7 +188,6 @@
 <blockquote>
 <p>墓志铭：一生终于一人，远方的电话未接。<br>  猝于：丁酉鸡年 己酉月 丁酉日  白露<br>享年：1859天</p>
 </blockquote>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -136,7 +208,7 @@
     <link href="http://icessun.github.io/Canvas%E8%A7%A3%E8%AF%BB.html"/>
     <id>http://icessun.github.io/Canvas解读.html</id>
     <published>2017-08-24T09:17:51.000Z</published>
-    <updated>2017-08-24T09:19:11.203Z</updated>
+    <updated>2017-09-28T02:18:19.410Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><code>HTML5</code>新增的元素，可以在页面上使用<code>JavaScript</code>来控制，画出图形。</p>
@@ -177,7 +249,6 @@
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath(); </div><div class="line">ctx.arc(<span class="number">60</span>, <span class="number">60</span>, <span class="number">50</span>, <span class="number">0</span>, Math.<span class="literal">PI</span>*<span class="number">2</span>, true); </div><div class="line">ctx.lineWidth = <span class="number">1.0</span>; </div><div class="line">ctx.strokeStyle = <span class="string">"#000"</span>; </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -198,7 +269,7 @@
     <link href="http://icessun.github.io/screenX-Y%EF%BC%8CclientX-Y%E5%92%8CpageX-Y%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB.html"/>
     <id>http://icessun.github.io/screenX-Y，clientX-Y和pageX-Y之间有什么区别.html</id>
     <published>2017-08-16T06:29:26.000Z</published>
-    <updated>2017-08-16T06:31:36.068Z</updated>
+    <updated>2017-09-28T02:19:31.089Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-623f95e3ed6518a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图|网络"></p>
 <a id="more"></a>
@@ -224,7 +295,6 @@
 <p>也就是说，当浏览器没有滚动条的时候，pageX和clientX是一样的</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(</div><div class="line">    <span class="string">'page: '</span> + e.pageX + <span class="string">','</span> + e.pageY,</div><div class="line">    <span class="string">'client: '</span> + e.clientX + <span class="string">','</span> + e.clientY,</div><div class="line">    <span class="string">'screen: '</span> + e.screenX + <span class="string">','</span> + e.screenY)</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
 <p><a href="https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y?rq=1" target="_blank" rel="external">参考资料1</a><br><a href="https://www.quirksmode.org/dom/w3c_cssom.html#t03" target="_blank" rel="external">参考资料2</a></p>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -245,7 +315,7 @@
     <link href="http://icessun.github.io/%E6%B8%B8%E8%AE%B0-%E9%A6%99%E6%B8%AF.html"/>
     <id>http://icessun.github.io/游记-香港.html</id>
     <published>2017-08-10T03:27:11.000Z</published>
-    <updated>2017-08-10T03:33:29.632Z</updated>
+    <updated>2017-09-28T02:19:30.989Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-5111813fbf88752d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="维港夜景"></p>
 <a id="more"></a>
@@ -268,7 +338,6 @@
 <h4 id="午夜"><a href="#午夜" class="headerlink" title="午夜"></a>午夜</h4><p>从太平山顶下来，已经是凌晨了，<code>中环</code>的街道还是有不少的人，我们商量好去看大陆还没有上映的<code>银河护卫队2</code>，两小时的电影看完，感觉好困啊，走了一天，准备出发去维多利亚港，对，今天是周末，听别人说，一到了周末菲佣会出门聚会，但没想到是在大马路上露天野餐。果然在不远处看见了，吓死了。大半夜的在香港街头浪，你会发现，在一些天桥的上面，桥底都会有人在那睡觉，或者是拿把伞遮挡，或者是全身裹着黑色的衣服，只把眼睛漏出来，不知道是喝醉的，还是一些流浪的，最后走到了一个24小时营业的麦当劳，实在累了，就走进去，吃了点东西，休息。没错，我们没有在香港住旅馆，我们是在香港街头浪，碰见了好多警察叔叔，他们会在半夜出来巡逻，生怕被警察叔叔请出喝茶。在麦当劳里躲避<code>阿sir</code>是一个不错的选择。就这样，我们在麦当劳待了3个小时，到了早上6点，搭乘最早的地铁，出发去<code>将军澳</code>。</p>
 <h4 id="早上"><a href="#早上" class="headerlink" title="早上"></a>早上</h4><p>搭乘了最早的一班地铁，香港的地铁，设计很不错，给人一种舒适安宁的环境，一点没有匆忙的感觉。路过了久违的皇后大道；我们打算去将军澳的<code>华人永久坟场</code>，缅怀<code>黄家驹</code>。墓地所在地，面朝的维多利亚港，<br><img src="http://upload-images.jianshu.io/upload_images/1811036-555a0cceb2839dd9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="墓地外景"><br><img src="http://upload-images.jianshu.io/upload_images/1811036-60173e08b7b312c8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="皇后大道"></p>
 <p>但是上去是对一个人的考验，很陡，徒步上去肯定是非常的累，我们选择了徒步上去，诚心的缅怀黄家驹。可以看见一抹蓝，那就是黄家驹的墓地所在，本以为我们会是第一个到达，结果上去一看，发现有一个对于我们来说是妈妈级别的粉丝已经在给黄家驹扫墓了，见到我们来了后，张口就说了一句粤语，看见我们很茫然的表情，改口说了很烂的国语：“你们过来给黄家驹鞠躬。”，鞠完躬后，我们就一起帮助她打理墓地，交谈中，我们知道她已经听黄家驹的歌超过30年了，有时间就会来帮忙打理黄家驹的墓地，由于她现在有风湿病，腿脚不方便，现在来的少了，碰见了我们是缘分，一边打理着，一边交代我们，要是你们以后自己来了，应该怎么做，还向我们表达了对一些来到黄家驹墓地拍照，直播的行为的痛斥。她告诉我们，那只在黄家驹墓地上面盘旋的鸟，就是黄家驹的守卫者，我们按照她的吩咐，一丝不苟的忙碌着，墓地被我们打扫的很干净，前前后后花了两个小时，最后和这位年长的老人告别，我们搭乘大巴下山了，太累了。最后我们直接坐地铁到了罗湖，回到了深圳。<img src="http://ww2.sinaimg.cn/large/006HJ39wgy1ffdrbs04jlj30zk0qogn1.jpg" alt="香港地铁"><br>唯一的遗憾是没有去香港大学，希望下次去的时候，我的英语口语变的好一些，香港再会。<br><img src="http://upload-images.jianshu.io/upload_images/1811036-2af058d8272be109.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="标志性建筑"></p>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -289,7 +358,7 @@
     <link href="http://icessun.github.io/javaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89.html"/>
     <id>http://icessun.github.io/javaScript高级程序设计读书笔记（六）.html</id>
     <published>2017-08-10T02:57:20.000Z</published>
-    <updated>2017-09-09T06:32:56.167Z</updated>
+    <updated>2017-09-28T02:19:31.029Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>面向对象的程序设计，面向对象的语言有类的概念，通过类创造多个具有相同的属性和方法的对象。</p>
@@ -452,7 +521,7 @@
 </blockquote>
 </li>
 </ul>
-<div id="music163player"><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>]]></content>
+]]></content>
     
     <summary type="html">
     
@@ -474,7 +543,7 @@
     <link href="http://icessun.github.io/git%E4%B8%8Egithub%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>http://icessun.github.io/git与github学习笔记.html</id>
     <published>2017-08-08T09:22:05.000Z</published>
-    <updated>2017-08-15T03:37:39.030Z</updated>
+    <updated>2017-09-28T02:18:19.380Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/1811036-ba75eec40861687e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工作流图"></p>
 <a id="more"></a>
@@ -662,7 +731,6 @@
 <blockquote>
 <p>参考资料<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰网站git教程</a><br><a href="http://iissnan.com/progit/html/zh/ch2_5.html" target="_blank" rel="external">git pro</a></p>
 </blockquote>
-<div id="music163player"><br><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -683,14 +751,10 @@
     <link href="http://icessun.github.io/hello-world.html"/>
     <id>http://icessun.github.io/hello-world.html</id>
     <published>2017-08-07T07:12:42.142Z</published>
-    <updated>2017-08-03T09:12:29.150Z</updated>
+    <updated>2017-09-28T02:19:31.059Z</updated>
     
     <content type="html"><![CDATA[<h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1><p>Welcome to <a href="https://icessun.github.io/">icessun</a></p>
 <a id="more"></a>
-<div id="music163player"><br><br> <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br></div>
-
-
-
 ]]></content>
     
     <summary type="html">
@@ -707,7 +771,7 @@
     <link href="http://icessun.github.io/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89.html"/>
     <id>http://icessun.github.io/javascript高级程序设计读书笔记（四）.html</id>
     <published>2017-08-03T02:20:38.000Z</published>
-    <updated>2017-08-03T09:15:51.792Z</updated>
+    <updated>2017-09-28T02:19:30.959Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>  变量，作用域，和内存的问题</p>
@@ -884,7 +948,6 @@
 </ul>
 <p><code>IE9</code>把<code>BOM</code>和<code>DOM</code>对象都转换成真正的<code>JavaScript</code>对象。就避免了垃圾回收的问题，也消除了常见的内存泄漏现象。</p>
 <p>一般来说：一旦数据不再使用，最好手动将其设置为<code>null</code>，来释放其引用，适合大多数的全局变量和全局对象的属性。局部变量会在离开执行环境的时候自动解除引用。解除引用，是让值脱离执行环境，等待垃圾回收运行将其回收。</p>
-<div id="music163player"><br>   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br><br></div>
 ]]></content>
     
     <summary type="html">
@@ -907,7 +970,7 @@
     <link href="http://icessun.github.io/javascript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%94%EF%BC%89.html"/>
     <id>http://icessun.github.io/javascript高级程序设计读书笔记（五）.html</id>
     <published>2017-08-03T02:20:13.000Z</published>
-    <updated>2017-08-04T03:21:29.879Z</updated>
+    <updated>2017-09-28T02:19:31.229Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>  引用类型</p>
@@ -1205,7 +1268,6 @@ sayColor.call(o);  // blue
 </ul>
 </li>
 </ul>
-<div id="music163player"><br><br>  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br></div>
 ]]></content>
     
     <summary type="html">
@@ -1230,12 +1292,11 @@ sayColor.call(o);  // blue
     <link href="http://icessun.github.io/%E5%91%8A%E5%88%AB%E7%A7%8B%E5%8D%83.html"/>
     <id>http://icessun.github.io/告别秋千.html</id>
     <published>2017-08-01T03:58:00.000Z</published>
-    <updated>2017-08-14T08:22:58.745Z</updated>
+    <updated>2017-09-28T02:19:31.159Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1811036-5c11bf8da7b55777.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="秋千"></p>
 <blockquote class="blockquote-center"><br><br>我们习惯了沉湎于回忆，却忘了自己也在一点一点变旧。沾染尘埃，锈迹了生活。<br><br>听很多的歌，像吸食大量的鸦片。<br><br>震耳欲聋，乐此不疲。<br><br>耳膜在享受着肆虐的快感。心 ，却是寂寂的，不发一语。<br><br>暮色四拢的时候，总有飞机飞过。信号灯明灭着呼啸而去。<br><br>有人沉默的远去了，有人正急切的赶赴一场相聚。<br><br>高空上演绎着起伏的悲欢。<br><br>而我，能做的不过是紧了紧书包。<br><br>转身，面无表情。<br><br>心中沟壑千条，那些人那些事早已不复原貌。<br><br>只是这旧日的影子仍旧在徘徊着，鲜活的不似曾经。<br><br>东风摇百草，四顾何茫茫。<br><br>我是如此怀念亲爱的你们，以及一不小心就不见了的自己。<br><br>那时候烂漫无知的笑啊，胸无城府的小算计呀，傻里傻气的故弄清高。<br><br>沉醉了自己，撞进了谁人的眼里。<br><br>那些扬花三月般的时光，连同无知岁月里的欢笑、泪水。<br><br>就这样，一路跑着，留一串未明的歌谣，面容模糊的远去了。<br><br>当所有的悲伤逆袭而来，我连自嘲的勇气都没有。<br><br>于是，快乐的时候不再快乐，悲伤的时候仍旧悲伤。<br><br>青春，终究是一个人的过场。<br><br>一路丢盔弃甲，一路溃不成军。<br><br>成长，本就如人饮水，冷暖自知。<br><br>亦如人情，本就凉薄。<br><br>全身而退，到底是一种奢求。<br><br>——致面容模糊的过去<br><br><br><br><br><br></blockquote>
 
-<div id="music163player"><br>  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=22453837&auto=1&height=66"></iframe><br></div>
 ]]></content>
     
     <summary type="html">
