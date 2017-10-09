@@ -18,6 +18,7 @@ photos:
  - https://img3.doubanio.com/lpic/s6974202.jpg
  - https://img3.doubanio.com/lpic/s29068026.jpg
  - https://img3.doubanio.com/lpic/s27283822.jpg
+ - https://img3.doubanio.com/lpic/s28049685.jpg
 ---
 # 读过的书籍:
 > 2016,6,8
@@ -35,3 +36,4 @@ photos:
 - 史蒂夫·乔布斯传
 - 你从未真正拼过
 - 图解HTTP
+- 岛上书店
