@@ -161,27 +161,42 @@
     
     btnCheck.onclick=function () {
         var checkData=btnCheckData.value;
-        if(! checkData){
+        if(checkData){
             queryData(checkData);
         }else{
-            alert("pls ")
+            alert("pls enter search data! ")
         }
-
     }
 
     // 模糊查询
     function queryData(data) {
-        var nodes=showData.children;
-        console.log(nodes);
-        for(var i=0;i<nodes.length;i++){
-            if(nodes[i].innerText.indexOf(data)){
-                  nodes[i].setAttribute("className","lineHeight");
-            }else {
-                alert("没有查到数据")
-            }
-//            console.log(showSpan[att].innerText.indexOf(data))
 
-        }
+//        正则表达式
+        var reg=new RegExp(eval("/"+data+"/"));
+        var nodes=document.querySelectorAll("span");
+       if(  nodes.length){
+           for(var i=0;i<nodes.length;i++){
+               if(reg.test(nodes[i].innerHTML)){
+                   nodes[i].innerHTML=nodes[i].innerHTML.fontcolor("red");
+               }
+           }
+       }else{
+           alert("sorry,data not find");
+           console.log(1111)
+       }
+
+//
+//        var nodes=showData.children;
+//        console.log(nodes);
+//        for(var i=0;i<nodes.length;i++){
+//            if(nodes[i].innerText.indexOf(data)){
+//                  nodes[i].setAttribute("className","lineHeight");
+//            }else {
+//                alert("没有查到数据")
+//            }
+////            console.log(showSpan[att].innerText.indexOf(data))
+//
+//        }
     }
 
 </script>
