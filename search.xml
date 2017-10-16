@@ -3,6 +3,81 @@
   
     
     <entry>
+      <title><![CDATA[数据结构----堆栈和队列]]></title>
+      <url>/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97.html</url>
+      <content type="html"><![CDATA[<blockquote>
+<p> 从数据（事物）转移到结构（组织方式）</p>
+</blockquote>
+<p>数据是一种事物， 组织事物的方式方法有很多种，而这些方式方法就是我们所谓的结构；对于一个数据来说， 我们使用什么方式方法来组织这个数据，完全取决于我们的需求，不同类型的需求，会有不同类型的数据结构去满足。</p>
+<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><blockquote>
+<p>文本编辑器的“撤消”操作使用堆栈来组织数据</p>
+</blockquote>
+<ul>
+<li>线性的数据结构（按照顺序组织数据）</li>
+</ul>
+<p>堆栈示例：</p>
+<p>想象一下文本编辑器的撤销操作，每次将文本添加到文本编辑器中时，将此文本推入堆栈。文本编辑器的第一个加法器代表堆栈的底部; 最新的更改代表了堆栈的顶部。如果用户想要撤消最近的更改，则堆栈的顶部将被删除。这个过程可以重复，直到没有更多的堆栈添加，这是一个空白的文件！  </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1811036-065bdbb6556463e2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="堆栈结构---图解"></p>
+<ul>
+<li><p>堆栈的操作</p>
+<blockquote>
+<ul>
+<li><code>push(data)</code>：添加数据</li>
+<li><code>pop(data)</code>：删除最近添加的数据</li>
+</ul>
+</blockquote>
+</li>
+<li><p>堆栈代码的实现</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stack</span><span class="params">()</span></span>&#123;</div><div class="line">     <span class="keyword">this</span>._size=<span class="number">0</span>;   <span class="comment">// 数据推送到容器的次数</span></div><div class="line">     <span class="keyword">this</span>._storage=&#123; &#125;;  <span class="comment">// 存储数据的容器（堆栈）</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>创建了构造函数<code>Stack()</code>，其所产生的实例都具有上面两个属性<code>_size</code>和<code>_storage</code>。</p>
+<ul>
+<li><p>堆栈的方法</p>
+<ul>
+<li><p><code>push(data)</code></p>
+<blockquote>
+<p>为了 让所有的实例都能使用这个方法，将其添加到原型上。</p>
+</blockquote>
+<p>需求：</p>
+<ul>
+<li>添加数据时，增加堆栈的大小</li>
+<li>添加数据的时候，都保留添加的顺序</li>
+</ul>
+<pre><code>// 方法添加到原型，保证每一个实例都能使用
+Stack.prototype.push=function(data){
+     var size=this._size++;  // 每次添加一次数据，this._size增加1
+     this._storage[size]=data; // 把size作为堆栈的索引值，保存要存储的data
+}
+</code></pre><ul>
+<li><code>pop()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://code.tutsplus.com/articles/data-structures-with-javascript-stack-and-queue--cms-23348" target="_blank" rel="external">https://code.tutsplus.com/articles/data-structures-with-javascript-stack-and-queue--cms-23348</a></p>
+<p><a href="https://code.tutsplus.com/series/data-structures-in-javascript--cms-772" target="_blank" rel="external">https://code.tutsplus.com/series/data-structures-in-javascript--cms-772</a></p>
+</blockquote>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据结构 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[全屏滚动插件----fullPage的使用]]></title>
       <url>/%E5%85%A8%E5%B1%8F%E6%BB%9A%E5%8A%A8%E6%8F%92%E4%BB%B6-fullPage%E7%9A%84%E4%BD%BF%E7%94%A8.html</url>
       <content type="html"><![CDATA[<blockquote>
