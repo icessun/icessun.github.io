@@ -42,14 +42,12 @@
 <p>需求：</p>
 <ul>
 <li>添加数据时，增加堆栈的大小</li>
-<li>添加数据的时候，都保留添加的顺序</li>
-</ul>
-<pre><code>// 方法添加到原型，保证每一个实例都能使用
+<li>添加数据的时候，都保留添加的顺序<pre><code>// 方法添加到原型，保证每一个实例都能使用
 Stack.prototype.push=function(data){
-     var size=this._size++;  // 每次添加一次数据，this._size增加1
-     this._storage[size]=data; // 把size作为堆栈的索引值，保存要存储的data
+   var size=this._size++;  // 每次添加一次数据，this._size增加1
+   this._storage[size]=data; // 把size作为堆栈的索引值，保存要存储的data
 }
-</code></pre><ul>
+</code></pre></li>
 <li><code>pop()</code></li>
 </ul>
 </li>
