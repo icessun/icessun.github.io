@@ -136,7 +136,7 @@
 <meta property="og:description" content="数据结构----堆栈和队列">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1811036-065bdbb6556463e2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-10-20T07:44:18.556Z">
+<meta property="og:updated_time" content="2017-10-20T07:54:07.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构----堆栈和队列">
 <meta name="twitter:description" content="数据结构----堆栈和队列">
@@ -412,7 +412,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-20T15:44:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-20T15:54:07+08:00">
                 2017-10-20
               </time>
             
@@ -546,7 +546,7 @@
 <li>添加数据时，增加堆栈的大小</li>
 <li>添加数据的时候，都保留添加的顺序</li>
 </ul>
-<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// 方法添加到原型，保证每一个实例都能使用</span></div><div class="line">  Stack.prototype.push=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">         <span class="keyword">var</span> <span class="built_in">size</span>=++<span class="keyword">this</span>._size;  <span class="comment">// 每次添加一次数据，this._size增加1</span></div><div class="line">         <span class="keyword">this</span>._storage[<span class="built_in">size</span>]=data; <span class="comment">// 把size作为堆栈的索引值，保存要存储的data</span></div><div class="line">    &#125;</div><div class="line"> <span class="string">``</span><span class="string">` </span></div><div class="line">- `pop()<span class="string">`</span></div><div class="line">&gt; 删除最近添加的数据，减少`_this.size<span class="string">`一个，返回删除的数据</span></div></pre></td></tr></table></figure>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法添加到原型，保证每一个实例都能使用</span></div><div class="line"> Stack.prototype.push=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> <span class="built_in">size</span>=++<span class="keyword">this</span>._size;  <span class="comment">// 每次添加一次数据，this._size增加1</span></div><div class="line">        <span class="keyword">this</span>._storage[<span class="built_in">size</span>]=data; <span class="comment">// 把size作为堆栈的索引值，保存要存储的data</span></div><div class="line">   &#125;</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line">- `pop()<span class="string">`</span></div><div class="line"></div><div class="line">&gt; 删除最近添加的数据，减少`_this.size<span class="string">`一个，返回删除的数据</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>Stack.prototype.pop=function(){</p>
@@ -563,7 +563,7 @@ this.size--;
  return deleteData;
 }
 </code></pre><p>}</p>
- <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>堆栈的最终版本</div></pre></td></tr></table></figure>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>堆栈的最终版本</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>function Stack() {<br>    this._size = 0;<br>    this._storage = {};<br>}</p>
@@ -577,9 +577,11 @@ this.size--;
 
     return deletedData;
 }
-</code></pre><p>};<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">## 队列 （FIFO ）</div><div class="line">-<span class="ruby"> 线性数据结构</span></div><div class="line">-<span class="ruby"> 只删除最先的添加数据（最旧的数据）</span></div><div class="line">-<span class="ruby"> 队列的操作</span></div><div class="line">  -<span class="ruby"> <span class="string">`enqueue(data)`</span> ：将数据添加到队列中</span></div><div class="line">  -<span class="ruby"> <span class="string">`dequeue(data)`</span> ：将最先添加到的数据删除（最旧的数据删除）</span></div><div class="line"></div><div class="line">#### 执行队列</div></pre></td></tr></table></figure></p>
-<p>function Queue(){<br>     this._oldestIndex = 1; // 原先数据的索引（最早的索引）<br>     this._newstIndex = 1; //  队列分配的最大数字（动态的更新，表示队列的最新位置）<br>     this._storage = {};  // 存储空间大小<br>}<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">创建了一个构造函数`Queue`，然后，添加三个属性。</div><div class="line"></div><div class="line">-<span class="ruby"> 队列的方法</span></div><div class="line">   -<span class="ruby"> <span class="string">`size()`</span></span></div><div class="line">   &gt; 返回队列的正确大小</div></pre></td></tr></table></figure></p>
-<p>   Queue.prototype.size = function(){<br>           return this._newestIndex - this._oldestIndex ;<br>   }<br>   <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- `enqueue（data）`</div><div class="line"> </div><div class="line">&gt; 使用`this._newestIndex`作为一个`this._storage`，并且`this._newestIndex`增加<span class="number">1</span></div></pre></td></tr></table></figure></p>
+</code></pre><p>};</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 队列 （FIFO ）</div><div class="line"></div><div class="line">-<span class="ruby"> 线性数据结构</span></div><div class="line">-<span class="ruby"> 只删除最先的添加数据（最旧的数据）</span></div><div class="line">-<span class="ruby"> 队列的操作</span></div><div class="line">  -<span class="ruby"> <span class="string">`enqueue(data)`</span> ：将数据添加到队列中</span></div><div class="line">  -<span class="ruby"> <span class="string">`dequeue(data)`</span> ：将最先添加到的数据删除（最旧的数据删除）</span></div><div class="line"></div><div class="line">#### 执行队列</div></pre></td></tr></table></figure>
+<p>function Queue(){<br>     this._oldestIndex = 1; // 原先数据的索引（最早的索引）<br>     this._newstIndex = 1; //  队列分配的最大数字（动态的更新，表示队列的最新位置）<br>     this._storage = {};  // 存储空间大小<br>}<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">创建了一个构造函数`Queue`，然后，添加三个属性。</div><div class="line"></div><div class="line">-<span class="ruby"> 队列的方法</span></div><div class="line">   -<span class="ruby"> <span class="string">`size()`</span></span></div><div class="line">   </div><div class="line">   &gt; 返回队列的正确大小</div></pre></td></tr></table></figure></p>
+<p>   Queue.prototype.size = function(){<br>           return this._newestIndex - this._oldestIndex ;<br>   }</p>
+   <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- `enqueue（data）`</div><div class="line"> </div><div class="line">&gt; 使用`this._newestIndex`作为一个`this._storage`，并且`this._newestIndex`增加<span class="number">1</span></div></pre></td></tr></table></figure>
 <p>Queue.prototype.enqueue = function(data){<br>      this._storage[this._newestIndex] = data;<br>      this._newestIndex++;<br>}<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">使用`this._newestIndex`来创建新的位置，存放data数据，然后更新`this._newestIndex`的值。</div><div class="line"></div><div class="line">- `dequeue()`</div><div class="line"></div><div class="line">&gt; 删除队列中的最旧的数据，删除完后，更新`_oldestIndex`的值。</div></pre></td></tr></table></figure></p>
 <p>Queue.prototype.dequeue = function() {<br>    var oldestIndex = this._oldestIndex,<br>        newestIndex = this._newestIndex,<br>        deletedData;</p>
 <pre><code>if (oldestIndex !== newestIndex) {
