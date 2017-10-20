@@ -136,7 +136,7 @@
 <meta property="og:description" content="数据结构----堆栈和队列">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1811036-065bdbb6556463e2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-10-16T09:23:08.527Z">
+<meta property="og:updated_time" content="2017-10-20T07:44:18.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构----堆栈和队列">
 <meta name="twitter:description" content="数据结构----堆栈和队列">
@@ -412,8 +412,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-16T17:23:08+08:00">
-                2017-10-16
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-20T15:44:18+08:00">
+                2017-10-20
               </time>
             
           </span>
@@ -468,7 +468,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  494 字
+                  1,123 字
                 </span>
               
 
@@ -484,7 +484,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -511,7 +511,7 @@
 <p> 从数据（事物）转移到结构（组织方式）</p>
 </blockquote>
 <p>数据是一种事物， 组织事物的方式方法有很多种，而这些方式方法就是我们所谓的结构；对于一个数据来说， 我们使用什么方式方法来组织这个数据，完全取决于我们的需求，不同类型的需求，会有不同类型的数据结构去满足。</p>
-<h2 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h2><blockquote>
+<h2 id="堆栈-（LIFO-last-In-first-out）"><a href="#堆栈-（LIFO-last-In-first-out）" class="headerlink" title="堆栈 （LIFO last In first out）"></a>堆栈 （LIFO last In first out）</h2><blockquote>
 <p>文本编辑器的“撤消”操作使用堆栈来组织数据</p>
 </blockquote>
 <ul>
@@ -544,22 +544,74 @@
 <p>需求：</p>
 <ul>
 <li>添加数据时，增加堆栈的大小</li>
-<li>添加数据的时候，都保留添加的顺序<pre><code>// 方法添加到原型，保证每一个实例都能使用
-Stack.prototype.push=function(data){
-   var size=this._size++;  // 每次添加一次数据，this._size增加1
-   this._storage[size]=data; // 把size作为堆栈的索引值，保存要存储的data
+<li>添加数据的时候，都保留添加的顺序</li>
+</ul>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// 方法添加到原型，保证每一个实例都能使用</span></div><div class="line">  Stack.prototype.push=<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">         <span class="keyword">var</span> <span class="built_in">size</span>=++<span class="keyword">this</span>._size;  <span class="comment">// 每次添加一次数据，this._size增加1</span></div><div class="line">         <span class="keyword">this</span>._storage[<span class="built_in">size</span>]=data; <span class="comment">// 把size作为堆栈的索引值，保存要存储的data</span></div><div class="line">    &#125;</div><div class="line"> <span class="string">``</span><span class="string">` </span></div><div class="line">- `pop()<span class="string">`</span></div><div class="line">&gt; 删除最近添加的数据，减少`_this.size<span class="string">`一个，返回删除的数据</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Stack.prototype.pop=function(){</p>
+<pre><code> var size=this._size,
+          deleteData; // 连续定义了两个变量，一个初始化了(栈的大小)，一个未初始化
+
+// 放在先调用pop，后调用push，出现长度size为0 的错误，只有当存储数据的时候，才执行删除的操作
+</code></pre><p>if(size){</p>
+<pre><code> deleteData=this._storage[size]; // 初始化为最近添加的数据     
+
+  delete this._storage[size];
+this.size--;
+
+ return deleteData;
 }
-</code></pre></li>
-<li><code>pop()</code></li>
-</ul>
+</code></pre><p>}</p>
+ <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>堆栈的最终版本</div></pre></td></tr></table></figure>
 </li>
 </ul>
-</li>
-</ul>
-<blockquote>
-<p><a href="https://code.tutsplus.com/articles/data-structures-with-javascript-stack-and-queue--cms-23348" target="_blank" rel="external">https://code.tutsplus.com/articles/data-structures-with-javascript-stack-and-queue--cms-23348</a></p>
+<p>function Stack() {<br>    this._size = 0;<br>    this._storage = {};<br>}</p>
+<p>Stack.prototype.push = function(data) {<br>    var size = ++this._size;<br>    this._storage[size] = data;<br>};</p>
+<p>Stack.prototype.pop = function() {<br>    var size = this._size,<br>        deletedData;</p>
+<pre><code>if (size) {
+    deletedData = this._storage[size];
+
+    delete this._storage[size];
+    this._size--;
+
+    return deletedData;
+}
+</code></pre><p>};<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">## 队列 （FIFO ）</div><div class="line">-<span class="ruby"> 线性数据结构</span></div><div class="line">-<span class="ruby"> 只删除最先的添加数据（最旧的数据）</span></div><div class="line">-<span class="ruby"> 队列的操作</span></div><div class="line">  -<span class="ruby"> <span class="string">`enqueue(data)`</span> ：将数据添加到队列中</span></div><div class="line">  -<span class="ruby"> <span class="string">`dequeue(data)`</span> ：将最先添加到的数据删除（最旧的数据删除）</span></div><div class="line"></div><div class="line">#### 执行队列</div></pre></td></tr></table></figure></p>
+<p>function Queue(){<br>     this._oldestIndex = 1; // 原先数据的索引（最早的索引）<br>     this._newstIndex = 1; //  队列分配的最大数字（动态的更新，表示队列的最新位置）<br>     this._storage = {};  // 存储空间大小<br>}<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">创建了一个构造函数`Queue`，然后，添加三个属性。</div><div class="line"></div><div class="line">-<span class="ruby"> 队列的方法</span></div><div class="line">   -<span class="ruby"> <span class="string">`size()`</span></span></div><div class="line">   &gt; 返回队列的正确大小</div></pre></td></tr></table></figure></p>
+<p>   Queue.prototype.size = function(){<br>           return this._newestIndex - this._oldestIndex ;<br>   }<br>   <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- `enqueue（data）`</div><div class="line"> </div><div class="line">&gt; 使用`this._newestIndex`作为一个`this._storage`，并且`this._newestIndex`增加<span class="number">1</span></div></pre></td></tr></table></figure></p>
+<p>Queue.prototype.enqueue = function(data){<br>      this._storage[this._newestIndex] = data;<br>      this._newestIndex++;<br>}<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">使用`this._newestIndex`来创建新的位置，存放data数据，然后更新`this._newestIndex`的值。</div><div class="line"></div><div class="line">- `dequeue()`</div><div class="line"></div><div class="line">&gt; 删除队列中的最旧的数据，删除完后，更新`_oldestIndex`的值。</div></pre></td></tr></table></figure></p>
+<p>Queue.prototype.dequeue = function() {<br>    var oldestIndex = this._oldestIndex,<br>        newestIndex = this._newestIndex,<br>        deletedData;</p>
+<pre><code>if (oldestIndex !== newestIndex) {
+    deletedData = this._storage[oldestIndex];
+    delete this._storage[oldestIndex];
+    this._oldestIndex++;
+
+    return deletedData; // 返回当前删除的数据
+}
+</code></pre><p>};<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>完整的队列实现</div></pre></td></tr></table></figure></p>
+<p>function Queue() {<br>    this._oldestIndex = 1;<br>    this._newestIndex = 1;<br>    this._storage = {};<br>}</p>
+<p>Queue.prototype.size = function() {<br>    return this._newestIndex - this._oldestIndex;<br>};</p>
+<p>Queue.prototype.enqueue = function(data) {<br>    this._storage[this._newestIndex] = data;<br>    this._newestIndex++;<br>};</p>
+<p>Queue.prototype.dequeue = function() {<br>    var oldestIndex = this._oldestIndex,<br>        newestIndex = this._newestIndex,<br>        deletedData;</p>
+<pre><code>if (oldestIndex !== newestIndex) {
+    deletedData = this._storage[oldestIndex];
+    delete this._storage[oldestIndex];
+    this._oldestIndex++;
+
+    return deletedData;
+}
+</code></pre><p>};<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="bullet">- </span>使用javascript实现队列</div></pre></td></tr></table></figure></p>
+<p>//code.stephenmorley.org<br>function Queue() {<br>    var a = [], b = 0;<br>    this.getLength = function () {<br>        return a.length - b<br>    };<br>    this.isEmpty = function () {<br>        return 0 == a.length<br>    };<br>    this.enqueue = function (b) {<br>        a.push(b)<br>    };<br>    this.dequeue = function () {<br>        if (0 != a.length) {<br>            var c = a[b];<br>            2 * ++b &gt;= a.length &amp;&amp; (a = a.slice(b), b = 0);<br>            return c<br>        }<br>    };<br>    this.peek = function () {<br>        return 0 &lt; a.length ? a[b] : void 0<br>    }<br>};<br>```</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<p>两个线性数据结构：堆栈和队列。堆栈按顺序存储数据，并删除最近添加的数据; 队列按顺序存储数据，但删除最旧的添加数据。 </p>
+</blockquote>
+<ul>
+<li>参考连接<blockquote>
 <p><a href="https://code.tutsplus.com/series/data-structures-in-javascript--cms-772" target="_blank" rel="external">https://code.tutsplus.com/series/data-structures-in-javascript--cms-772</a></p>
 </blockquote>
+</li>
+</ul>
 
       
     </div>
@@ -588,7 +640,7 @@ Stack.prototype.push=function(data){
   <p><span>本文标题:</span><a href="/数据结构-堆栈和队列.html">数据结构----堆栈和队列</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 icessun 的个人博客">icessun</a></p>
   <p><span>发布时间:</span>2017年10月16日 - 17:10</p>
-  <p><span>最后更新:</span>2017年10月16日 - 17:10</p>
+  <p><span>最后更新:</span>2017年10月20日 - 15:10</p>
   <p><span>原始链接:</span><a href="/数据结构-堆栈和队列.html" title="数据结构----堆栈和队列">http://icessun.github.io/数据结构-堆栈和队列.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://icessun.github.io/数据结构-堆栈和队列.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -953,7 +1005,7 @@ Stack.prototype.push=function(data){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#堆栈"><span class="nav-number">1.</span> <span class="nav-text">堆栈</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#堆栈-（LIFO-last-In-first-out）"><span class="nav-number">1.</span> <span class="nav-text">堆栈 （LIFO last In first out）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">1.1.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1007,7 +1059,7 @@ Stack.prototype.push=function(data){
 
 
 <div class="theme-info">
-  <span class="post-count">博客全站共20.4k字</span>
+  <span class="post-count">博客全站共21.0k字</span>
 </div>
 
 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=vdTe2M7OyNP9zMyT3tLQ" style="text-decoration:none;" class="email"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_21.png" alt="icessun@qq.com"/></a>
