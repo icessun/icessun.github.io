@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://icessun.github.io/"/>
-  <updated>2017-10-20T08:03:07.602Z</updated>
+  <updated>2017-10-23T01:15:27.578Z</updated>
   <id>http://icessun.github.io/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>作用域和执行上下文环境的关系</title>
+    <link href="http://icessun.github.io/%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83%E7%9A%84%E5%85%B3%E7%B3%BB.html"/>
+    <id>http://icessun.github.io/作用域和执行上下文环境的关系.html</id>
+    <published>2017-10-23T01:14:14.000Z</published>
+    <updated>2017-10-23T01:15:27.578Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="非官方解释："><a href="#非官方解释：" class="headerlink" title="非官方解释："></a>非官方解释：</h3><ul>
+<li>作用域：</li>
+</ul>
+<blockquote>
+<p>Javascript中，有全局作用域，当然除了这个，还有函数创建的作用域；只要函数创建了，就可能产生一个作用域，一个独立的区域；不管函数是否调用</p>
+</blockquote>
+<ul>
+<li>执行上下文环境：</li>
+</ul>
+<blockquote>
+<p>代码的执行，肯定要在一个相对的空间里面，这个空间里面有代码执行所需要的变量和一些属性（方法也是一种特殊的属性）；这个空间就是思维的执行上下文环境，里面存储着变量和属性；函数的执行上下文环境是在调用的时候创建，要是不调用，怎么知道传入什么参数。代码执行之前，会产生执行上下文环境，在程序执行的时候，对上下文环境的变量赋值</p>
+</blockquote>
+<ul>
+<li>关系：</li>
+</ul>
+<blockquote>
+<p>一个作用域中，有可能有多个上下文执行环境（闭包），或者一个上下文环境都没有（函数执行完成，上下文环境销毁，或者没有调用函数）；</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      作用域,执行上下文环境
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://icessun.github.io/categories/javascript/"/>
+    
+    
+      <category term="作用域,执行上下文环境" scheme="http://icessun.github.io/tags/%E4%BD%9C%E7%94%A8%E5%9F%9F-%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构----堆栈和队列</title>
